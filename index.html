@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TDS Wiki</title>
+<link rel="icon" type="image/png" href="https://static.wikia.nocookie.net/tower-defense-sim/images/5/56/MoltenBoss.png/revision/latest/scale-to-width-down/250?cb=20260205174302">
+
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --panel: rgba(15, 18, 27, .90);
+  --panel2: rgba(25, 29, 40, .94);
+  --text: #fff;
+  --muted: #b9c0cf;
+  --accent: #65b8ff;
+  --border: rgba(255,255,255,.13);
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background:
+    linear-gradient(rgba(5,8,14,.62), rgba(5,8,14,.78)),
+    url("https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/SummerCastleIcon.png/revision/latest/smart/width/400/height/225?cb=20250709204530")
+    center/cover fixed no-repeat;
+}
+
+body { overflow-x: hidden; }
+
+.top-banner {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 8px 24px;
+  background: rgba(5,7,12,.94);
+  border-bottom: 2px solid rgba(255,255,255,.12);
+  box-shadow: 0 8px 30px rgba(0,0,0,.45);
+  backdrop-filter: blur(8px);
+}
+
+.top-banner img {
+  width: min(650px, 58vw);
+  max-height: 66px;
+  object-fit: contain;
+}
+
+.banner-search {
+  width: min(360px, 32vw);
+  flex-shrink: 1;
+}
+
+#topSearch {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  color: white;
+  background: rgba(0,0,0,.48);
+  font-size: 10.5px;
+}
+
+#topSearch:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(101,184,255,.13);
+}
+
+.page {
+  width: min(1500px, 94vw);
+  margin: 12px auto 25px;
+}
+
+.hero {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: 0 15px 45px rgba(0,0,0,.35);
+  backdrop-filter: blur(8px);
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 46px);
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.search-wrap {
+  display: none;
+}
+
+#search {
+  width: 100%;
+  padding: 17px 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  outline: none;
+  color: white;
+  background: rgba(0,0,0,.42);
+  font-size: 16px;
+}
+
+#search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(101,184,255,.13);
+}
+
+.section-title {
+  margin: 15px 0 9px;
+  font-size: 25px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 var(--w);
+  min-width: 125px;
+  width: var(--w);
+  min-height: var(--h);
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(0,0,0,.3);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+  transform: translateY(-7px) scale(1.015);
+  border-color: rgba(101,184,255,.65);
+  box-shadow: 0 18px 38px rgba(0,0,0,.45);
+}
+
+.card-img {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  background: #111;
+}
+
+
+.card-image-wrap .card-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.image-description {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: rgba(0,0,0,.92);
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.25;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity .18s ease, transform .18s ease;
+  pointer-events: none;
+}
+
+.card:hover .image-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 10px 9px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(0,0,0,.92));
+}
+
+.card {
+  height: var(--h);
+}
+
+.card-image-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-image-wrap .card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-description {
+  z-index: 2;
+  background: rgba(0,0,0,.94);
+  font-size: 12px;
+  padding: 12px;
+}
+
+.no-results {
+  display: none;
+  padding: 16px;
+  text-align: center;
+  color: var(--muted);
+  background: var(--panel);
+  border-radius: 14px;
+}
+
+footer {
+  margin-top: 45px;
+  text-align: center;
+  color: #aeb5c2;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .top-banner {
+    gap: 10px;
+    padding: 8px 10px;
+  }
+
+  .top-banner img {
+    width: 54vw;
+  }
+
+  .banner-search {
+    width: 38vw;
+  }
+
+  #topSearch {
+    font-size: 12px;
+    padding: 10px;
+  }
+}
+
+
+.card:nth-child(3n) {
+  margin-top: 18px;
+}
+
+.card:nth-child(5n) {
+  margin-top: 32px;
+}
+
+.card:nth-child(7n) {
+  margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+  .card:nth-child(3n),
+  .card:nth-child(5n),
+  .card:nth-child(7n) {
+    margin-top: 0;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="top-banner">
+  <img src="https://i.namu.wiki/i/7xTzCZ5-4YLxCBlGfiGrTr_TKKr1_lGMMnV4E3oGJX87QuWTZ0KK2M0EWE1-_VtY_Z9HkVdHEGXzo15xq-A52w.webp"
+       alt="TDS Wiki">
+  <div class="banner-search">
+    <input id="topSearch" type="search" placeholder="Search the wiki...">
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="hero">
+    <h1>TDS Wiki</h1>
+    <p>Your community hub for Tower Defense Simulator information.</p>
+
+    
+  </section>
+
+  <h2 class="section-title">Explore the Wiki</h2>
+
+  <div class="grid" id="cards">
+
+    <a class="card" data-search="towers tower" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://static.beebom.com/wp-content/uploads/2024/06/Tower-Defense-Simulator-Cover.jpg?w=1250&quality=75" alt="Towers">
+        <div class="card-name">Towers</div>
+        <div class="image-description">Browse towers, stats, upgrades, abilities, and strategies.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="units unit" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://i.redd.it/gvuzjunz4ntg1.png" alt="Units">
+        <div class="card-name">Units</div>
+        <div class="image-description">Discover the different units featured throughout TDS.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="enemies enemy bosses" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/34/V1.60Render.png/revision/latest/scale-to-width-down/250?cb=20250410002931" alt="Enemies">
+        <div class="card-name">Enemies</div>
+        <div class="image-description">View enemies, bosses, traits, stats, and appearances.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="consumables" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://tiermaker.com/images/media/hero_images/2024/17135716/consumables-tier-list-tds-17135716/171357161715418745.png" alt="Consumables">
+        <div class="card-name">Consumables</div>
+        <div class="image-description">Explore consumable items and their uses.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="ost music soundtrack" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://media.tenor.com/d7bNIXP3qbEAAAAe/tds-neko-dj.png" alt="OST">
+        <div class="card-name">OST</div>
+        <div class="image-description">Find music, soundtracks, and memorable TDS tracks.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="events event" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://i.ytimg.com/vi/kNuULgN-Pww/sddefault.jpg" alt="Events">
+        <div class="card-name">Events</div>
+        <div class="image-description">Look back at seasonal and limited-time events.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="battlepasses battle pass" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://pbs.twimg.com/media/G3UW44VXUAAtTlq.jpg" alt="Battle Passes">
+        <div class="card-name">Battle Passes</div>
+        <div class="image-description">Explore battle passes, rewards, and progression.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="narrators narrator voices" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://pbs.twimg.com/media/FRHV2lnVUAAT_RZ.jpg" alt="Narrators">
+        <div class="card-name">Narrators</div>
+        <div class="image-description">Learn about the characters and voices that narrate TDS.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="thumbnails thumbnail" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://pbs.twimg.com/media/GIy6HDIaEAA_YYS.jpg" alt="Thumbnails">
+        <div class="card-name">Thumbnails</div>
+        <div class="image-description">Browse game thumbnails and promotional artwork.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="trailers trailer videos" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnj8HXnBhQJ1OkDe_HNGPgMFJYcREzG5a_JCzz6mjVoQQQkjLNFoyrZr8&s=10" alt="Trailers">
+        <div class="card-name">Trailers</div>
+        <div class="image-description">Watch and archive TDS trailers and promotional videos.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="gamemodes game modes modes" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://static.wikia.nocookie.net/tower-defense-sim-reanimated-work/images/0/0f/%28Remix%29_Tower_Defense_Simulator_OST_-_Gold_Titan/revision/latest?cb=20260616101313" alt="Game Modes">
+        <div class="card-name">Game Modes</div>
+        <div class="image-description">Learn about game modes, rules, waves, and challenges.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="lobbies lobby" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/ef/Ducks1.png/revision/latest/scale-to-width-down/250?cb=20220408162916" alt="Lobbies">
+        <div class="card-name">Lobbies</div>
+        <div class="image-description">Explore lobby features, locations, and changes.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="tickets ticket currency" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://preview.redd.it/i-hate-this-spin-wheel-so-much-devs-please-remove-it-from-v0-dnb6tmqpafhf1.jpeg?width=640&crop=smart&auto=webp&s=c96b86690ba2a584e04961ea69a1119d9d28a4ea" alt="Tickets">
+        <div class="card-name">Tickets</div>
+        <div class="image-description">Learn about tickets, rewards, and ticket-related systems.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="crates crate boxes" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/68/ViolentNightClean.png/revision/latest/scale-to-width-down/340?cb=20221227092433" alt="Crates">
+        <div class="card-name">Crates</div>
+        <div class="image-description">Browse crates, contents, rewards, and crate history.</div>
+      </div>
+    </a>
+
+    <a class="card" data-search="modifiers modifier" href="#">
+      <div class="card-image-wrap">
+        <img class="card-img" src="https://pbs.twimg.com/profile_images/1951440842909974528/hJrXUZ7w_400x400.jpg" alt="Modifiers">
+        <div class="card-name">Modifiers</div>
+        <div class="image-description">Explore modifiers that change how matches are played.</div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="no-results" id="noResults">No matching category found.</div>
+
+  <footer>
+    TDS Wiki homepage • Community-made fan project
+  </footer>
+</main>
+
+<script>
+const cards = [...document.querySelectorAll(".card")];
+const search = document.getElementById("topSearch");
+const noResults = document.getElementById("noResults");
+
+function randomizeSizes() {
+  cards.forEach(card => {
+    const sizes = [
+      [125, 145],
+      [145, 165],
+      [170, 190],
+      [205, 215],
+      [245, 230],
+      [290, 250],
+      [185, 275],
+      [135, 205]
+    ];
+    const [baseW, baseH] = sizes[Math.floor(Math.random() * sizes.length)];
+    const w = baseW + Math.floor(Math.random() * 22);
+    const h = baseH + Math.floor(Math.random() * 30);
+    card.style.setProperty("--w", w + "px");
+    card.style.setProperty("--h", h + "px");
+  });
+}
+
+search.addEventListener("input", () => {
+  const query = search.value.toLowerCase().trim();
+  let visible = 0;
+
+  cards.forEach(card => {
+    const matches = card.dataset.search.includes(query);
+    card.style.display = matches ? "flex" : "none";
+    if (matches) visible++;
+  });
+
+  noResults.style.display = visible ? "none" : "block";
+});
+
+randomizeSizes();
+</script>
+
+</body>
+</html>
