@@ -76,7 +76,7 @@ body { overflow-x: hidden; }
 }
 
 .page {
-  width: min(1500px, 94vw);
+  width: min(1500px, calc(94vw - 210px));
   margin: 12px auto 25px;
 }
 
@@ -289,10 +289,38 @@ footer {
   }
 }
 
+
+/* Daily modifier sidebar */
+.modifier-sidebar{position:fixed;left:14px;top:105px;z-index:900;width:180px;padding:10px;background:rgba(8,11,17,.92);border:1px solid rgba(255,255,255,.14);border-radius:16px;box-shadow:0 16px 35px rgba(0,0,0,.45);backdrop-filter:blur(10px)}
+.modifier-sidebar-title{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#aeb7c8;font-weight:800}
+.modifier-card{position:relative;overflow:hidden;width:100%;aspect-ratio:3/4;border-radius:11px;border:1px solid rgba(255,255,255,.14);background:#111}
+.modifier-card img{display:block;width:100%;height:100%;object-fit:cover}
+.modifier-card:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 42%,rgba(0,0,0,.92));pointer-events:none}
+.modifier-info{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:10px;color:#fff}
+.modifier-label{font-size:10px;color:#c6cedb;margin-bottom:2px}
+.modifier-name{font-size:16px;line-height:1.05;font-weight:900}
+.modifier-date{margin-top:5px;font-size:9px;color:#b7bfcd}
+.modifier-next{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.1);color:#9da7b8;font-size:9px;line-height:1.3}
+@media(max-width:1150px){.modifier-sidebar{position:relative;left:auto;top:auto;width:min(260px,94vw);margin:12px auto;max-height:none}}
+
 </style>
 </head>
 
 <body>
+
+<aside class="modifier-sidebar" aria-label="Today's modifier">
+  <div class="modifier-sidebar-title">Today's Modifier</div>
+  <div class="modifier-card">
+    <img id="modifierImage" alt="">
+    <div class="modifier-info">
+      <div class="modifier-label">ACTIVE TODAY</div>
+      <div class="modifier-name" id="modifierName"></div>
+      <div class="modifier-date" id="modifierDate"></div>
+    </div>
+  </div>
+  <div class="modifier-next" id="modifierNext"></div>
+</aside>
+
 
 <header class="top-banner">
   <img src="https://i.namu.wiki/i/7xTzCZ5-4YLxCBlGfiGrTr_TKKr1_lGMMnV4E3oGJX87QuWTZ0KK2M0EWE1-_VtY_Z9HkVdHEGXzo15xq-A52w.webp"
@@ -315,7 +343,7 @@ footer {
 
   <div class="grid" id="cards">
 
-    <a class="card" data-search="towers tower" href="towers.html">
+    <a class="card" data-search="towers tower" href="#">
       <div class="card-image-wrap">
         <img class="card-img" src="https://static.beebom.com/wp-content/uploads/2024/06/Tower-Defense-Simulator-Cover.jpg?w=1250&quality=75" alt="Towers">
         <div class="card-name">Towers</div>
@@ -483,6 +511,109 @@ search.addEventListener("input", () => {
 });
 
 randomizeSizes();
+</script>
+
+
+<script>
+const modifierRotation = [
+  {
+    name: "Speedy Enemies",
+    image: "https://static.wikia.nocookie.net/tower-defense-sim/images/8/80/V1.33.0PromotionalImage.png/revision/latest/scale-to-width-down/250?cb=20240925192953"
+  },
+  {
+    name: "Glass",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCcHlxkzTFaFXR95WB7Rs-Y2HJMd5068MpDsSjoDyQOlIxV12JUQv04RFn&s=10"
+  },
+  {
+    name: "Quarantine",
+    image: "https://static.wikia.nocookie.net/tower-defense-sim/images/b/ba/SledgerToxicRender.png/revision/latest/scale-to-width-down/250?cb=20220430143400"
+  },
+  {
+    name: "Fog",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7AmHINfHmE_Ptzxhj82euDSAW4-wC3qh8vuxkj9VHYGfMAiYoEfvey7Au&s=10"
+  },
+  {
+    name: "Limitation Makes Creativity",
+    image: "https://i.ytimg.com/vi/QGjlK81VDl8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB8Ollt3H1l9cj-t9H7NAGJ36s3HQ"
+  },
+  {
+    name: "Flying Enemies",
+    image: "https://static.wikia.nocookie.net/tower-defense-sim/images/d/d2/HalloweenPI4.jpg/revision/latest/scale-to-width-down/250?cb=20221028183423"
+  },
+  {
+    name: "Jailed Towers",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPq0wpAfblwCbuIlZRW8tZ_ucJw34_arXKrvOFief9nGFCFJa-w3Ql370&s=10"
+  },
+  {
+    name: "Exploding Enemies",
+    image: "https://static.wikia.nocookie.net/tower-defense-sim/images/d/d6/E0071226890c31604a0043399d948def.jpg/revision/latest/thumbnail/width/360/height/360?cb=20251123190241"
+  }
+];
+
+// Three-hour rotation in fixed EST (UTC-5).
+// Jailed Towers is explicitly anchored as the active modifier
+// from 1:00 AM to 4:00 AM EST on September 13, 2026.
+const ANCHOR_MS = Date.parse("2026-09-13T01:00:00-05:00");
+const ANCHOR_INDEX = 6;
+const SLOT_MS = 3 * 60 * 60 * 1000;
+
+function getRotation() {
+  const now = Date.now();
+  const elapsed = now - ANCHOR_MS;
+
+  // At the anchor time the active entry is Jailed Towers.
+  const slotNumber = Math.floor(elapsed / SLOT_MS);
+  const index = ((ANCHOR_INDEX + slotNumber) % modifierRotation.length + modifierRotation.length) % modifierRotation.length;
+
+  const slotStart = ANCHOR_MS + slotNumber * SLOT_MS;
+  const slotEnd = slotStart + SLOT_MS;
+
+  return {
+    active: modifierRotation[index],
+    next: modifierRotation[(index + 1) % modifierRotation.length],
+    slotStart,
+    slotEnd
+  };
+}
+
+function formatEST(ms) {
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true
+  }).format(new Date(ms));
+}
+
+function formatRemaining(ms) {
+  const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return `${hours}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s remaining`;
+}
+
+function updateModifier() {
+  const rotation = getRotation();
+  const img = document.getElementById("modifierImage");
+  const name = document.getElementById("modifierName");
+  const date = document.getElementById("modifierDate");
+  const next = document.getElementById("modifierNext");
+
+  if (!img) return;
+
+  img.src = rotation.active.image;
+  img.alt = rotation.active.name;
+  name.textContent = rotation.active.name;
+  date.textContent = `Started ${formatEST(rotation.slotStart)} EST`;
+  next.textContent = `Next: ${rotation.next.name} • ${formatRemaining(rotation.slotEnd - Date.now())}`;
+}
+
+updateModifier();
+setInterval(updateModifier, 1000);
 </script>
 
 </body>
