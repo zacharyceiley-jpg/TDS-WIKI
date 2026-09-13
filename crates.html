@@ -63,51 +63,858 @@ footer{color:#aeb5c2;text-align:center;font-size:12px;margin-top:30px}
 </div>
 <div id="crateSections">
 <script>
+<script>
+/* =========================================================
+   TDS WIKI — CRATES
+   ========================================================= */
+
+/* -------------------------
+   CRATE LISTS
+   ------------------------- */
+
 const crateData = {
-Basic:["Basic Crate","Golden Crate","Toy Crate","Cold Front Crate","Vigilante Crate","Pirate Crate","Void Crate","Beach Crate","Patriotic Crate","Scuba Ops Crate"],
-Robux:["Premium Crate","Deluxe Crate","Phantom Crate","Showtime Crate"],
-Unobtainable:["Frost Crate","Pumpkin Crate","Banned Crate","Ducky Crate","Lovely Crate","Lunar Crate","Ugly Crate","Coin Crate","Halloween 2019 Crate","X-Mas 2019 Crate","Party Crate","Valentines Crate","Bunny Crate","Spooky Crate","Halloween Crate","Jolly Crate","Lovestruck Crate","Christmas 2025 Crate","Valentines 2026 Crate","Shamrock Crate","Name Tag Crate","Platinum Crate"],
-Consumables:["Holiday Crate","Low Grade Crate","Medium Grade Crate","High Grade Crate"]
+  Basic: [
+    "Basic Crate",
+    "Golden Crate",
+    "Toy Crate",
+    "Cold Front Crate",
+    "Vigilante Crate",
+    "Pirate Crate",
+    "Void Crate",
+    "Beach Crate",
+    "Patriotic Crate",
+    "Scuba Ops Crate"
+  ],
+
+  Robux: [
+    "Premium Crate",
+    "Deluxe Crate",
+    "Phantom Crate",
+    "Showtime Crate"
+  ],
+
+  Unobtainable: [
+    "Frost Crate",
+    "Pumpkin Crate",
+    "Banned Crate",
+    "Ducky Crate",
+    "Lovely Crate",
+    "Lunar Crate",
+    "Ugly Crate",
+    "Coin Crate",
+    "Halloween 2019 Crate",
+    "X-Mas 2019 Crate",
+    "Party Crate",
+    "Valentines Crate",
+    "Bunny Crate",
+    "Spooky Crate",
+    "Halloween Crate",
+    "Jolly Crate",
+    "Lovestruck Crate",
+    "Christmas 2025 Crate",
+    "Valentines 2026 Crate",
+    "Shamrock Crate",
+    "Name Tag Crate",
+    "Platinum Crate"
+  ],
+
+  Consumables: [
+    "Holiday Crate",
+    "Low Grade Crate",
+    "Medium Grade Crate",
+    "High Grade Crate"
+  ]
 };
-const colors={Basic:'#65b8ff',Robux:'#b892ff',Unobtainable:'#9da6b5',Consumables:'#63dfaa'};
-const desc={Basic:'Crates available through the normal crate system and regular progression.',Robux:'Crates purchased using Robux.',Unobtainable:'Legacy, event, removed, or otherwise unavailable crates.',Consumables:'Crates used to obtain consumable items.'};
-const content={
-"Basic Crate":[['Red Scout','Scout'],['Green Scout','Scout'],['Blue Scout','Scout'],['Survivor Scout','Scout'],['Red Soldier','Soldier'],['Blue Soldier','Soldier'],['Blue Minigunner','Minigunner'],['Green Minigunner','Minigunner'],['Red Demoman','Demoman'],['Green Demoman','Demoman'],['Blue Sniper','Sniper'],['Red Sniper','Sniper'],['Blue Pyromancer','Pyromancer'],['Red Paintballer','Paintballer'],['Blue Crook Boss','Crook Boss'],['Red Crook Boss','Crook Boss'],['Blue Ranger','Ranger'],['Green Ranger','Ranger'],['Purple Hunter','Hunter'],['Navy Commander','Commander'],['Red Commander','Commander'],['Green Commander','Commander']],
-"Cold Front Crate":[['Silent','Sniper'],['Brisk','Commander'],['Brave Soul','Sledger'],['Ice Witch','Accelerator'],['Stranded','Medic']],
-"Premium Crate":[['Victorian','Commander'],['General','Commander'],['Acidic','Pyromancer'],['Red','Scout'],['Navy','Ace Pilot']],
-"Deluxe Crate":[['Maid','Commander'],['Neko','Commander'],['Mage','Accelerator'],['Tycoon','Farm']],
-"Phantom Crate":[['Phantom','Accelerator'],['Ghost','Scout']],
-"Vigilante Crate":[['Vigilante','Commander'],['Vigilante','Accelerator']],
-"Pirate Crate":[['Pirate','Demoman'],['Pirate','Commander']],
-"Beach Crate":[['Aqua','Commander'],['Seal','Commander']],
-"Patriotic Crate":[['Patriotic','Commander']],
-"Golden Crate":[['Golden','Pyromancer']]
+
+
+/* -------------------------
+   CATEGORY COLORS
+   ------------------------- */
+
+const categoryColors = {
+  Basic: "#65b8ff",
+  Robux: "#b892ff",
+  Unobtainable: "#9da6b5",
+  Consumables: "#63dfaa"
 };
-const imgMap={
-Scout:'https://static.wikia.nocookie.net/tower-defense-sim/images/4/4e/DefaultScout3.png/revision/latest?cb=20260312002130',Soldier:'https://static.wikia.nocookie.net/tower-defense-sim/images/d/da/KrampusRevengeSoldierIcon.png/revision/latest?cb=20260311003356',Minigunner:'https://static.wikia.nocookie.net/tower-defense-sim/images/8/81/NewMinigunner.png/revision/latest?cb=20260311032305',Demoman:'https://static.wikia.nocookie.net/tower-defense-sim/images/c/c3/DefaultDemomanIcon2.png/revision/latest?cb=20260311003341',Sniper:'https://static.wikia.nocookie.net/tower-defense-sim/images/e/e0/DefaultSniperIcon1.png/revision/latest?cb=20260310232240',Pyromancer:'https://static.wikia.nocookie.net/tower-defense-sim/images/4/4b/DefaultPyromancerIcon.png/revision/latest?cb=20260311014706',Paintballer:'https://static.wikia.nocookie.net/tower-defense-sim/images/b/b3/NewPaintballerIcon.png/revision/latest?cb=20260310233945',CrookBoss:'https://static.wikia.nocookie.net/tower-defense-sim/images/b/b6/CBRCBossIcon.png/revision/latest?cb=20260311014847',Ranger:'https://static.wikia.nocookie.net/tower-defense-sim/images/5/52/Newranger.png/revision/latest?cb=20260311032317',Hunter:'https://static.wikia.nocookie.net/tower-defense-sim/images/2/26/NewHunterIcon.png/revision/latest?cb=20260311014651',Commander:'https://static.wikia.nocookie.net/tower-defense-sim/images/c/c9/Commandernew.png/revision/latest?cb=20260311032001',AcePilot:'https://static.wikia.nocookie.net/tower-defense-sim/images/1/13/AcePilotIcon.png/revision/latest?cb=20260311014800',Accelerator:'https://static.wikia.nocookie.net/tower-defense-sim/images/5/56/DefaultAcceleratorIcon2.png/revision/latest?cb=20260311021652',Medic:'https://static.wikia.nocookie.net/tower-defense-sim/images/6/66/DefaultMedicIconAug25.png/revision/latest?cb=20260314022645',Farm:'https://static.wikia.nocookie.net/tower-defense-sim/images/7/7d/FarmIcon.png/revision/latest?cb=20260311014900',Sledger:'https://static.wikia.nocookie.net/tower-defense-sim/images/1/12/OICESledgerIcon.png/revision/latest?cb=20260311073112'};
-function crateImage(name){return 'https://tds.wiki/wiki/Special:FilePath/'+name.replaceAll(' ','_')+'.png'}
-function normTower(t){return t.replaceAll(' ','')}
-function renderCrates(){
- const root=document.getElementById('crateSections');root.innerHTML='';
- for(const [cat,list] of Object.entries(crateData)){
-  const section=document.createElement('section');section.className='crate-section';section.dataset.category=cat;
-  section.innerHTML=`<div class="section-heading"><div><div class="section-kicker" style="--section-accent:${colors[cat]}">${cat}</div><p>${desc[cat]}</p></div><span class="count">${list.length} crates</span></div><div class="crate-grid"></div>`;
-  const grid=section.querySelector('.crate-grid');
-  list.forEach(name=>{
-   const items=content[name]||[];
-   const details=items.length?`<div class="contents-grid">${items.map(x=>`<div class="content-item"><img src="${imgMap[normTower(x[1])]||imgMap.Scout}" alt="${x[1]}"><div><strong>${x[0]}</strong><span>${x[1]}</span></div></div>`).join('')}</div>`:`<div class="contents-note">The full contents can be maintained here as the wiki entries are added.<a href="https://tds.wiki/w/${encodeURIComponent(name.replaceAll(' ','_'))}" target="_blank" rel="noopener">Open crate article →</a></div>`;
-   const card=document.createElement('article');card.className='crate-card';card.dataset.name=name.toLowerCase();
-   card.innerHTML=`<div class="crate-image"><img src="${crateImage(name)}" alt="${name}" onerror="this.onerror=null;this.style.objectFit='contain';this.src='https://static.wikia.nocookie.net/tower-defense-sim/images/6/68/ViolentNightClean.png/revision/latest/scale-to-width-down/340?cb=20221227092433'"><div class="crate-name">${name}</div><div class="crate-hover"><strong>${name}</strong><span>Expand below to view contents</span></div></div><details class="crate-details"><summary>Expand</summary><div class="crate-contents"><div class="contents-head"><strong>Contents</strong><a href="https://tds.wiki/w/${encodeURIComponent(name.replaceAll(' ','_'))}" target="_blank" rel="noopener">TDS Wiki ↗</a></div>${details}</div></details>`;
-   grid.appendChild(card);
-  });
-  root.appendChild(section);
- }
+
+
+/* -------------------------
+   CATEGORY DESCRIPTIONS
+   ------------------------- */
+
+const categoryDescriptions = {
+  Basic:
+    "Crates available through the normal crate system and regular progression.",
+
+  Robux:
+    "Crates purchased using Robux.",
+
+  Unobtainable:
+    "Legacy, event, removed, or otherwise unavailable crates.",
+
+  Consumables:
+    "Crates used to obtain consumable items."
+};
+
+
+/* =========================================================
+   CRATE IMAGES
+   =========================================================
+
+   PUT YOUR IMAGE URL BETWEEN THE QUOTES.
+
+   Example:
+
+   "Basic Crate":
+     "https://example.com/basic-crate.png",
+
+   ========================================================= */
+
+const crateImages = {
+
+  /* ---------- BASIC ---------- */
+
+  "Basic Crate":
+    "https://tds.wiki/images/thumb/6/60/BasicSkincrateIcon.png/350px-BasicSkincrateIcon.png.webp?cb=20260422232755",
+
+  "Golden Crate":
+    "https://tds.wiki/images/thumb/8/84/GoldenSkincrateIcon.png/350px-GoldenSkincrateIcon.png.webp?cb=20260422221522",
+
+  "Toy Crate":
+    "https://tds.wiki/images/thumb/d/d4/ToySkincrateIcon.png/350px-ToySkincrateIcon.png.webp?cb=20260422232614",
+
+  "Cold Front Crate":
+    "https://tds.wiki/images/thumb/7/7b/ColdFrontSkincrateIcon.png/350px-ColdFrontSkincrateIcon.png.webp?cb=20260422232217",
+
+  "Vigilante Crate":
+    "https://tds.wiki/images/thumb/8/8c/VigilanteSkincrateIcon.png/350px-VigilanteSkincrateIcon.png.webp?cb=20260422231934",
+
+  "Pirate Crate":
+    "https://tds.wiki/images/thumb/d/d6/PirateSkincrateIcon.png/350px-PirateSkincrateIcon.png.webp?cb=20260422231700",
+
+  "Void Crate":
+    "https://tds.wiki/images/thumb/1/19/VoidSkincrateIcon.png/350px-VoidSkincrateIcon.png.webp?cb=20260605161228",
+
+  "Beach Crate":
+    "https://tds.wiki/images/thumb/b/b7/BeachCrateIcon.png/350px-BeachCrateIcon.png.webp?cb=20260703160325",
+
+  "Patriotic Crate":
+    "https://tds.wiki/images/thumb/c/c7/PatrioticCrateIcon.png/350px-PatrioticCrateIcon.png.webp?cb=20260703160459",
+
+  "Scuba Ops Crate":
+    "https://tds.wiki/images/thumb/7/7d/ScubaOpsCrateIcon.png/350px-ScubaOpsCrateIcon.png.webp?cb=20260703160358",
+
+
+  /* ---------- ROBUX ---------- */
+
+  "Premium Crate":
+    "https://tds.wiki/images/thumb/3/37/PremiumSkincrateIcon.png/350px-PremiumSkincrateIcon.png.webp?cb=20260422220508",
+
+  "Deluxe Crate":
+    "https://tds.wiki/images/thumb/8/8b/DeluxeSkincrateIcon.png/350px-DeluxeSkincrateIcon.png.webp?cb=20260422225850",
+
+  "Phantom Crate":
+    "https://tds.wiki/images/thumb/4/44/PhantomSkincrateIcon.png/350px-PhantomSkincrateIcon.png.webp?cb=20260422233012",
+
+  "Showtime Crate":
+    "https://tds.wiki/images/thumb/7/75/ShowtimeSkincrateIcon.png/350px-ShowtimeSkincrateIcon.png.webp?cb=20260422204250",
+
+
+  /* ---------- UNOBTAINABLE ---------- */
+
+  "Frost Crate":
+    "https://tds.wiki/images/thumb/d/de/FrostCrateIcon.png/350px-FrostCrateIcon.png.webp?cb=20260425162433",
+
+  "Pumpkin Crate":
+    "https://tds.wiki/images/thumb/e/e5/PumpkinCrateIcon.png/350px-PumpkinCrateIcon.png.webp?cb=20260425164725",
+
+  "Banned Crate":
+    "https://tds.wiki/images/thumb/2/23/BannedCrateIcon.png/350px-BannedCrateIcon.png.webp?cb=20260425144624",
+
+  "Ducky Crate":
+    "https://tds.wiki/images/thumb/9/94/DuckySkincrateIcon.png/350px-DuckySkincrateIcon.png.webp?cb=20260422232030",
+
+  "Lovely Crate":
+    "https://tds.wiki/images/thumb/9/9c/LovelySkincrateIcon.png/350px-LovelySkincrateIcon.png.webp?cb=20260422232344",
+
+  "Lunar Crate":
+    "https://tds.wiki/images/thumb/1/15/LunarSkincrateIcon.png/350px-LunarSkincrateIcon.png.webp?cb=20260422233136",
+
+  "Ugly Crate":
+    "https://tds.wiki/images/thumb/a/af/UglyCrateIcon.png/350px-UglyCrateIcon.png.webp?cb=20260422231425",
+
+  "Coin Crate":
+    "https://tds.wiki/images/thumb/a/af/CoinCrateIcon.png/350px-CoinCrateIcon.png.webp?cb=20260425180531",
+
+  "Halloween 2019 Crate":
+    "https://tds.wiki/images/thumb/1/16/Halloween2019CrateIcon2026.png/350px-Halloween2019CrateIcon2026.png.webp?cb=20260425125613",
+
+  "X-Mas 2019 Crate":
+    "https://tds.wiki/images/thumb/f/f8/Xmas2019CrateIcon.png/350px-Xmas2019CrateIcon.png.webp?cb=20260425131859",
+
+  "Party Crate":
+    "https://tds.wiki/images/thumb/9/9e/PartySkincrateIcon.png/350px-PartySkincrateIcon.png.webp?cb=20260422233423",
+
+  "Valentines Crate":
+    "https://tds.wiki/images/thumb/a/a3/ValentinesCrateIcon.png/350px-ValentinesCrateIcon.png.webp?cb=20260425135444",
+
+  "Bunny Crate":
+    "https://tds.wiki/images/thumb/e/ee/BunnySkincrateIcon.png/350px-BunnySkincrateIcon.png.webp?cb=20260422233552",
+
+  "Spooky Crate":
+    "https://tds.wiki/images/thumb/1/12/SpookyCrateIcon.png/350px-SpookyCrateIcon.png.webp?cb=20260425161912",
+
+  "Halloween Crate":
+    "https://tds.wiki/images/thumb/7/78/HalloweenCrateIcon.png/350px-HalloweenCrateIcon.png.webp?cb=20260425171659",
+
+  "Jolly Crate":
+    "https://tds.wiki/images/thumb/8/85/Jollyskincrate.png/350px-Jollyskincrate.png.webp?cb=20260422215423",
+
+  "Lovestruck Crate":
+    "https://tds.wiki/images/thumb/7/7f/LovestruckCrateIcon.png/350px-LovestruckCrateIcon.png.webp?cb=20260425165812",
+
+  "Christmas 2025 Crate":
+    "https://tds.wiki/images/thumb/2/25/Christmas2025SkincrateIcon.png/350px-Christmas2025SkincrateIcon.png.webp?cb=20260422225414",
+
+  "Valentines 2026 Crate":
+    "https://tds.wiki/images/thumb/c/c8/Valentines2026SkincrateIcon.png/350px-Valentines2026SkincrateIcon.png.webp?cb=20260422214546",
+
+  "Shamrock Crate":
+    "https://tds.wiki/images/thumb/4/4e/ShamrockSkincrateIcon.png/350px-ShamrockSkincrateIcon.png.webp?cb=20260422214040",
+
+  "Name Tag Crate":
+    "https://tds.wiki/images/thumb/1/19/NametagCrate.png/350px-NametagCrate.png.webp?cb=20250525131523",
+
+  "Platinum Crate":
+    "https://tds.wiki/images/thumb/0/08/Platinum_Crate.png/350px-Platinum_Crate.png.webp?cb=20191014124544",
+
+
+  /* ---------- CONSUMABLES ---------- */
+
+  "Holiday Crate":
+    "https://tds.wiki/images/thumb/a/a1/HolidayCrateIcon.png/350px-HolidayCrateIcon.png.webp?cb=20260425180532",
+
+  "Low Grade Crate":
+    "https://tds.wiki/images/thumb/b/b3/LowGradeCrateIcon.png/350px-LowGradeCrateIcon.png.webp?cb=20260425175152",
+
+  "Medium Grade Crate":
+    "https://tds.wiki/images/thumb/4/40/MidTierConsumableCrate.png/350px-MidTierConsumableCrate.png.webp?cb=20260422211702",
+
+  "High Grade Crate":
+    "https://tds.wiki/images/thumb/4/4f/HighGradeCrateIcon.png/350px-HighGradeCrateIcon.png.webp?cb=20260425164142"
+};
+
+
+/* =========================================================
+   CRATE CONTENTS
+   =========================================================
+
+   Format:
+
+   ["Display Name", "Tower Name"]
+
+   Add more entries to any crate whenever you want.
+
+   ========================================================= */
+
+const crateContents = {
+
+  "Basic Crate": [
+    ["Red Scout", "Scout"],
+    ["Green Scout", "Scout"],
+    ["Blue Scout", "Scout"],
+    ["Survivor Scout", "Scout"],
+
+    ["Red Soldier", "Soldier"],
+    ["Blue Soldier", "Soldier"],
+
+    ["Blue Minigunner", "Minigunner"],
+    ["Green Minigunner", "Minigunner"],
+
+    ["Red Demoman", "Demoman"],
+    ["Green Demoman", "Demoman"],
+
+    ["Blue Sniper", "Sniper"],
+    ["Red Sniper", "Sniper"],
+
+    ["Blue Pyromancer", "Pyromancer"],
+    ["Red Paintballer", "Paintballer"],
+
+    ["Blue Crook Boss", "Crook Boss"],
+    ["Red Crook Boss", "Crook Boss"],
+
+    ["Blue Ranger", "Ranger"],
+    ["Green Ranger", "Ranger"],
+
+    ["Purple Hunter", "Hunter"],
+
+    ["Navy Commander", "Commander"],
+    ["Red Commander", "Commander"],
+    ["Green Commander", "Commander"]
+  ],
+
+  "Golden Crate": [
+    ["Golden Scout", "Scout"],
+    ["Golden Soldier", "Soldier"],
+    ["Golden Crook Boss", "Crook Boss"],
+    ["Golden Pyromancer", "Pyromancer"],
+    ["Golden Minigunner", "Minigunner"],
+    ["Golden Cowboy", "Cowboy"],
+    ["Golden Pyromancer", "Pyromancer"]
+  ],
+
+  "Cold Front Crate": [
+    ["Silent", "Sniper"],
+    ["Brisk", "Commander"],
+    ["Brave Soul", "Sledger"],
+    ["Ice Witch", "Accelerator"],
+    ["Stranded", "Medic"]
+  ],
+
+  "Premium Crate": [
+    ["Victorian", "Commander"],
+    ["General", "Commander"],
+    ["Acidic", "Pyromancer"],
+    ["Red", "Scout"],
+    ["Navy", "Ace Pilot"]
+  ],
+
+  "Deluxe Crate": [
+    ["Maid", "Commander"],
+    ["Neko", "Commander"],
+    ["Mage", "Accelerator"],
+    ["Tycoon", "Farm"]
+  ],
+
+  "Phantom Crate": [
+    ["Phantom", "Accelerator"],
+    ["Ghost", "Scout"]
+  ],
+
+  "Vigilante Crate": [
+    ["Vigilante", "Commander"],
+    ["Vigilante", "Accelerator"]
+  ],
+
+  "Pirate Crate": [
+    ["Pirate", "Demoman"],
+    ["Pirate", "Commander"]
+  ],
+
+  "Beach Crate": [
+    ["Aqua", "Commander"],
+    ["Seal", "Commander"]
+  ],
+
+  "Patriotic Crate": [
+    ["Patriotic", "Commander"]
+  ],
+
+  "Toy Crate": [],
+
+  "Void Crate": [],
+
+  "Scuba Ops Crate": [],
+
+  "Showtime Crate": [],
+
+  "Frost Crate": [],
+
+  "Pumpkin Crate": [],
+
+  "Banned Crate": [],
+
+  "Ducky Crate": [],
+
+  "Lovely Crate": [],
+
+  "Lunar Crate": [],
+
+  "Ugly Crate": [],
+
+  "Coin Crate": [],
+
+  "Halloween 2019 Crate": [],
+
+  "X-Mas 2019 Crate": [],
+
+  "Party Crate": [],
+
+  "Valentines Crate": [],
+
+  "Bunny Crate": [],
+
+  "Spooky Crate": [],
+
+  "Halloween Crate": [],
+
+  "Jolly Crate": [],
+
+  "Lovestruck Crate": [],
+
+  "Christmas 2025 Crate": [],
+
+  "Valentines 2026 Crate": [],
+
+  "Shamrock Crate": [],
+
+  "Name Tag Crate": [],
+
+  "Platinum Crate": [],
+
+  "Holiday Crate": [],
+
+  "Low Grade Crate": [],
+
+  "Medium Grade Crate": [],
+
+  "High Grade Crate": []
+};
+
+
+/* =========================================================
+   TOWER / CONTENT IMAGES
+   ========================================================= */
+
+const contentImages = {
+
+  Scout:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/4/4e/DefaultScout3.png/revision/latest?cb=20260312002130",
+
+  Soldier:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/d/da/KrampusRevengeSoldierIcon.png/revision/latest?cb=20260311003356",
+
+  Minigunner:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/8/81/NewMinigunner.png/revision/latest?cb=20260311032305",
+
+  Demoman:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/c/c3/DefaultDemomanIcon2.png/revision/latest?cb=20260311003341",
+
+  Sniper:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/e/e0/DefaultSniperIcon1.png/revision/latest?cb=20260310232240",
+
+  Pyromancer:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/4/4b/DefaultPyromancerIcon.png/revision/latest?cb=20260311014706",
+
+  Paintballer:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/b/b3/NewPaintballerIcon.png/revision/latest?cb=20260310233945",
+
+  CrookBoss:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/b/b6/CBRCBossIcon.png/revision/latest?cb=20260311014847",
+
+  Ranger:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/5/52/Newranger.png/revision/latest?cb=20260311032317",
+
+  Hunter:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/2/26/NewHunterIcon.png/revision/latest?cb=20260311014651",
+
+  Commander:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/c/c9/Commandernew.png/revision/latest?cb=20260311032001",
+
+  AcePilot:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/1/13/AcePilotIcon.png/revision/latest?cb=20260311014800",
+
+  Accelerator:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/5/56/DefaultAcceleratorIcon2.png/revision/latest?cb=20260311021652",
+
+  Medic:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/6/66/DefaultMedicIconAug25.png/revision/latest?cb=20260314022645",
+
+  Farm:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/7/7d/FarmIcon.png/revision/latest?cb=20260311014900",
+
+  Sledger:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/1/12/OICESledgerIcon.png/revision/latest?cb=20260311073112",
+
+  Cowboy:
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/8/82/WDDefaultCowboyIcon.png/revision/latest?cb=20260311032013"
+};
+
+
+/* =========================================================
+   HELPER FUNCTIONS
+   ========================================================= */
+
+function getCrateImage(crateName) {
+
+  // First use the URL you manually entered.
+  if (crateImages[crateName] && crateImages[crateName].trim() !== "") {
+    return crateImages[crateName];
+  }
+
+  // If you have not entered an image yet, use a TDS Wiki
+  // Special:FilePath fallback.
+  const wikiName = crateName
+    .replaceAll(" ", "_")
+    .replaceAll("'", "");
+
+  return `https://tds.wiki/wiki/Special:FilePath/${wikiName}.png`;
 }
+
+
+function getContentImage(towerName) {
+
+  const key = towerName
+    .replaceAll(" ", "");
+
+  return contentImages[key] || contentImages.Scout;
+}
+
+
+function getWikiUrl(crateName) {
+
+  return `https://tds.wiki/w/${encodeURIComponent(
+    crateName.replaceAll(" ", "_")
+  )}`;
+}
+
+
+/* =========================================================
+   RENDER THE CRATES
+   ========================================================= */
+
+function renderCrates() {
+
+  const root = document.getElementById("crateSections");
+
+  root.innerHTML = "";
+
+  Object.entries(crateData).forEach(([category, crates]) => {
+
+    const section = document.createElement("section");
+
+    section.className = "crate-section";
+    section.dataset.category = category;
+
+    section.innerHTML = `
+      <div class="section-heading">
+
+        <div>
+
+          <div
+            class="section-kicker"
+            style="--section-accent:${categoryColors[category]}"
+          >
+            ${category}
+          </div>
+
+          <p>
+            ${categoryDescriptions[category]}
+          </p>
+
+        </div>
+
+        <span class="count">
+          ${crates.length} crates
+        </span>
+
+      </div>
+
+      <div class="crate-grid"></div>
+    `;
+
+    const grid = section.querySelector(".crate-grid");
+
+
+    crates.forEach(crateName => {
+
+      const card = document.createElement("article");
+
+      card.className = "crate-card";
+
+      card.dataset.name = crateName.toLowerCase();
+
+
+      /* ---------- CONTENTS ---------- */
+
+      const contents = crateContents[crateName] || [];
+
+
+      let contentsHTML = "";
+
+
+      if (contents.length > 0) {
+
+        contentsHTML = `
+          <div class="contents-grid">
+
+            ${contents.map(([displayName, towerName]) => `
+
+              <div class="content-item">
+
+                <img
+                  src="${getContentImage(towerName)}"
+                  alt="${towerName}"
+                >
+
+                <div>
+
+                  <strong>
+                    ${displayName}
+                  </strong>
+
+                  <span>
+                    ${towerName}
+                  </span>
+
+                </div>
+
+              </div>
+
+            `).join("")}
+
+          </div>
+        `;
+
+      } else {
+
+        contentsHTML = `
+          <div class="contents-note">
+
+            Contents have not been added yet.
+
+            <a
+              href="${getWikiUrl(crateName)}"
+              target="_blank"
+              rel="noopener"
+            >
+              Open crate article →
+            </a>
+
+          </div>
+        `;
+      }
+
+
+      /* ---------- CARD ---------- */
+
+      card.innerHTML = `
+
+        <div class="crate-image">
+
+          <img
+            src="${getCrateImage(crateName)}"
+            alt="${crateName}"
+            onerror="
+              this.onerror=null;
+              this.style.objectFit='contain';
+              this.src='https://static.wikia.nocookie.net/tower-defense-sim/images/6/68/ViolentNightClean.png/revision/latest/scale-to-width-down/340?cb=20221227092433';
+            "
+          >
+
+          <div class="crate-name">
+            ${crateName}
+          </div>
+
+          <div class="crate-hover">
+
+            <strong>
+              ${crateName}
+            </strong>
+
+            <span>
+              Expand below to view contents
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <details class="crate-details">
+
+          <summary>
+            Expand
+          </summary>
+
+          <div class="crate-contents">
+
+            <div class="contents-head">
+
+              <strong>
+                Contents
+              </strong>
+
+              <a
+                href="${getWikiUrl(crateName)}"
+                target="_blank"
+                rel="noopener"
+              >
+                TDS Wiki ↗
+              </a>
+
+            </div>
+
+            ${contentsHTML}
+
+          </div>
+
+        </details>
+
+      `;
+
+
+      grid.appendChild(card);
+
+    });
+
+
+    root.appendChild(section);
+
+  });
+
+}
+
+
+/* =========================================================
+   SEARCH + FILTERS
+   ========================================================= */
+
+const search = document.getElementById("search");
+
+const filters = [
+  ...document.querySelectorAll(".filter")
+];
+
+let activeFilter = "all";
+
+
+function renderResults() {
+
+  const query =
+    search.value
+      .toLowerCase()
+      .trim();
+
+
+  let totalVisible = 0;
+
+
+  document
+    .querySelectorAll(".crate-section")
+    .forEach(section => {
+
+      const category = section.dataset.category;
+
+      const correctCategory =
+        activeFilter === "all" ||
+        activeFilter === category;
+
+
+      let sectionVisible = 0;
+
+
+      section
+        .querySelectorAll(".crate-card")
+        .forEach(card => {
+
+          const matches =
+            correctCategory &&
+            card.dataset.name.includes(query);
+
+
+          card.style.display =
+            matches ? "block" : "none";
+
+
+          if (matches) {
+            totalVisible++;
+            sectionVisible++;
+          }
+
+        });
+
+
+      section.style.display =
+        sectionVisible > 0
+          ? "block"
+          : "none";
+
+    });
+
+
+  let empty =
+    document.getElementById("empty");
+
+
+  if (!empty) {
+
+    empty =
+      document.createElement("div");
+
+    empty.id = "empty";
+    empty.className = "empty";
+
+    empty.textContent =
+      "No crates match your search.";
+
+    document
+      .querySelector("main")
+      .insertBefore(
+        empty,
+        document.querySelector("footer")
+      );
+
+  }
+
+
+  empty.style.display =
+    totalVisible > 0
+      ? "none"
+      : "block";
+
+}
+
+
+/* =========================================================
+   FILTER BUTTONS
+   ========================================================= */
+
+filters.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    activeFilter =
+      button.dataset.filter;
+
+
+    filters.forEach(other => {
+
+      other.classList.toggle(
+        "active",
+        other === button
+      );
+
+    });
+
+
+    renderResults();
+
+  });
+
+});
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+search.addEventListener(
+  "input",
+  renderResults
+);
+
+
+/* =========================================================
+   START PAGE
+   ========================================================= */
+
 renderCrates();
-const search=document.getElementById('search'),filters=[...document.querySelectorAll('.filter')],empty=document.createElement('div');empty.className='empty';empty.id='empty';empty.textContent='No crates match your search.';document.querySelector('main').insertBefore(empty,document.querySelector('footer'));
-let active='all';
-function render(){let q=search.value.toLowerCase().trim(),shown=0;document.querySelectorAll('.crate-section').forEach(s=>{let okCat=active==='all'||s.dataset.category===active,sec=0;s.querySelectorAll('.crate-card').forEach(c=>{let ok=okCat&&c.dataset.name.includes(q);c.style.display=ok?'block':'none';if(ok){shown++;sec++}});s.style.display=sec?'block':'none'});empty.style.display=shown?'none':'block'}
-filters.forEach(b=>b.addEventListener('click',()=>{active=b.dataset.filter;filters.forEach(x=>x.classList.toggle('active',x===b));render()}));search.addEventListener('input',render);render();
+
+renderResults();
+
+</script>
 </script>
 </div>
 <footer>TDS Wiki • Crate listings based on the current TDS Wiki crate categories. <a href="https://tds.wiki/w/Crates" target="_blank" rel="noopener" style="color:#65b8ff">Source</a></footer>
