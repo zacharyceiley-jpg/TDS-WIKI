@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TDS Wiki — Units</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root { --panel: rgba(15, 18, 27, .94); --muted: #b9c0cf; --border: rgba(255,255,255,.14); }
+    html, body { margin: 0; min-height: 100%; font-family: Arial, sans-serif; color: white; }
+    body {
+      background: linear-gradient(rgba(5,8,14,.68), rgba(5,8,14,.88)),
+        url("https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/SummerCastleIcon.png/revision/latest/smart/width/400/height/225?cb=20250709204530") center/cover fixed;
+    }
+    .top-banner { position: sticky; top: 0; z-index: 5; min-height: 82px; display: flex; align-items: center; justify-content: center; gap: 28px; padding: 8px 24px; background: rgba(5,7,12,.96); border-bottom: 2px solid var(--border); }
+    .top-banner img { width: min(650px, 58vw); max-height: 66px; object-fit: contain; }
+    #search { width: min(360px, 32vw); padding: 12px 15px; border: 1px solid var(--border); border-radius: 12px; outline: 0; color: white; background: rgba(0,0,0,.5); }
+    .page { width: min(1500px, 94vw); margin: 14px auto 40px; }
+    .hero { padding: 20px; border: 1px solid var(--border); border-radius: 20px; background: var(--panel); }
+    .hero-top { display: flex; align-items: end; justify-content: space-between; gap: 18px; }
+    h1 { margin: 0; font-size: clamp(30px, 4.2vw, 50px); }
+    .hero p { margin: 6px 0 0; color: var(--muted); }
+    .back, .filter { color: white; border: 1px solid var(--border); background: rgba(0,0,0,.35); border-radius: 10px; padding: 9px 12px; cursor: pointer; text-decoration: none; font-size: 13px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 7px; margin: 12px 0 18px; }
+    .filter { border-radius: 999px; padding: 7px 11px; }
+    .filter.active { border-color: #65b8ff; background: rgba(101,184,255,.16); }
+    .unit-section { margin: 18px 0 24px; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 14px; margin-bottom: 9px; padding: 0 3px; }
+    .section-kicker { color: var(--accent); font-size: 25px; font-weight: 900; }
+    .section-heading p, .count { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+    .unit-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; }
+    .unit-card { position: relative; flex: 0 0 230px; height: 250px; overflow: hidden; display: block; color: white; border: 1px solid var(--border); border-radius: 14px; background: #111; text-decoration: none; transition: transform .18s, box-shadow .18s; }
+    .unit-card:hover { transform: translateY(-6px) scale(1.025); box-shadow: 0 18px 36px rgba(0,0,0,.5); }
+    .unit-card img { width: 100%; height: 100%; display: block; object-fit: cover; background: #10131a; }
+    .unit-card::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(transparent 40%, rgba(0,0,0,.9)); }
+    .unit-name { position: absolute; right: 0; bottom: 0; left: 0; z-index: 1; padding: 11px 9px; text-align: center; font-weight: 900; text-shadow: 0 2px 7px #000; }
+    .unit-hover { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; background: rgba(0,0,0,.92); opacity: 0; transition: opacity .18s; }
+    .unit-card:hover .unit-hover { opacity: 1; }
+    .unit-hover span { color: #c8cfda; font-size: 11px; }
+    .empty { display: none; padding: 26px; border-radius: 16px; text-align: center; color: var(--muted); background: var(--panel); }
+    footer { margin-top: 30px; color: #aeb5c2; text-align: center; font-size: 12px; }
+    @media (max-width: 700px) { .top-banner { gap: 10px; padding: 8px 10px; } .top-banner img { width: 54vw; } #search { width: 38vw; } .hero-top { align-items: flex-start; flex-direction: column; } .unit-card { flex-basis: 180px; height: 195px; } }
+  </style>
+</head>
+<body>
+  <header class="top-banner">
+    <img src="https://i.namu.wiki/i/7xTzCZ5-4YLxCBlGfiGrTr_TKKr1_lGMMnV4E3oGJX87QuWTZ0KK2M0EWE1-_VtY_Z9HkVdHEGXzo15xq-A52w.webp" alt="TDS Wiki">
+    <input id="search" type="search" placeholder="Search units..." aria-label="Search units">
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-top">
+        <div><h1>Units</h1><p>Browse TDS units by category.</p></div>
+        <a class="back" href="index.html">← Back to home</a>
+      </div>
+    </section>
+    <div class="filters" id="filters"></div>
+    <div id="unitSections"></div>
+    <div class="empty" id="empty">No units match your search.</div>
+    <footer>TDS Wiki • Units page</footer>
+  </main>
+
+  <script>
+    const units = {
+      Basic: [
+        ["Humvee", "https://tds.wiki/images/thumb/b/b9/DefaultHumvee.png/250px-DefaultHumvee.png.webp?cb=20240401132152"],
+        ["Humvee 2", "https://tds.wiki/images/thumb/1/17/DefaultHumvee2.png/250px-DefaultHumvee2.png.webp?cb=20240401132128"],
+        ["Humvee 3", "https://tds.wiki/images/thumb/e/e6/DefaultHumvee3.png/250px-DefaultHumvee3.png.webp?cb=20240401132110"],
+        ["Tank", "https://tds.wiki/images/thumb/6/68/DefaultTank.png/250px-DefaultTank.png.webp?cb=20240401132010"],
+        ["Railgun Tank", "https://tds.wiki/images/thumb/b/b3/DefaultRailgunTank.png/250px-DefaultRailgunTank.png.webp?cb=20240401131949"],
+        ["Pistol Goon", "https://tds.wiki/images/thumb/5/52/Goon1.png/250px-Goon1.png.webp?cb=20241108165257"],
+        ["Tommy Goon 1", "https://tds.wiki/images/thumb/3/3d/Goon2.png/250px-Goon2.png.webp?cb=20241108165248"],
+        ["Tommy Goon 2", "https://tds.wiki/images/thumb/0/01/Goon3.png/250px-Goon3.png.webp?cb=20241108165238"],
+        ["Gunner APC", "https://tds.wiki/images/thumb/4/4e/GunnerAPCDefault.png/250px-GunnerAPCDefault.png.webp?cb=20240813184100"],
+        ["Missile APC", "https://tds.wiki/images/thumb/1/19/MissileAPCDefault.png/250px-MissileAPCDefault.png.webp?cb=20240813180517"],
+        ["Rifleman", "https://tds.wiki/images/thumb/2/26/Rifleman1.png/250px-Rifleman1.png.webp?cb=20251116180344"],
+        ["Grenadier", "https://tds.wiki/images/thumb/6/67/Grenadier0-1.png/250px-Grenadier0-1.png.webp?cb=20251116180413"],
+        ["Field Medic", "https://tds.wiki/images/thumb/5/5d/FieldMedic1.png/250px-FieldMedic1.png.webp?cb=20250301081146"],
+        ["Riot Guard", "https://tds.wiki/images/thumb/a/a2/Riot_Guard1.png/250px-Riot_Guard1.png.webp?cb=20251116180521"],
+        ["Molten Monster", "https://tds.wiki/images/thumb/8/85/MoltenMonster.png/250px-MoltenMonster.png.webp?cb=20241222174609"],
+        ["Fire Ducky", "https://tds.wiki/images/thumb/7/7f/FireDuckyHappy.png/250px-FireDuckyHappy.png.webp?cb=20250425152847"],
+        ["Poison Ducky", "https://tds.wiki/images/thumb/c/cb/PoisonDuckyHappy.png/250px-PoisonDuckyHappy.png.webp?cb=20250425152854"],
+        ["Ice Ducky", "https://tds.wiki/images/thumb/6/67/IceDuckyHappy.png/250px-IceDuckyHappy.png.webp?cb=20250425152853"],
+        ["Confusion Ducky", "https://tds.wiki/images/thumb/e/ee/ConfusionDuckyHappy.png/250px-ConfusionDuckyHappy.png.webp?cb=20250425152849"],
+        ["Shock Ducky", "https://tds.wiki/images/thumb/1/11/ShockDuckyHappy.png/250px-ShockDuckyHappy.png.webp?cb=20250425152859"],
+        ["Crab", "https://tds.wiki/images/thumb/7/76/Crab1.png/250px-Crab1.png.webp?cb=20250714134043"]
+      ],
+      Unused: [
+        ["Monster", "https://tds.wiki/images/thumb/0/07/MonsterNotMash.png/250px-MonsterNotMash.png.webp?cb=20250731030743"],
+        ["Motorcycle", "https://tds.wiki/images/thumb/e/e6/Motorcycle.png/250px-Motorcycle.png.webp?cb=20210630093713"],
+        ["Truck 1", "https://tds.wiki/images/thumb/0/01/MilitaryBase1.png/250px-MilitaryBase1.png.webp?cb=20190731182222"],
+        ["Truck 2", "https://tds.wiki/images/thumb/f/f8/MilitaryBase2.png/250px-MilitaryBase2.png.webp?cb=20190731182229"],
+        ["Truck 3", "https://tds.wiki/images/thumb/c/cd/MilitaryBase3.png/250px-MilitaryBase3.png.webp?cb=20190731182237"],
+        ["Golden Crook", "https://tds.wiki/images/thumb/1/16/NewGoldenCrook.png/250px-NewGoldenCrook.png.webp?cb=20260414224741"],
+        ["Golden Mafia", "https://tds.wiki/images/thumb/3/3f/NewGoldenMafia.png/250px-NewGoldenMafia.png.webp?cb=20260414224744"],
+        ["Crook", "https://tds.wiki/images/thumb/d/db/Crook0.png/250px-Crook0.png.webp?cb=20201220161311"],
+        ["Mafia", "https://tds.wiki/images/thumb/e/ef/Mafia0.png/250px-Mafia0.png.webp?cb=20201220161332"],
+        ["Bodyguard", "https://tds.wiki/images/thumb/d/d2/Bodyguards2.png/250px-Bodyguards2.png.webp?cb=20260411203748"],
+        ["Bodyguards 1", "https://tds.wiki/images/thumb/c/cb/BodyGuards1.png/250px-BodyGuards1.png.webp?cb=20260411203813"],
+        ["Bodyguards 2", "https://tds.wiki/images/thumb/c/c7/Guardlevel4.png/250px-Guardlevel4.png.webp?cb=20260411204052"],
+        ["Golden Bodyguard", "https://tds.wiki/images/thumb/b/bc/GBodyGuard.png/250px-GBodyGuard.png.webp?cb=20220516095818"],
+        ["Golden Bodyguards 1", "https://tds.wiki/images/thumb/c/ce/GBodyGuards2.png/250px-GBodyGuards2.png.webp?cb=20220514153235"],
+        ["Golden Bodyguards 2", "https://tds.wiki/images/thumb/3/3e/GGuards2.png/250px-GGuards2.png.webp?cb=20220514152952"],
+        ["XR600", "https://tds.wiki/images/thumb/4/43/600.png/250px-600.png.webp?cb=20260510120249"],
+        ["Armoured XR600", "https://tds.wiki/images/thumb/0/07/ArmoredXR600.png/250px-ArmoredXR600.png.webp?cb=20260510120328"],
+        ["XR900", "https://tds.wiki/images/thumb/d/de/XR900.png/250px-XR900.png.webp?cb=20260510120438"],
+        ["XR901", "https://tds.wiki/images/thumb/0/07/XR901.png/250px-XR901.png.webp?cb=20260510120213"],
+        ["Swat Van Legacy", "https://tds.wiki/images/thumb/6/62/Enforcer5.png/250px-Enforcer5.png.webp?cb=20190715205550"],
+        ["Jeep", "https://tds.wiki/images/thumb/3/32/Jeep.png/250px-Jeep.png.webp?cb=20260311111001"],
+        ["Soldier", "https://tds.wiki/images/thumb/1/11/SoldierUnit.png/250px-SoldierUnit.png.webp?cb=20260412020852"]
+      ],
+      Golden: [
+        ["Golden Pistol Goon", "https://tds.wiki/images/thumb/d/df/GGoon1.png/250px-GGoon1.png.webp?cb=20250926044142"],
+        ["Golden Tommy Goon 1", "https://tds.wiki/images/thumb/7/7a/GGoon2.png/250px-GGoon2.png.webp?cb=20250926041023"],
+        ["Golden Tommy Goon 2", "https://tds.wiki/images/thumb/6/6b/GGoon3.png/250px-GGoon3.png.webp?cb=20250926042800"]
+      ],
+      Hardcore: [
+        ["Sentry", "https://tds.wiki/images/thumb/6/6b/SentryUnit.png/250px-SentryUnit.png.webp?cb=20230409014116"],
+        ["Rifle Sentry", "https://tds.wiki/images/thumb/f/fd/Rifle_Sentry.png/250px-Rifle_Sentry.png.webp?cb=20230409014116"],
+        ["Minigun Sentry", "https://tds.wiki/images/thumb/5/53/Minigun_Sentry.png/250px-Minigun_Sentry.png.webp?cb=20230409014117"],
+        ["War Machine Sentry", "https://tds.wiki/images/thumb/2/28/WarMachineSentry.png/250px-WarMachineSentry.png.webp?cb=20230409014119"],
+        ["Skeleton", "https://tds.wiki/images/thumb/4/47/Skeletonlunar.png/250px-Skeletonlunar.png.webp?cb=20250224000734"],
+        ["Sword Skeleton", "https://tds.wiki/images/thumb/3/31/SwordSkeleton.png/250px-SwordSkeleton.png.webp?cb=20251112034019"],
+        ["Giant Skeleton", "https://tds.wiki/images/thumb/a/ab/GiantSkeletonLunar.png/250px-GiantSkeletonLunar.png.webp?cb=20250224000730"],
+        ["Skeleton Knight", "https://tds.wiki/images/thumb/8/83/SkeletonKnight.png/250px-SkeletonKnight.png.webp?cb=20251112033823"],
+        ["Hallow Guard", "https://tds.wiki/images/thumb/8/8c/HallowGuardLunar1.png/250px-HallowGuardLunar1.png.webp?cb=20250301075339"],
+        ["Executioner Skeleton", "https://tds.wiki/images/thumb/a/a3/ExecutionerSkeleton.png/250px-ExecutionerSkeleton.png.webp?cb=20251112033213"]
+      ],
+      Event: [
+        ["Citizen 1", "https://tds.wiki/images/thumb/1/15/Citizen1.png/250px-Citizen1.png.webp?cb=20260511040354"],
+        ["Citizen 2", "https://tds.wiki/images/thumb/b/b1/Citizen2.png/250px-Citizen2.png.webp?cb=20260511040403"],
+        ["Ice Turret", "https://tds.wiki/images/thumb/4/47/IceTurret.png/250px-IceTurret.png.webp?cb=20241217184813"],
+        ["Sunflower", "https://tds.wiki/images/thumb/8/8b/SunflowerIcon.png/250px-SunflowerIcon.png.webp?cb=20250417173850"],
+        ["Ivy", "https://tds.wiki/images/thumb/0/0e/IvyIcon.png/250px-IvyIcon.png.webp?cb=20250417173849"],
+        ["Nightshade", "https://tds.wiki/images/thumb/e/e3/NightshadeIcon.png/250px-NightshadeIcon.png.webp?cb=20250417173848"],
+        ["Mark 1", "https://tds.wiki/images/thumb/1/11/MarkI.png/250px-MarkI.png.webp?cb=20260514192343"],
+        ["Mark 2", "https://tds.wiki/images/thumb/0/01/MarkII.png/250px-MarkII.png.webp?cb=20260514192350"],
+        ["Mark 3", "https://tds.wiki/images/thumb/0/09/MarkIII.png/250px-MarkIII.png.webp?cb=20260514192357"],
+        ["Mark IV", "https://tds.wiki/images/thumb/8/89/MarkIV.png/250px-MarkIV.png.webp?cb=20260514192405"],
+        ["Mark V", "https://tds.wiki/images/thumb/4/40/MarkV.png/250px-MarkV.png.webp?cb=20260514192412"],
+        ["Elf", "https://tds.wiki/images/thumb/a/a7/ElfDec25.png/250px-ElfDec25.png.webp?cb=20251223210947"],
+        ["Snowball Elf", "https://tds.wiki/images/thumb/0/09/SnowballElfDec25.png/250px-SnowballElfDec25.png.webp?cb=20251223211015"],
+        ["Cannoneer Elf", "https://tds.wiki/images/thumb/1/12/CannoneerElfDec25.png/250px-CannoneerElfDec25.png.webp?cb=20251223211104"],
+        ["Bomber Elf", "https://tds.wiki/images/thumb/8/8a/BomberElfDec25.png/250px-BomberElfDec25.png.webp?cb=20251223211036"],
+        ["Guardian Elf", "https://tds.wiki/images/thumb/a/a5/GuardianElfDec25.png/250px-GuardianElfDec25.png.webp?cb=20260530115745"],
+        ["Gunner Elf", "https://tds.wiki/images/thumb/1/15/GunnerElfDec25.png/250px-GunnerElfDec25.png.webp?cb=20260530114917"],
+        ["Gift Bomber", "https://tds.wiki/images/thumb/8/84/GiftBomberDec25.png/250px-GiftBomberDec25.png.webp?cb=20251223211214"],
+        ["Ripped Elf", "https://tds.wiki/images/thumb/e/e2/RippedElfDec25.png/250px-RippedElfDec25.png.webp?cb=20251223211234"]
+      ],
+      Evolved: [
+        ["Swat Van", "https://tds.wiki/images/thumb/0/0c/SwatVan.png/250px-SwatVan.png.webp?cb=20260815153810"],
+        ["Swat Van Gunner", "https://tds.wiki/images/thumb/f/f2/SwatVanGunner.png/250px-SwatVanGunner.png.webp?cb=20260815155003"],
+        ["Lackey", "https://tds.wiki/images/thumb/d/d8/DefaultLackey.png/250px-DefaultLackey.png.webp?cb=20260719131406"],
+        ["Bouncer", "https://tds.wiki/images/thumb/e/e9/DefaultBouncer.png/250px-DefaultBouncer.png.webp?cb=20260719131409"],
+        ["Contractor", "https://tds.wiki/images/thumb/4/43/DefaultContractor.png/250px-DefaultContractor.png.webp?cb=20260719131412"],
+        ["Money Runner", "https://tds.wiki/images/thumb/1/13/DefaultMoneyRunner.png/250px-DefaultMoneyRunner.png.webp?cb=20260719131408"]
+      ]
+    };
+
+    const colors = { Basic: "#65b8ff", Golden: "#ffd45a", Evolved: "#ff8c4d", Event: "#ff7dbb", Hardcore: "#b88cff", Unused: "#9da6b5" };
+    const descriptions = { Basic: "Standard units used by TDS unit-based systems.", Golden: "Golden variants and golden unit forms.", Evolved: "Evolved unit forms and upgraded variants.", Event: "Units connected to seasonal and event content.", Hardcore: "Units connected to Hardcore content.", Unused: "Unused, legacy, or unavailable unit assets." };
+    const filters = document.getElementById("filters");
+    const sections = document.getElementById("unitSections");
+    const search = document.getElementById("search");
+    const empty = document.getElementById("empty");
+    let activeFilter = "all";
+
+    function createCard(name, image) {
+      const card = document.createElement("a");
+      card.className = "unit-card";
+      card.href = "#";
+      card.dataset.name = name.toLowerCase();
+      card.innerHTML = `<img src="${image}" alt="${name}" loading="lazy"><div class="unit-name">${name}</div><div class="unit-hover"><strong>${name}</strong><span>Open unit page</span></div>`;
+      return card;
+    }
+
+    Object.entries(units).forEach(([category, entries]) => {
+      const button = document.createElement("button");
+      button.className = "filter";
+      button.dataset.filter = category;
+      button.textContent = category;
+      filters.appendChild(button);
+
+      const section = document.createElement("section");
+      section.className = "unit-section";
+      section.dataset.category = category;
+      section.innerHTML = `<div class="section-heading"><div><div class="section-kicker" style="--accent:${colors[category]}">${category}</div><p>${descriptions[category]}</p></div><span class="count">${entries.length} units</span></div><div class="unit-grid"></div>`;
+      const grid = section.querySelector(".unit-grid");
+      entries.forEach(([name, image]) => grid.appendChild(createCard(name, image)));
+      sections.appendChild(section);
+    });
+
+    const allButton = document.createElement("button");
+    allButton.className = "filter active";
+    allButton.dataset.filter = "all";
+    allButton.textContent = "All";
+    filters.prepend(allButton);
+
+    function render() {
+      const query = search.value.toLowerCase().trim();
+      let visible = 0;
+      document.querySelectorAll(".unit-section").forEach(section => {
+        const categoryMatches = activeFilter === "all" || section.dataset.category === activeFilter;
+        let sectionVisible = 0;
+        section.querySelectorAll(".unit-card").forEach(card => {
+          const matches = categoryMatches && card.dataset.name.includes(query);
+          card.style.display = matches ? "block" : "none";
+          if (matches) { visible++; sectionVisible++; }
+        });
+        section.style.display = sectionVisible ? "block" : "none";
+      });
+      empty.style.display = visible ? "none" : "block";
+    }
+
+    filters.addEventListener("click", event => {
+      const button = event.target.closest(".filter");
+      if (!button) return;
+      activeFilter = button.dataset.filter;
+      filters.querySelectorAll(".filter").forEach(item => item.classList.toggle("active", item === button));
+      render();
+    });
+    search.addEventListener("input", render);
+    render();
+  </script>
+</body>
+</html>
