@@ -160,9 +160,9 @@ body { overflow-x:hidden; }
 
 .tower-card {
   position:relative;
-  flex:0 1 var(--w);
-  width:var(--w);
-  height:var(--h);
+  flex:0 0 230px;
+  width:230px;
+  height:250px;
   overflow:hidden;
   display:block;
   border-radius:14px;
@@ -174,10 +174,6 @@ body { overflow-x:hidden; }
   transform:translateY(0) rotate(var(--tilt));
   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
-.tower-card:nth-child(3n) { --tilt:-0.5deg; margin-top:8px; }
-.tower-card:nth-child(4n) { --tilt:0.7deg; margin-top:17px; }
-.tower-card:nth-child(7n) { --tilt:-1deg; margin-top:25px; }
-.tower-card:nth-child(9n) { --tilt:0deg; margin-top:3px; }
 .tower-card:hover {
   transform:translateY(-6px) scale(1.025) rotate(0deg);
   border-color:rgba(101,184,255,.72);
@@ -252,12 +248,11 @@ footer {
   .banner-search { width:38vw; }
   #search { font-size:12px; padding:10px; }
   .hero-top { align-items:flex-start; flex-direction:column; }
-  .tower-card:nth-child(3n),
-  .tower-card:nth-child(4n),
-  .tower-card:nth-child(7n),
-  .tower-card:nth-child(9n) {
-    margin-top:0;
-    --tilt:0deg;
+  .tower-card {
+    flex-basis:180px;
+    width:180px;
+    height:195px;
+    transform:translateY(0) rotate(0deg);
   }
 }
 </style>
@@ -302,8 +297,7 @@ footer {
            href="https://tds.wiki/w/Scout"
            target="_blank"
            rel="noopener"
-           data-name="scout"
-           style="--w:205px;--h:165px">
+           data-name="scout">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/4e/DefaultScout3.png/revision/latest?cb=20260312002130" alt="Scout">
           <div class="tower-name">Scout</div>
           <div class="tower-hover">
@@ -315,8 +309,7 @@ footer {
            href="https://tds.wiki/w/Sniper"
            target="_blank"
            rel="noopener"
-           data-name="sniper"
-           style="--w:150px;--h:185px">
+           data-name="sniper">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e0/DefaultSniperIcon1.png/revision/latest?cb=20260310232240" alt="Sniper">
           <div class="tower-name">Sniper</div>
           <div class="tower-hover">
@@ -328,8 +321,7 @@ footer {
            href="https://tds.wiki/w/Paintballer"
            target="_blank"
            rel="noopener"
-           data-name="paintballer"
-           style="--w:230px;--h:185px">
+           data-name="paintballer">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b3/NewPaintballerIcon.png/revision/latest?cb=20260310233945" alt="Paintballer">
           <div class="tower-name">Paintballer</div>
           <div class="tower-hover">
@@ -341,8 +333,7 @@ footer {
            href="https://tds.wiki/w/Demoman"
            target="_blank"
            rel="noopener"
-           data-name="demoman"
-           style="--w:178px;--h:215px">
+           data-name="demoman">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c3/DefaultDemomanIcon2.png/revision/latest?cb=20260311003341" alt="Demoman">
           <div class="tower-name">Demoman</div>
           <div class="tower-hover">
@@ -354,8 +345,7 @@ footer {
            href="https://tds.wiki/w/Boomerang"
            target="_blank"
            rel="noopener"
-           data-name="boomerang"
-           style="--w:270px;--h:250px">
+           data-name="boomerang">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/41/DefaultBoomerang0.png/revision/latest?cb=20260717160753" alt="Boomerang">
           <div class="tower-name">Boomerang</div>
           <div class="tower-hover">
@@ -367,9 +357,8 @@ footer {
            href="https://tds.wiki/w/Slime_Trooper"
            target="_blank"
            rel="noopener"
-           data-name="slime trooper"
-           style="--w:205px;--h:235px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlYku3WLotv3AMXVFXRnJQrVYsNR90OKIRq57OmfUu_g&s=10" alt="Slime Trooper">
+           data-name="slime trooper">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/4b/SlimeTrooperIcon.png/revision/latest?cb=20260508164513" alt="Slime Trooper">
           <div class="tower-name">Slime Trooper</div>
           <div class="tower-hover">
             <strong>Slime Trooper</strong>
@@ -380,8 +369,7 @@ footer {
            href="https://tds.wiki/w/Soldier"
            target="_blank"
            rel="noopener"
-           data-name="soldier"
-           style="--w:150px;--h:215px">
+           data-name="soldier">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/da/KrampusRevengeSoldierIcon.png/revision/latest?cb=20260311003356" alt="Soldier">
           <div class="tower-name">Soldier</div>
           <div class="tower-hover">
@@ -402,8 +390,7 @@ footer {
            href="https://tds.wiki/w/Freezer"
            target="_blank"
            rel="noopener"
-           data-name="freezer"
-           style="--w:205px;--h:215px">
+           data-name="freezer">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/6e/ReworkedFreezerIcon.png/revision/latest?cb=20260311014623" alt="Freezer">
           <div class="tower-name">Freezer</div>
           <div class="tower-hover">
@@ -415,9 +402,8 @@ footer {
            href="https://tds.wiki/w/Assassin"
            target="_blank"
            rel="noopener"
-           data-name="assassin"
-           style="--w:150px;--h:235px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm5CfNLsppR1Gr4SQvo-NrJV8nYd3IrvvZw6oCeTKy4g&s=10" alt="Assassin">
+           data-name="assassin">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/69/Assassin.png/revision/latest?cb=20260311014640" alt="Assassin">
           <div class="tower-name">Assassin</div>
           <div class="tower-hover">
             <strong>Assassin</strong>
@@ -428,8 +414,7 @@ footer {
            href="https://tds.wiki/w/Militant"
            target="_blank"
            rel="noopener"
-           data-name="militant"
-           style="--w:230px;--h:235px">
+           data-name="militant">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/62/EasterMilitant_Icon.png" alt="Militant">
           <div class="tower-name">Militant</div>
           <div class="tower-hover">
@@ -441,8 +426,7 @@ footer {
            href="https://tds.wiki/w/Shotgunner"
            target="_blank"
            rel="noopener"
-           data-name="shotgunner"
-           style="--w:178px;--h:165px">
+           data-name="shotgunner">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/9a/EasterShotgunner_Icon.png/revision/latest?cb=20260311003408" alt="Shotgunner">
           <div class="tower-name">Shotgunner</div>
           <div class="tower-hover">
@@ -454,8 +438,7 @@ footer {
            href="https://tds.wiki/w/Hunter"
            target="_blank"
            rel="noopener"
-           data-name="hunter"
-           style="--w:270px;--h:185px">
+           data-name="hunter">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/26/NewHunterIcon.png/revision/latest?cb=20260311014651" alt="Hunter">
           <div class="tower-name">Hunter</div>
           <div class="tower-hover">
@@ -467,8 +450,7 @@ footer {
            href="https://tds.wiki/w/Pyromancer"
            target="_blank"
            rel="noopener"
-           data-name="pyromancer"
-           style="--w:205px;--h:165px">
+           data-name="pyromancer">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/4b/DefaultPyromancerIcon.png/revision/latest?cb=20260311014706" alt="Pyromancer">
           <div class="tower-name">Pyromancer</div>
           <div class="tower-hover">
@@ -480,9 +462,8 @@ footer {
            href="https://tds.wiki/w/Ace_Pilot"
            target="_blank"
            rel="noopener"
-           data-name="ace pilot"
-           style="--w:150px;--h:250px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdChz_1xZmkAjz0zkBSQ22WvOv-2wwMluh0T8bthlsFA&s=10" alt="Ace Pilot">
+           data-name="ace pilot">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/87/AcePilotNewIcon.png/revision/latest?cb=20260304182323" alt="Ace Pilot">
           <div class="tower-name">Ace Pilot</div>
           <div class="tower-hover">
             <strong>Ace Pilot</strong>
@@ -493,8 +474,7 @@ footer {
            href="https://tds.wiki/w/Medic"
            target="_blank"
            rel="noopener"
-           data-name="medic"
-           style="--w:230px;--h:165px">
+           data-name="medic">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/66/DefaultMedicIconAug25.png/revision/latest?cb=20260314022645" alt="Medic">
           <div class="tower-name">Medic</div>
           <div class="tower-hover">
@@ -506,8 +486,7 @@ footer {
            href="https://tds.wiki/w/Farm"
            target="_blank"
            rel="noopener"
-           data-name="farm"
-           style="--w:178px;--h:250px">
+           data-name="farm">
           <img src="https://i.redd.it/reworking-rebalancing-towers-everyday-today-farm-im-burned-v0-k86su2fpcqme1.png?width=300&format=png&auto=webp&s=7dd1241bdde5ea04777e791509efecb3b64f3732" alt="Farm">
           <div class="tower-name">Farm</div>
           <div class="tower-hover">
@@ -519,8 +498,7 @@ footer {
            href="https://tds.wiki/w/Electroshocker"
            target="_blank"
            rel="noopener"
-           data-name="electroshocker"
-           style="--w:270px;--h:250px">
+           data-name="electroshocker">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d5/DefaultElectroshockerIcon2.png/revision/latest?cb=20260311014814" alt="Electroshocker">
           <div class="tower-name">Electroshocker</div>
           <div class="tower-hover">
@@ -532,9 +510,8 @@ footer {
            href="https://tds.wiki/w/Rocketeer"
            target="_blank"
            rel="noopener"
-           data-name="rocketeer"
-           style="--w:205px;--h:250px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2l3f0ocD48oqzrSM1LqZcHsf55C3Lt22IHv-FkJuGcw&s=10" alt="Rocketeer">
+           data-name="rocketeer">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/89/RocketeerIcon2025.png/revision/latest?cb=20260311014822" alt="Rocketeer">
           <div class="tower-name">Rocketeer</div>
           <div class="tower-hover">
             <strong>Rocketeer</strong>
@@ -545,9 +522,8 @@ footer {
            href="https://tds.wiki/w/Trapper"
            target="_blank"
            rel="noopener"
-           data-name="trapper"
-           style="--w:150px;--h:215px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpe6y8JMX9vAGKWs6QH5Dq--s_TPEHJVncTsZaZ8ze9A&s" alt="Trapper">
+           data-name="trapper">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/0f/TrapperIcon.png/revision/latest?cb=20260311014833" alt="Trapper">
           <div class="tower-name">Trapper</div>
           <div class="tower-hover">
             <strong>Trapper</strong>
@@ -558,9 +534,8 @@ footer {
            href="https://tds.wiki/w/Military_Base"
            target="_blank"
            rel="noopener"
-           data-name="military base"
-           style="--w:230px;--h:235px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjWz3qIMepdHDNFN_ExgOm6i7N3WEmRAqul9S-TOOYBQ&s=10" alt="Military Base">
+           data-name="military base">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d0/DefaultMilitaryBaseIconM29.png/revision/latest?cb=20260304211758" alt="Military Base">
           <div class="tower-name">Military Base</div>
           <div class="tower-hover">
             <strong>Military Base</strong>
@@ -571,8 +546,7 @@ footer {
            href="https://tds.wiki/w/Crook_Boss"
            target="_blank"
            rel="noopener"
-           data-name="crook boss"
-           style="--w:178px;--h:165px">
+           data-name="crook boss">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b6/CBRCBossIcon.png/revision/latest?cb=20260311014847" alt="Crook Boss">
           <div class="tower-name">Crook Boss</div>
           <div class="tower-hover">
@@ -593,8 +567,7 @@ footer {
            href="https://tds.wiki/w/Commander"
            target="_blank"
            rel="noopener"
-           data-name="commander"
-           style="--w:230px;--h:250px">
+           data-name="commander">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c9/Commandernew.png/revision/latest?cb=20260311032001" alt="Commander">
           <div class="tower-name">Commander</div>
           <div class="tower-hover">
@@ -606,8 +579,7 @@ footer {
            href="https://tds.wiki/w/Warden"
            target="_blank"
            rel="noopener"
-           data-name="warden"
-           style="--w:178px;--h:185px">
+           data-name="warden">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/a5/Warden.png/revision/latest?cb=20260311032007" alt="Warden">
           <div class="tower-name">Warden</div>
           <div class="tower-hover">
@@ -619,8 +591,7 @@ footer {
            href="https://tds.wiki/w/Cowboy"
            target="_blank"
            rel="noopener"
-           data-name="cowboy"
-           style="--w:270px;--h:185px">
+           data-name="cowboy">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/82/WDDefaultCowboyIcon.png/revision/latest?cb=20260311032013" alt="Cowboy">
           <div class="tower-name">Cowboy</div>
           <div class="tower-hover">
@@ -632,8 +603,7 @@ footer {
            href="https://tds.wiki/w/DJ_Booth"
            target="_blank"
            rel="noopener"
-           data-name="dj booth"
-           style="--w:205px;--h:235px">
+           data-name="dj booth">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/33/DefaultDJBoothIconAug2024.png/revision/latest?cb=20260311032018" alt="DJ Booth">
           <div class="tower-name">DJ Booth</div>
           <div class="tower-hover">
@@ -645,8 +615,7 @@ footer {
            href="https://tds.wiki/w/Tesla"
            target="_blank"
            rel="noopener"
-           data-name="tesla"
-           style="--w:150px;--h:165px">
+           data-name="tesla">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/05/TeslaIcon.png/revision/latest?cb=20260311031938" alt="Tesla">
           <div class="tower-name">Tesla</div>
           <div class="tower-hover">
@@ -658,8 +627,7 @@ footer {
            href="https://tds.wiki/w/Saboteur"
            target="_blank"
            rel="noopener"
-           data-name="saboteur"
-           style="--w:230px;--h:235px">
+           data-name="saboteur">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c8/SaboteurIcon.png/revision/latest?cb=20260507163407" alt="Saboteur">
           <div class="tower-name">Saboteur</div>
           <div class="tower-hover">
@@ -671,8 +639,7 @@ footer {
            href="https://tds.wiki/w/Minigunner"
            target="_blank"
            rel="noopener"
-           data-name="minigunner"
-           style="--w:178px;--h:165px">
+           data-name="minigunner">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/81/NewMinigunner.png/revision/latest?cb=20260311032305" alt="Minigunner">
           <div class="tower-name">Minigunner</div>
           <div class="tower-hover">
@@ -684,8 +651,7 @@ footer {
            href="https://tds.wiki/w/Ranger"
            target="_blank"
            rel="noopener"
-           data-name="ranger"
-           style="--w:270px;--h:185px">
+           data-name="ranger">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/52/Newranger.png/revision/latest?cb=20260311032317" alt="Ranger">
           <div class="tower-name">Ranger</div>
           <div class="tower-hover">
@@ -697,8 +663,7 @@ footer {
            href="https://tds.wiki/w/Pursuit"
            target="_blank"
            rel="noopener"
-           data-name="pursuit"
-           style="--w:205px;--h:215px">
+           data-name="pursuit">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/0e/PursuitNewIcon.png/revision/latest?cb=20260311032250" alt="Pursuit">
           <div class="tower-name">Pursuit</div>
           <div class="tower-hover">
@@ -710,8 +675,7 @@ footer {
            href="https://tds.wiki/w/Gatling_Gun"
            target="_blank"
            rel="noopener"
-           data-name="gatling gun"
-           style="--w:150px;--h:185px">
+           data-name="gatling gun">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/8a/GatlingGunIcon.png/revision/latest?cb=20260311032351" alt="Gatling Gun">
           <div class="tower-name">Gatling Gun</div>
           <div class="tower-hover">
@@ -723,8 +687,7 @@ footer {
            href="https://tds.wiki/w/Turret"
            target="_blank"
            rel="noopener"
-           data-name="turret"
-           style="--w:230px;--h:185px">
+           data-name="turret">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/6f/TurretIcon.png/revision/latest?cb=20260311032408" alt="Turret">
           <div class="tower-name">Turret</div>
           <div class="tower-hover">
@@ -736,8 +699,7 @@ footer {
            href="https://tds.wiki/w/Mortar"
            target="_blank"
            rel="noopener"
-           data-name="mortar"
-           style="--w:178px;--h:185px">
+           data-name="mortar">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/05/MortarIcon.png/revision/latest?cb=20260311032552" alt="Mortar">
           <div class="tower-name">Mortar</div>
           <div class="tower-hover">
@@ -749,8 +711,7 @@ footer {
            href="https://tds.wiki/w/Mercenary_Base"
            target="_blank"
            rel="noopener"
-           data-name="mercenary base"
-           style="--w:270px;--h:250px">
+           data-name="mercenary base">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d6/DefaultMercenaryBaseIcon.png/revision/latest?cb=20260311032558" alt="Mercenary Base">
           <div class="tower-name">Mercenary Base</div>
           <div class="tower-hover">
@@ -762,8 +723,7 @@ footer {
            href="https://tds.wiki/w/Pulse_Trooper"
            target="_blank"
            rel="noopener"
-           data-name="pulse trooper"
-           style="--w:178px;--h:235px">
+           data-name="pulse trooper">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c8/DefaultPulseTrooper0.png/revision/latest?cb=20260912121100" alt="Pulse Trooper">
           <div class="tower-name">Pulse Trooper</div>
           <div class="tower-hover">
@@ -785,8 +745,7 @@ footer {
            href="https://tds.wiki/w/Brawler"
            target="_blank"
            rel="noopener"
-           data-name="brawler"
-           style="--w:230px;--h:215px">
+           data-name="brawler">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c5/BrawlerFromTDS.png/revision/latest?cb=20260311034936" alt="Brawler">
           <div class="tower-name">Brawler</div>
           <div class="tower-hover">
@@ -798,8 +757,7 @@ footer {
            href="https://tds.wiki/w/Necromancer"
            target="_blank"
            rel="noopener"
-           data-name="necromancer"
-           style="--w:178px;--h:185px">
+           data-name="necromancer">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/0b/NecromancerTowerIcon.png/revision/latest?cb=20260311034956" alt="Necromancer">
           <div class="tower-name">Necromancer</div>
           <div class="tower-hover">
@@ -811,8 +769,7 @@ footer {
            href="https://tds.wiki/w/Accelerator"
            target="_blank"
            rel="noopener"
-           data-name="accelerator"
-           style="--w:270px;--h:185px">
+           data-name="accelerator">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/56/DefaultAcceleratorIcon2.png/revision/latest?cb=20260311021652" alt="Accelerator">
           <div class="tower-name">Accelerator</div>
           <div class="tower-hover">
@@ -824,8 +781,7 @@ footer {
            href="https://tds.wiki/w/Engineer"
            target="_blank"
            rel="noopener"
-           data-name="engineer"
-           style="--w:205px;--h:235px">
+           data-name="engineer">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/ec/EngineerIcon.png/revision/latest?cb=20260311035017" alt="Engineer">
           <div class="tower-name">Engineer</div>
           <div class="tower-hover">
@@ -837,8 +793,7 @@ footer {
            href="https://tds.wiki/w/Hacker"
            target="_blank"
            rel="noopener"
-           data-name="hacker"
-           style="--w:150px;--h:185px">
+           data-name="hacker">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/8a/HackerIcon.png/revision/latest?cb=20260311035147" alt="Hacker">
           <div class="tower-name">Hacker</div>
           <div class="tower-hover">
@@ -859,8 +814,7 @@ footer {
            href="https://tds.wiki/w/Gladiator"
            target="_blank"
            rel="noopener"
-           data-name="gladiator"
-           style="--w:270px;--h:250px">
+           data-name="gladiator">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/1/12/DefaultGladiatorRework0.png/revision/latest?cb=20260822123835" alt="Gladiator">
           <div class="tower-name">Gladiator</div>
           <div class="tower-hover">
@@ -872,8 +826,7 @@ footer {
            href="https://tds.wiki/w/Commando"
            target="_blank"
            rel="noopener"
-           data-name="commando"
-           style="--w:205px;--h:235px">
+           data-name="commando">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e2/NewCommandoIcon.png/revision/latest?cb=20260311072845" alt="Commando">
           <div class="tower-name">Commando</div>
           <div class="tower-hover">
@@ -885,8 +838,7 @@ footer {
            href="https://tds.wiki/w/Slasher"
            target="_blank"
            rel="noopener"
-           data-name="slasher"
-           style="--w:150px;--h:215px">
+           data-name="slasher">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/28/HexscapeSlasherIcon.png/revision/latest?cb=20260311072856" alt="Slasher">
           <div class="tower-name">Slasher</div>
           <div class="tower-hover">
@@ -898,8 +850,7 @@ footer {
            href="https://tds.wiki/w/Frost_Blaster"
            target="_blank"
            rel="noopener"
-           data-name="frost blaster"
-           style="--w:230px;--h:235px">
+           data-name="frost blaster">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b5/KRFrostBlasterIcon.png/revision/latest?cb=20260311072908" alt="Frost Blaster">
           <div class="tower-name">Frost Blaster</div>
           <div class="tower-hover">
@@ -911,8 +862,7 @@ footer {
            href="https://tds.wiki/w/Archer"
            target="_blank"
            rel="noopener"
-           data-name="archer"
-           style="--w:178px;--h:185px">
+           data-name="archer">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/dd/ArcherIcon2025.png/revision/latest?cb=20260311072920" alt="Archer">
           <div class="tower-name">Archer</div>
           <div class="tower-hover">
@@ -924,8 +874,7 @@ footer {
            href="https://tds.wiki/w/Swarmer"
            target="_blank"
            rel="noopener"
-           data-name="swarmer"
-           style="--w:270px;--h:215px">
+           data-name="swarmer">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/63/SwarmerNewIcon.png/revision/latest?cb=20260311073030" alt="Swarmer">
           <div class="tower-name">Swarmer</div>
           <div class="tower-hover">
@@ -937,8 +886,7 @@ footer {
            href="https://tds.wiki/w/Toxic_Gunner"
            target="_blank"
            rel="noopener"
-           data-name="toxic gunner"
-           style="--w:205px;--h:215px">
+           data-name="toxic gunner">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/66/ToxicGunnerNewIcon.png/revision/latest?cb=20260311073031" alt="Toxic Gunner">
           <div class="tower-name">Toxic Gunner</div>
           <div class="tower-hover">
@@ -950,8 +898,7 @@ footer {
            href="https://tds.wiki/w/Sledger"
            target="_blank"
            rel="noopener"
-           data-name="sledger"
-           style="--w:150px;--h:215px">
+           data-name="sledger">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/1/12/OICESledgerIcon.png/revision/latest?cb=20260311073112" alt="Sledger">
           <div class="tower-name">Sledger</div>
           <div class="tower-hover">
@@ -963,8 +910,7 @@ footer {
            href="https://tds.wiki/w/Executioner"
            target="_blank"
            rel="noopener"
-           data-name="executioner"
-           style="--w:230px;--h:185px">
+           data-name="executioner">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/2d/DefaultExecutioner2.png/revision/latest?cb=20260311073125" alt="Executioner">
           <div class="tower-name">Executioner</div>
           <div class="tower-hover">
@@ -976,9 +922,8 @@ footer {
            href="https://tds.wiki/w/Elf_Camp"
            target="_blank"
            rel="noopener"
-           data-name="elf camp"
-           style="--w:178px;--h:235px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiYFvPT2Fp6bevMBijDs8rRjNCWslVwrSP6z0KPL8sNQ&s=10" alt="Elf Camp">
+           data-name="elf camp">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c4/ElfCampNewIcon.png/revision/latest?cb=20260311073150" alt="Elf Camp">
           <div class="tower-name">Elf Camp</div>
           <div class="tower-hover">
             <strong>Elf Camp</strong>
@@ -989,8 +934,7 @@ footer {
            href="https://tds.wiki/w/Jester"
            target="_blank"
            rel="noopener"
-           data-name="jester"
-           style="--w:270px;--h:185px">
+           data-name="jester">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/71/JesterIcon.png/revision/latest?cb=20260311073247" alt="Jester">
           <div class="tower-name">Jester</div>
           <div class="tower-hover">
@@ -1002,8 +946,7 @@ footer {
            href="https://tds.wiki/w/Cryomancer"
            target="_blank"
            rel="noopener"
-           data-name="cryomancer"
-           style="--w:205px;--h:165px">
+           data-name="cryomancer">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/6d/OICECryomancerIcon.png/revision/latest?cb=20260311073256" alt="Cryomancer">
           <div class="tower-name">Cryomancer</div>
           <div class="tower-hover">
@@ -1015,8 +958,7 @@ footer {
            href="https://tds.wiki/w/Hallow_Punk"
            target="_blank"
            rel="noopener"
-           data-name="hallow punk"
-           style="--w:150px;--h:185px">
+           data-name="hallow punk">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/6b/HallowPunkIcon.png/revision/latest?cb=20260311073305" alt="Hallow Punk">
           <div class="tower-name">Hallow Punk</div>
           <div class="tower-hover">
@@ -1028,8 +970,7 @@ footer {
            href="https://tds.wiki/w/Harvester"
            target="_blank"
            rel="noopener"
-           data-name="harvester"
-           style="--w:230px;--h:250px">
+           data-name="harvester">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/cc/HarvesterIcon.png/revision/latest?cb=20260311073315" alt="Harvester">
           <div class="tower-name">Harvester</div>
           <div class="tower-hover">
@@ -1041,8 +982,7 @@ footer {
            href="https://tds.wiki/w/Snowballer"
            target="_blank"
            rel="noopener"
-           data-name="snowballer"
-           style="--w:178px;--h:165px">
+           data-name="snowballer">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e3/SnowballerIcon.png/revision/latest?cb=20260311073325" alt="Snowballer">
           <div class="tower-name">Snowballer</div>
           <div class="tower-hover">
@@ -1054,8 +994,7 @@ footer {
            href="https://tds.wiki/w/Elementalist"
            target="_blank"
            rel="noopener"
-           data-name="elementalist"
-           style="--w:270px;--h:215px">
+           data-name="elementalist">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/07/ElementalistIcon.png/revision/latest?cb=20260311073600" alt="Elementalist">
           <div class="tower-name">Elementalist</div>
           <div class="tower-hover">
@@ -1067,9 +1006,8 @@ footer {
            href="https://tds.wiki/w/Firework_Technician"
            target="_blank"
            rel="noopener"
-           data-name="firework technician"
-           style="--w:205px;--h:250px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsllMqzmCgmx4j0ri9Hr74f7M-D-MQYStPGJNq7Y5c_w&s=10" alt="Firework Technician">
+           data-name="firework technician">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/56/FireworkTechnicianIcon.png/revision/latest?cb=20260311073609" alt="Firework Technician">
           <div class="tower-name">Firework Technician</div>
           <div class="tower-hover">
             <strong>Firework Technician</strong>
@@ -1080,8 +1018,7 @@ footer {
            href="https://tds.wiki/w/Biologist"
            target="_blank"
            rel="noopener"
-           data-name="biologist"
-           style="--w:150px;--h:250px">
+           data-name="biologist">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c9/BiologistIcon.png/revision/latest?cb=20260311073623" alt="Biologist">
           <div class="tower-name">Biologist</div>
           <div class="tower-hover">
@@ -1093,9 +1030,8 @@ footer {
            href="https://tds.wiki/w/Warlock"
            target="_blank"
            rel="noopener"
-           data-name="warlock"
-           style="--w:230px;--h:215px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ-wg4e86QTZap3UccyJGy12DHw0mushA7gogdkqArkg&s=10" alt="Warlock">
+           data-name="warlock">
+          <img src="https://i.namu.wiki/i/xO8e4Q52HKIN4K_FoEiJH8RQab-WgZwRUF0Ml9Cf2JJEJfqPWrWCTz2GT5EzsZdYyBJvPIENQclFtAekTH89YA.webp" alt="Warlock">
           <div class="tower-name">Warlock</div>
           <div class="tower-hover">
             <strong>Warlock</strong>
@@ -1106,8 +1042,7 @@ footer {
            href="https://tds.wiki/w/Spotlight_Tech"
            target="_blank"
            rel="noopener"
-           data-name="spotlight tech"
-           style="--w:178px;--h:250px">
+           data-name="spotlight tech">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/f2/SpotlightTechIcon.png/revision/latest?cb=20260311073454" alt="Spotlight Tech">
           <div class="tower-name">Spotlight Tech</div>
           <div class="tower-hover">
@@ -1119,8 +1054,7 @@ footer {
            href="https://tds.wiki/w/War_Machine"
            target="_blank"
            rel="noopener"
-           data-name="war machine"
-           style="--w:270px;--h:185px">
+           data-name="war machine">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/82/DefaultWarMachineRework0.png/revision/latest/scale-to-width-down/1200?cb=20260719112630" alt="War Machine">
           <div class="tower-name">War Machine</div>
           <div class="tower-hover">
@@ -1132,8 +1066,7 @@ footer {
            href="https://tds.wiki/w/Mecha_Base"
            target="_blank"
            rel="noopener"
-           data-name="mecha base"
-           style="--w:205px;--h:165px">
+           data-name="mecha base">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/ce/OUMechaBaseIcon.png/revision/latest?cb=20260311074735" alt="Mecha Base">
           <div class="tower-name">Mecha Base</div>
           <div class="tower-hover">
@@ -1151,8 +1084,7 @@ footer {
         <span class="count">8 towers</span>
       </div>
       <div class="tower-grid">
-        <a class="tower-card" href="#" data-name="golden minigunner"
-           style="--w:155px;--h:175px">
+        <a class="tower-card" href="#" data-name="golden minigunner">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/cb/Goldenminigunner.png/revision/latest?cb=20260311072609" alt="Golden Minigunner">
           <div class="tower-name">Golden Minigunner</div>
           <div class="tower-hover">
@@ -1160,8 +1092,7 @@ footer {
             <span>Golden perk</span>
           </div>
         </a>
-        <a class="tower-card" href="#" data-name="golden crook boss"
-           style="--w:190px;--h:235px">
+        <a class="tower-card" href="#" data-name="golden crook boss">
           <img src="https://preview.redd.it/how-good-is-golden-crook-boss-v0-rhabioegpmrc1.png?auto=webp&s=3d6d79550f10e4578c1c668e0407b976de0070c8" alt="Golden Crook Boss">
           <div class="tower-name">Golden Crook Boss</div>
           <div class="tower-hover">
@@ -1169,8 +1100,7 @@ footer {
             <span>Golden perk</span>
           </div>
         </a>
-        <a class="tower-card" href="#" data-name="golden pyromancer"
-           style="--w:225px;--h:175px">
+        <a class="tower-card" href="#" data-name="golden pyromancer">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/fb/DHGoldenPyroIcon.png/revision/latest?cb=20260311072621" alt="Golden Pyromancer">
           <div class="tower-name">Golden Pyromancer</div>
           <div class="tower-hover">
@@ -1178,8 +1108,7 @@ footer {
             <span>Golden perk</span>
           </div>
         </a>
-        <a class="tower-card" href="#" data-name="golden scout"
-           style="--w:260px;--h:235px">
+        <a class="tower-card" href="#" data-name="golden scout">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/a0/GoldenScout3.png/revision/latest?cb=20260311072649" alt="Golden Scout">
           <div class="tower-name">Golden Scout</div>
           <div class="tower-hover">
@@ -1187,17 +1116,15 @@ footer {
             <span>Golden perk</span>
           </div>
         </a>
-        <a class="tower-card" href="#" data-name="golden cowboy"
-           style="--w:155px;--h:175px">
-          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b6/WDGoldenCowboyIcon.png/revision/latest?cb=20260311072703" alt="Golden Cowboy">
+        <a class="tower-card" href="#" data-name="golden cowboy">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b6/WDGoldenCowboyIcon.png/revision/latest/scale-to-width-down/536?cb=20260311072703" alt="Golden Cowboy">
           <div class="tower-name">Golden Cowboy</div>
           <div class="tower-hover">
             <strong>Golden Cowboy</strong>
             <span>Golden perk</span>
           </div>
         </a>
-        <a class="tower-card" href="#" data-name="golden soldier"
-           style="--w:190px;--h:235px">
+        <a class="tower-card" href="#" data-name="golden soldier">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e7/KR_Golden_Soldier_Icon.png/revision/latest?cb=20260311072715" alt="Golden Soldier">
           <div class="tower-name">Golden Soldier</div>
           <div class="tower-hover">
@@ -1205,18 +1132,16 @@ footer {
             <span>Golden perk</span>
           </div>
         </a>
-        <a class="tower-card" href="#" data-name="golden demoman"
-           style="--w:225px;--h:175px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH54TCwQ49B600-fprdkAsktk7ralEnZH6HZSI26-7FA&s=10" alt="Golden Demoman">
+        <a class="tower-card" href="#" data-name="golden demoman">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/GoldenDemoman0.png/revision/latest/scale-to-width-down/1200?cb=20260719114612" alt="Golden Demoman">
           <div class="tower-name">Golden Demoman</div>
           <div class="tower-hover">
             <strong>Golden Demoman</strong>
             <span>Golden perk</span>
           </div>
         </a>
-        <a class="tower-card" href="#" data-name="golden snowballer"
-           style="--w:260px;--h:235px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdwZjafl7jsljcI5ytWKz1n2OMXPH8TP32tDyJ2yk3dQ&s=10" alt="Golden Snowballer">
+        <a class="tower-card" href="#" data-name="golden snowballer">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/a8/GoldenSnowballer.png/revision/latest?cb=20260315233212" alt="Golden Snowballer">
           <div class="tower-name">Golden Snowballer</div>
           <div class="tower-hover">
             <strong>Golden Snowballer</strong>
@@ -1232,8 +1157,7 @@ footer {
         <span class="count">4 towers</span>
       </div>
       <div class="tower-grid">
-        <a class="tower-card" href="#" data-name="operator"
-           style="--w:155px;--h:175px">
+        <a class="tower-card" href="#" data-name="operator">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/a7/DefaultOperator0.png/revision/latest/scale-to-width-down/1200?cb=20260620162732" alt="Operator">
           <div class="tower-name">Operator</div>
           <div class="tower-hover">
@@ -1241,8 +1165,7 @@ footer {
             <span>Evolved from Scout</span>
           </div>
         </a>
-        <a class="tower-card" href="#" data-name="enforcer"
-           style="--w:190px;--h:235px">
+        <a class="tower-card" href="#" data-name="enforcer">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/af/DefaultEnforcer0.png/revision/latest?cb=20260815141029" alt="Enforcer">
           <div class="tower-name">Enforcer</div>
           <div class="tower-hover">
@@ -1250,8 +1173,7 @@ footer {
             <span>Evolved from Shotgunner</span>
           </div>
         </a>
-        <a class="tower-card" href="#" data-name="kingpin"
-           style="--w:225px;--h:175px">
+        <a class="tower-card" href="#" data-name="kingpin">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c6/DefaultKingpin0.png/revision/latest?cb=20260719125432" alt="Kingpin">
           <div class="tower-name">Kingpin</div>
           <div class="tower-hover">
@@ -1259,8 +1181,7 @@ footer {
             <span>Evolved from Crook Boss</span>
           </div>
         </a>
-        <a class="tower-card" href="#" data-name="juggernaut"
-           style="--w:260px;--h:235px">
+        <a class="tower-card" href="#" data-name="juggernaut">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/3f/EvolvedJuggernautIcon.png/revision/latest?cb=20260404171229" alt="Juggernaut">
           <div class="tower-name">Juggernaut</div>
           <div class="tower-hover">
@@ -1281,8 +1202,7 @@ footer {
            href="https://tds.wiki/w/Mine"
            target="_blank"
            rel="noopener"
-           data-name="mine"
-           style="--w:205px;--h:250px">
+           data-name="mine">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/bd/MineTower.png/revision/latest?cb=20260512220856" alt="Mine">
           <div class="tower-name">Mine</div>
           <div class="tower-hover">
@@ -1294,9 +1214,8 @@ footer {
            href="https://tds.wiki/w/Sentry"
            target="_blank"
            rel="noopener"
-           data-name="sentry"
-           style="--w:150px;--h:185px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzDOrl19rjuzxMV3jyNGfh0u8gczItFJnDN3mf9Yz9TA&s" alt="Sentry">
+           data-name="sentry">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d3/SentryF0.png/revision/latest/scale-to-width-down/250?cb=20260504225725" alt="Sentry">
           <div class="tower-name">Sentry</div>
           <div class="tower-hover">
             <strong>Sentry</strong>
@@ -1307,8 +1226,7 @@ footer {
            href="https://tds.wiki/w/Moderator"
            target="_blank"
            rel="noopener"
-           data-name="moderator"
-           style="--w:230px;--h:250px">
+           data-name="moderator">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/7c/DefaultModeratorIconIG.png/revision/latest?cb=20260318132228" alt="Moderator">
           <div class="tower-name">Moderator</div>
           <div class="tower-hover">
@@ -1320,8 +1238,7 @@ footer {
            href="https://tds.wiki/w/Railgunner"
            target="_blank"
            rel="noopener"
-           data-name="railgunner"
-           style="--w:178px;--h:165px">
+           data-name="railgunner">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/ab/RailgunnerRangerMissionIcon.png/revision/latest?cb=20240415130321" alt="Railgunner">
           <div class="tower-name">Railgunner</div>
           <div class="tower-hover">
@@ -1333,9 +1250,8 @@ footer {
            href="https://tds.wiki/w/Twitgunner"
            target="_blank"
            rel="noopener"
-           data-name="twitgunner"
-           style="--w:270px;--h:165px">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWQ2aQeFIE8RpLzd9iqBnV1tJ_0LBc4zRHQr--Hz-1Hw&s=10" alt="Twitgunner">
+           data-name="twitgunner">
+          <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/1/13/DefaultTwitgunnerIcon.png/revision/latest/scale-to-width-down/1200?cb=20260310133946" alt="Twitgunner">
           <div class="tower-name">Twitgunner</div>
           <div class="tower-hover">
             <strong>Twitgunner</strong>
@@ -1346,8 +1262,7 @@ footer {
            href="https://tds.wiki/w/Void_Miner"
            target="_blank"
            rel="noopener"
-           data-name="void miner"
-           style="--w:205px;--h:165px">
+           data-name="void miner">
           <img src="https://static.wikia.nocookie.net/tower-defense-simulator-the-final-destination/images/3/31/Image-removebg-preview_-_2024-10-06T211719.240.png/revision/latest?cb=20241007022334" alt="Void Miner">
           <div class="tower-name">Void Miner</div>
           <div class="tower-hover">
@@ -1359,8 +1274,7 @@ footer {
            href="https://tds.wiki/w/Combatant"
            target="_blank"
            rel="noopener"
-           data-name="combatant"
-           style="--w:150px;--h:250px">
+           data-name="combatant">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/32/DefaultCombatantIcon.png/revision/latest?cb=20260327215132" alt="Combatant">
           <div class="tower-name">Combatant</div>
           <div class="tower-hover">
@@ -1372,8 +1286,7 @@ footer {
            href="https://tds.wiki/w/Crystallizer"
            target="_blank"
            rel="noopener"
-           data-name="crystallizer"
-           style="--w:230px;--h:215px">
+           data-name="crystallizer">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/f3/Crystallizer.png/revision/latest?cb=20260318144329" alt="Crystallizer">
           <div class="tower-name">Crystallizer</div>
           <div class="tower-hover">
@@ -1385,8 +1298,7 @@ footer {
            href="https://tds.wiki/w/Time_Dilator"
            target="_blank"
            rel="noopener"
-           data-name="time dilator"
-           style="--w:270px;--h:215px">
+           data-name="time dilator">
           <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/09/MarkIII.png/revision/latest?cb=20260514192357" alt="Time Dilator">
           <div class="tower-name">Time Dilator</div>
           <div class="tower-hover">
