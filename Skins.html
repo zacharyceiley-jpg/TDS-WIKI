@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TDS Wiki — Skins</title>
+<link rel="icon" type="image/png" href="https://static.wikia.nocookie.net/tower-defense-sim/images/5/50/DuckHuntContestRender1.png/revision/latest/scale-to-width-down/250?cb=20230726143135">
+<style>
+*{box-sizing:border-box}
+:root{--panel:rgba(15,18,27,.94);--text:#fff;--muted:#b9c0cf;--border:rgba(255,255,255,.13);--accent:#65b8ff}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:linear-gradient(rgba(5,8,14,.64),rgba(5,8,14,.84)),url("https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/SummerCastleIcon.png/revision/latest/smart/width/400/height/225?cb=20250709204530") center/cover fixed no-repeat}
+body{overflow-x:hidden}
+.top-banner{position:sticky;top:0;z-index:50;height:82px;display:flex;align-items:center;justify-content:center;gap:28px;padding:8px 24px;background:rgba(5,7,12,.95);border-bottom:2px solid rgba(255,255,255,.12);box-shadow:0 8px 30px rgba(0,0,0,.45);backdrop-filter:blur(8px)}
+.top-banner img{width:min(650px,58vw);max-height:66px;object-fit:contain}
+.banner-search{width:min(360px,32vw);flex-shrink:1}
+#search{width:100%;padding:12px 15px;border:1px solid var(--border);border-radius:12px;outline:none;color:#fff;background:rgba(0,0,0,.5);font-size:14px}
+#search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(101,184,255,.14)}
+.page{width:min(1500px,94vw);margin:14px auto 40px}
+.hero{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:18px 20px;box-shadow:0 15px 45px rgba(0,0,0,.34)}
+.hero-top{display:flex;align-items:flex-end;justify-content:space-between;gap:18px}
+.hero h1{margin:0;font-size:clamp(30px,4.2vw,50px)}
+.hero p{margin:6px 0 0;color:var(--muted)}
+.back{color:#fff;text-decoration:none;border:1px solid var(--border);background:rgba(0,0,0,.35);border-radius:10px;padding:9px 12px;font-size:13px}
+.filters{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 18px}
+.filter{border:1px solid var(--border);color:#fff;background:rgba(0,0,0,.35);border-radius:999px;padding:7px 11px;cursor:pointer;font-size:12px}
+.filter.active{border-color:var(--accent);background:rgba(101,184,255,.14)}
+.skin-section{margin:18px 0 24px}
+.section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;margin-bottom:9px;padding:0 3px}
+.section-kicker{font-size:25px;font-weight:900}
+.section-heading p{margin:2px 0 0;color:var(--muted);font-size:12px}
+.skin-grid{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:center;gap:9px}
+.skin-card{position:relative;flex:0 0 230px;width:230px;height:250px;overflow:hidden;display:block;border-radius:14px;background:url("https://raw.githubusercontent.com/zacharyceiley-jpg/TDS-WIKI/main/assets/slot.png") center/100% 100% no-repeat;color:#fff;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.31);transition:transform .18s ease,box-shadow .18s ease}
+.skin-card:hover{transform:translateY(-6px) scale(1.025);box-shadow:0 18px 36px rgba(0,0,0,.5);z-index:3}
+.skin-card img{position:absolute;inset:12px 12px 42px;width:calc(100% - 24px);height:calc(100% - 54px);object-fit:contain}
+.skin-card:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 48%,rgba(0,0,0,.78));pointer-events:none}
+.skin-name{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:11px 9px;text-align:center;font-weight:900;font-size:14px;text-shadow:0 2px 7px #000}
+.empty{display:none;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;text-align:center;color:var(--muted)}
+footer{text-align:center;color:#8e97a8;font-size:11px;padding:25px}
+@media(max-width:700px){.top-banner{height:auto;flex-direction:column;gap:8px}.top-banner img{width:80%}.banner-search{width:90%}.hero-top{align-items:flex-start;flex-direction:column}.skin-card{flex-basis:200px;width:200px;height:220px}}
+</style>
+</head>
+<body>
+
+<header class="top-banner">
+  <img src="https://i.namu.wiki/i/7xTzCZ5-4YLxCBlGfiGrTr_TKKr1_lGMMnV4E3oGJX87QuWTZ0KK2M0EWE1-_VtY_Z9HkVdHEGXzo15xq-A52w.webp" alt="TDS Wiki">
+  <div class="banner-search"><input id="search" type="search" placeholder="Search skins..."></div>
+</header>
+
+<main class="page">
+  <section class="hero">
+    <div class="hero-top">
+      <div>
+        <h1>Skins</h1>
+        <p>Browse TDS tower skins by rarity and category.</p>
+      </div>
+      <a class="back" href="index.html">← Back to Wiki</a>
+    </div>
+  </section>
+
+  <div class="filters">
+    <button class="filter active" data-filter="all">All</button>
+    <button class="filter" data-filter="event">Event</button>
+    <button class="filter" data-filter="exclusive">Exclusive</button>
+    <button class="filter" data-filter="common">Common</button>
+    <button class="filter" data-filter="uncommon">Uncommon</button>
+    <button class="filter" data-filter="rare">Rare</button>
+    <button class="filter" data-filter="ultimate">Ultimate</button>
+    <button class="filter" data-filter="golden">Golden</button>
+    <button class="filter" data-filter="legendary">Legendary</button>
+    <button class="filter" data-filter="codes">Codes</button>
+  </div>
+
+  <section class="skin-section" data-category="event"><div class="section-heading"><div><div class="section-kicker">Event</div><p>Event-exclusive skins.</p></div></div></section>
+  <section class="skin-section" data-category="exclusive"><div class="section-heading"><div><div class="section-kicker">Exclusive</div><p>Exclusive skins.</p></div></div></section>
+  <section class="skin-section" data-category="common"><div class="section-heading"><div><div class="section-kicker">Common</div><p>Common skins.</p></div></div></section>
+  <section class="skin-section" data-category="uncommon"><div class="section-heading"><div><div class="section-kicker">Uncommon</div><p>Uncommon skins.</p></div></div></section>
+  <section class="skin-section" data-category="rare"><div class="section-heading"><div><div class="section-kicker">Rare</div><p>Rare skins.</p></div></div></section>
+  <section class="skin-section" data-category="ultimate"><div class="section-heading"><div><div class="section-kicker">Ultimate</div><p>Ultimate skins.</p></div></div></section>
+
+  <section class="skin-section" data-category="golden">
+    <div class="section-heading">
+      <div><div class="section-kicker">Golden</div><p>Golden skins currently listed in TDS.</p></div>
+    </div>
+    <div class="skin-grid">
+      <a class="skin-card" data-name="golden scout" href="https://tds.wiki/w/Golden_Scout" target="_blank" rel="noopener">
+        <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/1/1e/GoldenScout.png/revision/latest?cb=20240101000000" alt="Golden Scout">
+        <div class="skin-name">Golden Scout</div>
+      </a>
+      <a class="skin-card" data-name="golden soldier" href="https://tds.wiki/w/Golden_Soldier" target="_blank" rel="noopener">
+        <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/7e/GoldenSoldier.png/revision/latest?cb=20240101000000" alt="Golden Soldier">
+        <div class="skin-name">Golden Soldier</div>
+      </a>
+      <a class="skin-card" data-name="golden crook boss" href="https://tds.wiki/w/Golden_Crook_Boss" target="_blank" rel="noopener">
+        <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/2c/GoldenCrookBoss.png/revision/latest?cb=20240101000000" alt="Golden Crook Boss">
+        <div class="skin-name">Golden Crook Boss</div>
+      </a>
+      <a class="skin-card" data-name="golden pyromancer" href="https://tds.wiki/w/Golden_Pyromancer" target="_blank" rel="noopener">
+        <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/6b/GoldenPyromancer.png/revision/latest?cb=20240101000000" alt="Golden Pyromancer">
+        <div class="skin-name">Golden Pyromancer</div>
+      </a>
+      <a class="skin-card" data-name="golden cowboy" href="https://tds.wiki/w/Golden_Cowboy" target="_blank" rel="noopener">
+        <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/9a/GoldenCowboy.png/revision/latest?cb=20240101000000" alt="Golden Cowboy">
+        <div class="skin-name">Golden Cowboy</div>
+      </a>
+      <a class="skin-card" data-name="golden minigunner" href="https://tds.wiki/w/Golden_Minigunner" target="_blank" rel="noopener">
+        <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/4f/GoldenMinigunner.png/revision/latest?cb=20240101000000" alt="Golden Minigunner">
+        <div class="skin-name">Golden Minigunner</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="skin-section" data-category="legendary"><div class="section-heading"><div><div class="section-kicker">Legendary</div><p>Legendary skins.</p></div></div></section>
+  <section class="skin-section" data-category="codes"><div class="section-heading"><div><div class="section-kicker">Codes</div><p>Skins obtained through codes.</p></div></div></section>
+
+  <div class="empty" id="empty">No skins match your search.</div>
+  <footer>TDS Wiki • Community-made fan project</footer>
+</main>
+
+<script>
+const sections=[...document.querySelectorAll(".skin-section")];
+const filters=[...document.querySelectorAll(".filter")];
+const search=document.getElementById("search");
+const empty=document.getElementById("empty");
+let active="all";
+
+function render(){
+  const q=search.value.toLowerCase().trim();
+  let visible=0;
+  sections.forEach(section=>{
+    const category=section.dataset.category;
+    const categoryMatch=active==="all"||category===active;
+    const cards=[...section.querySelectorAll(".skin-card")];
+    let sectionVisible=0;
+    cards.forEach(card=>{
+      const match=categoryMatch&&card.dataset.name.includes(q);
+      card.style.display=match?"block":"none";
+      if(match){visible++;sectionVisible++;}
+    });
+    const hasCards=cards.length>0;
+    section.style.display=categoryMatch&&(hasCards?sectionVisible>0:true)?"block":"none";
+  });
+  empty.style.display=visible?"none":"block";
+}
+filters.forEach(btn=>btn.addEventListener("click",()=>{
+  active=btn.dataset.filter;
+  filters.forEach(b=>b.classList.toggle("active",b===btn));
+  render();
+}));
+search.addEventListener("input",render);
+render();
+</script>
+</body>
+</html>
