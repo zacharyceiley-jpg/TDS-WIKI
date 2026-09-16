@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TDS Wiki — Enemies</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#111827;color:#f9fafb}
+header{padding:28px 32px;background:#1f2937;border-bottom:1px solid #374151}
+h1{margin:0;font-size:34px}
+.subtitle{margin:8px 0 0;color:#9ca3af}
+main{max-width:1200px;margin:auto;padding:28px}
+.tabs{display:flex;gap:10px;margin-bottom:24px}
+.tab{border:0;border-radius:10px;padding:11px 18px;background:#374151;color:#fff;font-weight:700;cursor:pointer}
+.tab.active{background:#2563eb}
+.panel{display:none}
+.panel.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px}
+.card{background:#1f2937;border:1px solid #374151;border-radius:14px;padding:16px;text-align:center}
+.card img{width:150px;height:150px;object-fit:contain;display:block;margin:0 auto 12px}
+.name{font-size:18px;font-weight:700}
+.wave{margin-top:7px;color:#9ca3af;font-size:14px}
+@media(max-width:600px){main{padding:18px}.grid{grid-template-columns:repeat(2,1fr)}.card img{width:120px;height:120px}}
+</style>
+</head>
+<body>
+<header>
+<h1>Enemies</h1>
+<p class="subtitle">Tower Defense Simulator enemy list</p>
+</header>
+<main>
+<div class="tabs">
+<button class="tab active" onclick="showTab('easy',this)">Easy</button>
+<button class="tab" onclick="showTab('casual',this)">Casual</button>
+<button class="tab" onclick="showTab('intermediate',this)">Intermediate</button>
+    <button class="tab" onclick="showTab('molten', this)">Molten</button>
+    <button class="tab" onclick="showTab('fallen', this)">Fallen</button>
+    <button class="tab" onclick="showTab('frost', this)">Frost</button>
+    <button class="tab" onclick="showTab('challenge', this)">Challenge Trials</button>
+    <button class="tab" onclick="showTab('polluted', this)">Polluted Wasteland</button>
+    <button class="tab" onclick="showTab('golden', this)">Golden</button>
+    <button class="tab" onclick="showTab('hardcore', this)">Hardcore</button>
+    <button class="tab" onclick="showTab('voidcore', this)">Voidcore</button>
+</div>
+<section id="easy" class="panel active">
+<div class="grid">
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/73/NormalAnim1.png/revision/latest/scale-to-width-down/150?cb=20260310201529" alt="Normal" loading="lazy">
+<div class="name">Normal</div>
+<div class="wave">Wave 1</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/f6/SpeedyAnim1.png/revision/latest/scale-to-width-down/150?cb=20260310193041" alt="Speedy" loading="lazy">
+<div class="name">Speedy</div>
+<div class="wave">Wave 2</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/69/SlowAnim2.png/revision/latest/scale-to-width-down/150?cb=20260310191347" alt="Slow" loading="lazy">
+<div class="name">Slow</div>
+<div class="wave">Wave 4</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/89/EasyModeNormalBoss.png/revision/latest/scale-to-width-down/150?cb=20251217021755" alt="Normal Boss" loading="lazy">
+<div class="name">Normal Boss</div>
+<div class="wave">Wave 6</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e2/HiddenV5.png/revision/latest/scale-to-width-down/150?cb=20251110055926" alt="Hidden" loading="lazy">
+<div class="name">Hidden</div>
+<div class="wave">Wave 8</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/29/Breaker2Fallen.png/revision/latest/scale-to-width-down/150?cb=20251128034937" alt="Breaker2" loading="lazy">
+<div class="name">Breaker2</div>
+<div class="wave">Wave 10</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c9/BreakerFallen.png/revision/latest/scale-to-width-down/150?cb=20251113021315" alt="Breaker" loading="lazy">
+<div class="name">Breaker</div>
+<div class="wave">N/A</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/a7/NecromancerModern.png/revision/latest/scale-to-width-down/150?cb=20260310203043" alt="Necromancer" loading="lazy">
+<div class="name">Necromancer</div>
+<div class="wave">Wave 12</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/47/Skeletonlunar.png/revision/latest/scale-to-width-down/150?cb=20250224000734" alt="Skeleton" loading="lazy">
+<div class="name">Skeleton</div>
+<div class="wave">N/A</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c3/Armored.png/revision/latest/scale-to-width-down/150?cb=20251217021715" alt="Armored" loading="lazy">
+<div class="name">Armored</div>
+<div class="wave">Wave 13</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/7b/EasySlowBoss2.png/revision/latest/scale-to-width-down/150?cb=20251217021816" alt="Slow Boss" loading="lazy">
+<div class="name">Slow Boss</div>
+<div class="wave">Wave 16</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e7/Enraged.png/revision/latest/scale-to-width-down/150?cb=20251113021844" alt="Enraged" loading="lazy">
+<div class="name">Enraged</div>
+<div class="wave">Wave 17</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/79/Breaker3Fallen.png/revision/latest/scale-to-width-down/150?cb=20251113021327" alt="Breaker3" loading="lazy">
+<div class="name">Breaker3</div>
+<div class="wave">Wave 19</div>
+</article>
+<article class="card">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/55/Dummy_Boss.png/revision/latest/scale-to-width-down/150?cb=20251110054922" alt="Brute" loading="lazy">
+<div class="name">Brute</div>
+<div class="wave">Wave 20</div>
+</article>
+</div>
+</section>
+<section id="casual" class="panel">
+<div class="grid">
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c0/NormalAnim3.png/revision/latest/scale-to-width-down/150?cb=20260310201644" alt="Normal" loading="lazy"><div class="name">Normal</div><div class="wave">Wave 1</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/43/SpeedyAnim2.png/revision/latest/scale-to-width-down/150?cb=20260310193018" alt="Speedy" loading="lazy"><div class="name">Speedy</div><div class="wave">Wave 2</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/69/SlowAnim2.png/revision/latest/scale-to-width-down/150?cb=20260310191347" alt="Slow" loading="lazy"><div class="name">Slow</div><div class="wave">Wave 4</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/89/EasyModeNormalBoss.png/revision/latest/scale-to-width-down/150?cb=20251217021755" alt="Normal Boss" loading="lazy"><div class="name">Normal Boss</div><div class="wave">Wave 7</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e2/HiddenV5.png/revision/latest/scale-to-width-down/150?cb=20251110055926" alt="Hidden" loading="lazy"><div class="name">Hidden</div><div class="wave">Wave 9</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/29/Breaker2Fallen.png/revision/latest/scale-to-width-down/150?cb=20251128034937" alt="Breaker2" loading="lazy"><div class="name">Breaker2</div><div class="wave">Wave 11</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c9/BreakerFallen.png/revision/latest/scale-to-width-down/150?cb=20251113021315" alt="Breaker" loading="lazy"><div class="name">Breaker</div><div class="wave">N/A</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c3/Armored.png/revision/latest/scale-to-width-down/150?cb=20251217021715" alt="Armored" loading="lazy"><div class="name">Armored</div><div class="wave">Wave 13</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/a7/NecromancerModern.png/revision/latest/scale-to-width-down/150?cb=20260310203043" alt="Necromancer" loading="lazy"><div class="name">Necromancer</div><div class="wave">Wave 14</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/47/Skeletonlunar.png/revision/latest/scale-to-width-down/150?cb=20250224000734" alt="Skeleton" loading="lazy"><div class="name">Skeleton</div><div class="wave">Wave 14</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e7/Enraged.png/revision/latest/scale-to-width-down/150?cb=20251113021844" alt="Enraged" loading="lazy"><div class="name">Enraged</div><div class="wave">Wave 16</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/79/Breaker3Fallen.png/revision/latest/scale-to-width-down/150?cb=20251113021327" alt="Breaker3" loading="lazy"><div class="name">Breaker3</div><div class="wave">Wave 18</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/7b/EasySlowBoss2.png/revision/latest/scale-to-width-down/150?cb=20251217021816" alt="Slow Boss" loading="lazy"><div class="name">Slow Boss</div><div class="wave">Wave 19</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c8/HazmatAnim1.png/revision/latest/scale-to-width-down/150?cb=20260310204951" alt="Hazmat" loading="lazy"><div class="name">Hazmat</div><div class="wave">Wave 20</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/ce/HiddenBossV5.png/revision/latest/scale-to-width-down/150?cb=20251217022100" alt="Hidden Boss" loading="lazy"><div class="name">Hidden Boss</div><div class="wave">Wave 22</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e5/SpeedyBossNew.png/revision/latest/scale-to-width-down/150?cb=20251217021722" alt="Speedy Boss" loading="lazy"><div class="name">Speedy Boss</div><div class="wave">Wave 23</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b0/BoltV5.png/revision/latest/scale-to-width-down/150?cb=20260311163945" alt="Bolt" loading="lazy"><div class="name">Bolt</div><div class="wave">Wave 24</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/05/GraveDiggerRework.png/revision/latest/scale-to-width-down/150?cb=20250226030818" alt="Grave Digger" loading="lazy"><div class="name">Grave Digger</div><div class="wave">Wave 25</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/57/Breaker4Fallen.png/revision/latest/scale-to-width-down/150?cb=20260309221933" alt="Breaker4" loading="lazy"><div class="name">Breaker4</div><div class="wave">Wave 25</div></article>
+</div>
+</section>
+<section id="intermediate" class="panel">
+<div class="grid">
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/73/NormalAnim1.png/revision/latest/scale-to-width-down/150?cb=20260310201529" alt="Normal" loading="lazy"><div class="name">Normal</div><div class="wave">Wave 1</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/f6/SpeedyAnim1.png/revision/latest/scale-to-width-down/150?cb=20260310193041" alt="Speedy" loading="lazy"><div class="name">Speedy</div><div class="wave">Wave 3</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/69/SlowAnim2.png/revision/latest/scale-to-width-down/150?cb=20260310191347" alt="Slow" loading="lazy"><div class="name">Slow</div><div class="wave">Wave 4</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/89/EasyModeNormalBoss.png/revision/latest/scale-to-width-down/150?cb=20251217021755" alt="Normal Boss" loading="lazy"><div class="name">Normal Boss</div><div class="wave">Wave 6</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/42/AbnormalFallen.png/revision/latest/scale-to-width-down/150?cb=20251113024209" alt="Abnormal" loading="lazy"><div class="name">Abnormal</div><div class="wave">Wave 7</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d5/QuickFallen.png/revision/latest/scale-to-width-down/150?cb=20251217021643" alt="Quick" loading="lazy"><div class="name">Quick</div><div class="wave">Wave 7</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/43/HeavyFallen.png/revision/latest/scale-to-width-down/150?cb=20251217021632" alt="Heavy" loading="lazy"><div class="name">Heavy</div><div class="wave">Wave 7</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/91/EliteAbnormal.png/revision/latest/scale-to-width-down/150?cb=20251110055600" alt="Elite Abnormal" loading="lazy"><div class="name">Elite Abnormal</div><div class="wave">Wave 9</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e2/HiddenV5.png/revision/latest/scale-to-width-down/150?cb=20251110055926" alt="Hidden" loading="lazy"><div class="name">Hidden</div><div class="wave">Wave 10</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/29/Breaker2Fallen.png/revision/latest/scale-to-width-down/150?cb=20251128034937" alt="Breaker2" loading="lazy"><div class="name">Breaker2</div><div class="wave">Wave 12</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c9/BreakerFallen.png/revision/latest/scale-to-width-down/150?cb=20251113021315" alt="Breaker" loading="lazy"><div class="name">Breaker</div><div class="wave">N/A</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b0/BoltV5.png/revision/latest/scale-to-width-down/150?cb=20260311163945" alt="Bolt" loading="lazy"><div class="name">Bolt</div><div class="wave">Wave 13</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/cb/Reaver.png/revision/latest/scale-to-width-down/150?cb=20251124031714" alt="Reaver" loading="lazy"><div class="name">Reaver</div><div class="wave">Wave 14</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b1/Ghoul_real.png/revision/latest/scale-to-width-down/150?cb=20251124031657" alt="Ghoul" loading="lazy"><div class="name">Ghoul</div><div class="wave">Wave 16</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c9/FallenBoomer.png/revision/latest/scale-to-width-down/150?cb=20260310154946" alt="Boomer" loading="lazy"><div class="name">Boomer</div><div class="wave">Wave 17</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d8/HazmatAnim3.png/revision/latest/scale-to-width-down/150?cb=20260528021902" alt="Hazmat" loading="lazy"><div class="name">Hazmat</div><div class="wave">Wave 18</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/78/LivingExperiment.png/revision/latest/scale-to-width-down/150?cb=20260311043054" alt="Living Experiment" loading="lazy"><div class="name">Living Experiment</div><div class="wave">Wave 18</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e5/SpeedyBossNew.png/revision/latest/scale-to-width-down/150?cb=20251217021722" alt="Speedy Boss" loading="lazy"><div class="name">Speedy Boss</div><div class="wave">Wave 20</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/53/SlimeModern.png/revision/latest/scale-to-width-down/150?cb=20251124031638" alt="Slime" loading="lazy"><div class="name">Slime</div><div class="wave">Wave 21</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/57/Breaker4Fallen.png/revision/latest/scale-to-width-down/150?cb=20260309221933" alt="Breaker4" loading="lazy"><div class="name">Breaker4</div><div class="wave">Wave 22</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/79/Breaker3Fallen.png/revision/latest/scale-to-width-down/150?cb=20251113021327" alt="Breaker3" loading="lazy"><div class="name">Breaker3</div><div class="wave">N/A</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/db/EliteHazmatWalk2.png/revision/latest/scale-to-width-down/150?cb=20260310154937" alt="Elite Hazmat" loading="lazy"><div class="name">Elite Hazmat</div><div class="wave">Wave 23</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/ce/HiddenBossV5.png/revision/latest/scale-to-width-down/150?cb=20251217022100" alt="Hidden Boss" loading="lazy"><div class="name">Hidden Boss</div><div class="wave">Wave 23</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/6a/FailedExperiment.png/revision/latest/scale-to-width-down/150?cb=20260311043019" alt="Failed Experiment" loading="lazy"><div class="name">Failed Experiment</div><div class="wave">Wave 25</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/83/ModernGiantBossModel.png/revision/latest/scale-to-width-down/150?cb=20251217013412" alt="Giant Boss" loading="lazy"><div class="name">Giant Boss</div><div class="wave">Wave 28</div></article>
+<article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e2/PatientZero.png/revision/latest/scale-to-width-down/150?cb=20250226032337" alt="Patient Zero" loading="lazy"><div class="name">Patient Zero</div><div class="wave">Wave 30</div></article>
+</div>
+</section>
+    <section id="molten" class="panel">
+      <div class="grid">
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/35/AbnormalFallenAnim2.png/revision/latest/scale-to-width-down/150?cb=20251113024225" alt="Abnormal" loading="lazy"><div class="name">Abnormal</div><div class="wave">Wave 1</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d5/QuickFallen.png/revision/latest/scale-to-width-down/150?cb=20251217021643" alt="Quick" loading="lazy"><div class="name">Quick</div><div class="wave">Wave 2</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/43/HeavyFallen.png/revision/latest/scale-to-width-down/150?cb=20251217021632" alt="Heavy" loading="lazy"><div class="name">Heavy</div><div class="wave">Wave 5</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/91/EliteAbnormal.png/revision/latest/scale-to-width-down/150?cb=20251110055600" alt="Elite Abnormal" loading="lazy"><div class="name">Elite Abnormal</div><div class="wave">Wave 7</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b4/MoltenV4Anim1.png/revision/latest/scale-to-width-down/150?cb=20260310154926" alt="Molten" loading="lazy"><div class="name">Molten</div><div class="wave">Wave 9</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b2/CorpseEnemy.png/revision/latest/scale-to-width-down/150?cb=20250315193450" alt="Corpse" loading="lazy"><div class="name">Corpse</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/0b/MoltenDemon.png/revision/latest/scale-to-width-down/150?cb=20260310154922" alt="Molten Demon" loading="lazy"><div class="name">Molten Demon</div><div class="wave">Wave 11</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/79/Breaker3Fallen.png/revision/latest/scale-to-width-down/150?cb=20251113021327" alt="Breaker3" loading="lazy"><div class="name">Breaker3</div><div class="wave">Wave 14</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/29/Breaker2Fallen.png/revision/latest/scale-to-width-down/150?cb=20251128034937" alt="Breaker2" loading="lazy"><div class="name">Breaker2</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c9/BreakerFallen.png/revision/latest/scale-to-width-down/150?cb=20251113021315" alt="Breaker" loading="lazy"><div class="name">Breaker</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/80/MoltenGolem.png/revision/latest/scale-to-width-down/150?cb=20251110064036" alt="Molten Golem" loading="lazy"><div class="name">Molten Golem</div><div class="wave">Wave 16</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/db/EliteHazmatWalk2.png/revision/latest/scale-to-width-down/150?cb=20260310154937" alt="Elite Hazmat" loading="lazy"><div class="name">Elite Hazmat</div><div class="wave">Wave 17</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/ce/HiddenBossV5.png/revision/latest/scale-to-width-down/150?cb=20251217022100" alt="Hidden Boss" loading="lazy"><div class="name">Hidden Boss</div><div class="wave">Wave 18</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/aa/MoltenNecromancer.png/revision/latest/scale-to-width-down/150?cb=20251110063821" alt="Molten Necromancer" loading="lazy"><div class="name">Molten Necromancer</div><div class="wave">Wave 20</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c8/EliteBoomer.png/revision/latest/scale-to-width-down/150?cb=20260310154943" alt="Elite Boomer" loading="lazy"><div class="name">Elite Boomer</div><div class="wave">Wave 21</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b1/MoltenHound.png/revision/latest/scale-to-width-down/150?cb=20251110063734" alt="Molten Hound" loading="lazy"><div class="name">Molten Hound</div><div class="wave">Wave 22</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b8/MoltenMech.png/revision/latest/scale-to-width-down/150?cb=20251110063746" alt="Molten Mech" loading="lazy"><div class="name">Molten Mech</div><div class="wave">Wave 23</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/82/Bulwark.png/revision/latest/scale-to-width-down/150?cb=20251110063840" alt="Bulwark" loading="lazy"><div class="name">Bulwark</div><div class="wave">Wave 25</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/57/Breaker4Fallen.png/revision/latest/scale-to-width-down/150?cb=20260309221933" alt="Breaker4" loading="lazy"><div class="name">Breaker4</div><div class="wave">Wave 26</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/63/EliteMolten.png/revision/latest/scale-to-width-down/150?cb=20251110063757" alt="Elite Molten" loading="lazy"><div class="name">Elite Molten</div><div class="wave">Wave 27</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/0f/MoltenExecutioner.png/revision/latest/scale-to-width-down/150?cb=20251110063900" alt="Molten Executioner" loading="lazy"><div class="name">Molten Executioner</div><div class="wave">Wave 30</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e3/Tanker.png/revision/latest/scale-to-width-down/150?cb=20251110064357" alt="Tanker" loading="lazy"><div class="name">Tanker</div><div class="wave">Wave 31</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/42/MoltenSummoner.png/revision/latest/scale-to-width-down/150?cb=20251110063920" alt="Molten Summoner" loading="lazy"><div class="name">Molten Summoner</div><div class="wave">Wave 32</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/cf/NewMoltenTitan2.png/revision/latest/scale-to-width-down/150?cb=20251110063849" alt="Molten Titan" loading="lazy"><div class="name">Molten Titan</div><div class="wave">Wave 34</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/fe/MoltenWarlord.png/revision/latest/scale-to-width-down/150?cb=20250222015625" alt="Molten Warlord" loading="lazy"><div class="name">Molten Warlord</div><div class="wave">Wave 35</div></article>
+      </div>
+    </section>
+      <section id="fallen" class="panel">
+      <div class="grid">
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/42/AbnormalFallen.png/revision/latest/scale-to-width-down/150?cb=20251113024209" alt="Abnormal" loading="lazy"><div class="name">Abnormal</div><div class="wave">Wave 1</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d5/QuickFallen.png/revision/latest/scale-to-width-down/150?cb=20251217021643" alt="Quick" loading="lazy"><div class="name">Quick</div><div class="wave">Wave 3</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/6a/FallenSkeletonEnemy.png/revision/latest/scale-to-width-down/150?cb=20251110233920" alt="Fallen Skeleton" loading="lazy"><div class="name">Fallen Skeleton</div><div class="wave">Wave 5</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/70/FallenDreg.png/revision/latest/scale-to-width-down/150?cb=20251110053542" alt="Fallen Dreg" loading="lazy"><div class="name">Fallen Dreg</div><div class="wave">Wave 7</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b2/CorpseEnemy.png/revision/latest/scale-to-width-down/150?cb=20250315193450" alt="Corpse" loading="lazy"><div class="name">Corpse</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/0a/FallenSquireAnim2.png/revision/latest/scale-to-width-down/150?cb=20251110234219" alt="Fallen Squire" loading="lazy"><div class="name">Fallen Squire</div><div class="wave">Wave 9</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/29/Breaker2Fallen.png/revision/latest/scale-to-width-down/150?cb=20251128034937" alt="Breaker2" loading="lazy"><div class="name">Breaker2</div><div class="wave">Wave 10</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c9/BreakerFallen.png/revision/latest/scale-to-width-down/150?cb=20251113021315" alt="Breaker" loading="lazy"><div class="name">Breaker</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/8f/FallenSoulRework.png/revision/latest/scale-to-width-down/150?cb=20251110234005" alt="Fallen Soul" loading="lazy"><div class="name">Fallen Soul</div><div class="wave">Wave 12</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/23/FallenEnemyRework.png/revision/latest/scale-to-width-down/150?cb=20251110223147" alt="Fallen" loading="lazy"><div class="name">Fallen</div><div class="wave">Wave 14</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/de/Fallen_giant.png/revision/latest/scale-to-width-down/150?cb=20251110223050" alt="Fallen Giant" loading="lazy"><div class="name">Fallen Giant</div><div class="wave">Wave 16</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/25/Fallen_hazmat.png/revision/latest/scale-to-width-down/150?cb=20251110222852" alt="Fallen Hazmat" loading="lazy"><div class="name">Fallen Hazmat</div><div class="wave">Wave 17</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/6a/Possesed_armor.png/revision/latest/scale-to-width-down/150?cb=20251113015805" alt="Possessed Armor" loading="lazy"><div class="name">Possessed Armor</div><div class="wave">Wave 19</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/88/FallenNecromancer.png/revision/latest/scale-to-width-down/150?cb=20251110225640" alt="Fallen Necromancer" loading="lazy"><div class="name">Fallen Necromancer</div><div class="wave">Wave 20</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/f6/CorruptedFallenAnim2.png/revision/latest/scale-to-width-down/150?cb=20251128034951" alt="Corrupted Fallen" loading="lazy"><div class="name">Corrupted Fallen</div><div class="wave">Wave 21</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/05/FallenSeraph.png/revision/latest/scale-to-width-down/150?cb=20251110225625" alt="Fallen Seraph" loading="lazy"><div class="name">Fallen Seraph</div><div class="wave">Wave 22</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e3/FallenJester.png/revision/latest/scale-to-width-down/150?cb=20251110225613" alt="Fallen Jester" loading="lazy"><div class="name">Fallen Jester</div><div class="wave">Wave 25</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/73/NecroticSkeleton.png/revision/latest/scale-to-width-down/150?cb=20251110233834" alt="Necrotic Skeleton" loading="lazy"><div class="name">Necrotic Skeleton</div><div class="wave">Wave 26</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/57/Breaker4Fallen.png/revision/latest/scale-to-width-down/150?cb=20260309221933" alt="Breaker4" loading="lazy"><div class="name">Breaker4</div><div class="wave">Wave 26</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/79/Breaker3Fallen.png/revision/latest/scale-to-width-down/150?cb=20251113021327" alt="Breaker3" loading="lazy"><div class="name">Breaker3</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/f4/Fallen_rusher.png/revision/latest/scale-to-width-down/150?cb=20251110225555" alt="Fallen Rusher" loading="lazy"><div class="name">Fallen Rusher</div><div class="wave">Wave 28</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/74/FallenHeroRework.png/revision/latest/scale-to-width-down/150?cb=20251110225521" alt="Fallen Hero" loading="lazy"><div class="name">Fallen Hero</div><div class="wave">Wave 29</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/02/FallenShield.png/revision/latest/scale-to-width-down/150?cb=20251110233511" alt="Fallen Shield" loading="lazy"><div class="name">Fallen Shield</div><div class="wave">Wave 30</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/8e/FallenSummoner.png/revision/latest/scale-to-width-down/150?cb=20251110234015" alt="Fallen Summoner" loading="lazy"><div class="name">Fallen Summoner</div><div class="wave">Wave 30</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/f9/FallenAngel.png/revision/latest/scale-to-width-down/150?cb=20251110223206" alt="Fallen Angel" loading="lazy"><div class="name">Fallen Angel</div><div class="wave">Wave 33</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/39/FallenHonorGuard.png/revision/latest/scale-to-width-down/150?cb=20250211023651" alt="Fallen Honor Guard" loading="lazy"><div class="name">Fallen Honor Guard</div><div class="wave">Wave 35</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/38/FallenTank.png/revision/latest/scale-to-width-down/150?cb=20251128034954" alt="Fallen Tank" loading="lazy"><div class="name">Fallen Tank</div><div class="wave">Wave 36</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/af/ModernFallenGuardian.png/revision/latest/scale-to-width-down/150?cb=20241230031646" alt="Fallen Guardian" loading="lazy"><div class="name">Fallen Guardian</div><div class="wave">Wave 38</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/a1/FallenKingRework.png/revision/latest/scale-to-width-down/150?cb=20250211090837" alt="Fallen King" loading="lazy"><div class="name">Fallen King</div><div class="wave">Wave 40</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/ca/ModernTemplar.png/revision/latest/scale-to-width-down/150?cb=20250211090803" alt="Warden" loading="lazy"><div class="name">Warden</div><div class="wave">Wave ???</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/5c/AwakenedFallenKing.png/revision/latest/scale-to-width-down/150?cb=20251110091004" alt="Awakened Fallen King" loading="lazy"><div class="name">Awakened Fallen King</div><div class="wave">Wave ???</div></article>
+      </div>
+    </section>
+      <section id="frost" class="panel">
+      <div class="grid">
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/f0/Frozen1.png/revision/latest/scale-to-width-down/150?cb=20250211091131" alt="Frozen" loading="lazy"><div class="name">Frozen</div><div class="wave">Wave 1</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/61/Snowy4.png/revision/latest/scale-to-width-down/150?cb=20251214061402" alt="Snowy" loading="lazy"><div class="name">Snowy</div><div class="wave">Wave 2</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/83/SnowmanNew.png/revision/latest/scale-to-width-down/150?cb=20260311031702" alt="Snowman" loading="lazy"><div class="name">Snowman</div><div class="wave">Wave 4</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/5f/EliteSnowman1.png/revision/latest/scale-to-width-down/150?cb=20260311185153" alt="Frostmite" loading="lazy"><div class="name">Frostmite</div><div class="wave">Wave 6</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/fa/SnowGolemColdAmbush.png/revision/latest/scale-to-width-down/150?cb=20260311031639" alt="Snow Golem" loading="lazy"><div class="name">Snow Golem</div><div class="wave">Wave 8</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/21/ColdMist25.png/revision/latest/scale-to-width-down/150?cb=20260310223315" alt="Cold Mist" loading="lazy"><div class="name">Cold Mist</div><div class="wave">Wave 10</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/00/FrostMystery25.png/revision/latest/scale-to-width-down/150?cb=20260310223236" alt="Frost Mystery" loading="lazy"><div class="name">Frost Mystery</div><div class="wave">Wave 12</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/ca/CryingAngel24.png/revision/latest/scale-to-width-down/150?cb=20251110225703" alt="Crying Angel" loading="lazy"><div class="name">Crying Angel</div><div class="wave">Wave 14</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/ca/YetiModern.png/revision/latest/scale-to-width-down/150?cb=20260311020018" alt="Yeti" loading="lazy"><div class="name">Yeti</div><div class="wave">Wave 16</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/91/Packediceicon2024.png/revision/latest/scale-to-width-down/150?cb=20250211091135" alt="Packed Ice" loading="lazy"><div class="name">Packed Ice</div><div class="wave">Wave 17</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/8a/UnstableIce24.png/revision/latest/scale-to-width-down/150?cb=20250211091208" alt="Unstable Ice" loading="lazy"><div class="name">Unstable Ice</div><div class="wave">Wave 19</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/1/1a/FrostInvader24.png/revision/latest/scale-to-width-down/150?cb=20251214062039" alt="Frost Invader" loading="lazy"><div class="name">Frost Invader</div><div class="wave">Wave 20</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/43/FrostUndead.png/revision/latest/scale-to-width-down/150?cb=20250220161328" alt="Frost Undead" loading="lazy"><div class="name">Frost Undead</div><div class="wave">Wave 21</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d1/FrostAcolyte.png/revision/latest/scale-to-width-down/150?cb=20260310223252" alt="Blizzard Wizard" loading="lazy"><div class="name">Blizzard Wizard</div><div class="wave">Wave 23</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c2/FrostHunterNew.png/revision/latest/scale-to-width-down/150?cb=20251214061958" alt="Frost Hunter" loading="lazy"><div class="name">Frost Hunter</div><div class="wave">Wave 25</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/6b/Permafrost.png/revision/latest/scale-to-width-down/150?cb=20260311185128" alt="Frostbane" loading="lazy"><div class="name">Frostbane</div><div class="wave">Wave 26</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/40/FrostRavagerShieldWalk.png/revision/latest/scale-to-width-down/150?cb=20260310222150" alt="Frost Ravager" loading="lazy"><div class="name">Frost Ravager</div><div class="wave">Wave 28</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/61/NewDeepFreezeIcon.png/revision/latest/scale-to-width-down/150?cb=20250211091140" alt="Deep Freeze" loading="lazy"><div class="name">Deep Freeze</div><div class="wave">Wave 30</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/ac/FrostWraith.png/revision/latest/scale-to-width-down/150?cb=20260310221802" alt="Shivergeist" loading="lazy"><div class="name">Shivergeist</div><div class="wave">Wave 30</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/cd/FrostMage.png/revision/latest/scale-to-width-down/150?cb=20250211051908" alt="Frost Mage" loading="lazy"><div class="name">Frost Mage</div><div class="wave">Wave 30</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d7/FrostMystery24.png/revision/latest/scale-to-width-down/150?cb=20251214062057" alt="Mega Frost Mystery" loading="lazy"><div class="name">Mega Frost Mystery</div><div class="wave">Wave 31</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/1/1d/FrostNecroNew.png/revision/latest/scale-to-width-down/150?cb=20251214062120" alt="Frost Necromancer" loading="lazy"><div class="name">Frost Necromancer</div><div class="wave">Wave 32</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/ac/FrostChampion.png/revision/latest/scale-to-width-down/150?cb=20260828173428" alt="Frost Champion" loading="lazy"><div class="name">Frost Champion</div><div class="wave">Wave 33</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/8d/TricksterElf.png/revision/latest/scale-to-width-down/150?cb=20260310223336" alt="Jack Frost" loading="lazy"><div class="name">Jack Frost</div><div class="wave">Wave 35</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/36/FrostHero24.png/revision/latest/scale-to-width-down/150?cb=20250211051951" alt="Frost Hero" loading="lazy"><div class="name">Frost Hero</div><div class="wave">Wave 37</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/07/FrostSpirit24.png/revision/latest/scale-to-width-down/150?cb=20250211090906" alt="Frost Spirit" loading="lazy"><div class="name">Frost Spirit</div><div class="wave">Wave 40</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/77/IceBeacon.png/revision/latest/scale-to-width-down/150?cb=20250221164441" alt="Ice Beacon" loading="lazy"><div class="name">Ice Beacon</div><div class="wave">N/A</div></article>
+      </div>
+    </section>
+      <section id="challenge" class="panel">
+      <div class="grid">
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/42/AbnormalFallen.png/revision/latest/scale-to-width-down/150?cb=20251113024209" alt="Abnormal" loading="lazy"><div class="name">Abnormal</div><div class="wave">Wave 1</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d5/QuickFallen.png/revision/latest/scale-to-width-down/150?cb=20251217021643" alt="Quick" loading="lazy"><div class="name">Quick</div><div class="wave">Wave 3</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/43/HeavyFallen.png/revision/latest/scale-to-width-down/150?cb=20251217021632" alt="Heavy" loading="lazy"><div class="name">Heavy</div><div class="wave">Wave 5</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/91/EliteAbnormal.png/revision/latest/scale-to-width-down/150?cb=20251110055600" alt="Elite Abnormal" loading="lazy"><div class="name">Elite Abnormal</div><div class="wave">Wave 7</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/29/Breaker2Fallen.png/revision/latest/scale-to-width-down/150?cb=20251128034937" alt="Breaker2" loading="lazy"><div class="name">Breaker2</div><div class="wave">Wave 10</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c9/BreakerFallen.png/revision/latest/scale-to-width-down/150?cb=20251113021315" alt="Breaker" loading="lazy"><div class="name">Breaker</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c3/Armored.png/revision/latest/scale-to-width-down/150?cb=20251217021715" alt="Armored" loading="lazy"><div class="name">Armored</div><div class="wave">Wave 11</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/a7/NecromancerModern.png/revision/latest/scale-to-width-down/150?cb=20260310203043" alt="Necromancer" loading="lazy"><div class="name">Necromancer</div><div class="wave">Wave 12</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/47/Skeletonlunar.png/revision/latest/scale-to-width-down/150?cb=20250224000734" alt="Skeleton" loading="lazy"><div class="name">Skeleton</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b0/BoltV5.png/revision/latest/scale-to-width-down/150?cb=20260311163945" alt="Bolt" loading="lazy"><div class="name">Bolt</div><div class="wave">Wave 13</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/78/LivingExperiment.png/revision/latest/scale-to-width-down/150?cb=20260311043054" alt="Living Experiment" loading="lazy"><div class="name">Living Experiment</div><div class="wave">Wave 15</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/2c/EliteHazmatWalk1.png/revision/latest/scale-to-width-down/150?cb=20260310154933" alt="Elite Hazmat" loading="lazy"><div class="name">Elite Hazmat</div><div class="wave">Wave 17</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e5/SpeedyBossNew.png/revision/latest/scale-to-width-down/150?cb=20251217021722" alt="Speedy Boss" loading="lazy"><div class="name">Speedy Boss</div><div class="wave">Wave 19</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b8/Circuwwt.png/revision/latest/scale-to-width-down/150?cb=20250222025821" alt="Circuit" loading="lazy"><div class="name">Circuit</div><div class="wave">Wave 21</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/83/ModernGiantBossModel.png/revision/latest/scale-to-width-down/150?cb=20251217013412" alt="Giant Boss" loading="lazy"><div class="name">Giant Boss</div><div class="wave">Wave 25</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/73/NecroticSkeleton.png/revision/latest/scale-to-width-down/150?cb=20251110233834" alt="Necrotic Skeleton" loading="lazy"><div class="name">Necrotic Skeleton</div><div class="wave">Wave 26</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/57/Breaker4Fallen.png/revision/latest/scale-to-width-down/150?cb=20260309221933" alt="Breaker4" loading="lazy"><div class="name">Breaker4</div><div class="wave">Wave 26</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/79/Breaker3Fallen.png/revision/latest/scale-to-width-down/150?cb=20251113021327" alt="Breaker3" loading="lazy"><div class="name">Breaker3</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e3/Tanker.png/revision/latest/scale-to-width-down/150?cb=20251110064357" alt="Tanker" loading="lazy"><div class="name">Tanker</div><div class="wave">Wave 28</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/61/NecromancerKing.png/revision/latest/scale-to-width-down/150?cb=20250211090822" alt="Necromancer King" loading="lazy"><div class="name">Necromancer King</div><div class="wave">Wave 30</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/ab/GiantSkeletonLunar.png/revision/latest/scale-to-width-down/150?cb=20250224000730" alt="Giant Skeleton" loading="lazy"><div class="name">Giant Skeleton</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/38/FallenTank.png/revision/latest/scale-to-width-down/150?cb=20251128034954" alt="Fallen Tank" loading="lazy"><div class="name">Fallen Tank</div><div class="wave">Wave 31</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/55/Dummy_Boss.png/revision/latest/scale-to-width-down/150?cb=20251110054922" alt="Brute" loading="lazy"><div class="name">Brute</div><div class="wave">Wave 33</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/05/GraveDiggerRework.png/revision/latest/scale-to-width-down/150?cb=20250226030818" alt="Grave Digger" loading="lazy"><div class="name">Grave Digger</div><div class="wave">Wave 35</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c0/NormalAnim3.png/revision/latest/scale-to-width-down/150?cb=20260310201644" alt="Normal" loading="lazy"><div class="name">Normal</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/f6/SpeedyAnim1.png/revision/latest/scale-to-width-down/150?cb=20260310193041" alt="Speedy" loading="lazy"><div class="name">Speedy</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/35/SlowAnim1.png/revision/latest/scale-to-width-down/150?cb=20260310191318" alt="Slow" loading="lazy"><div class="name">Slow</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/89/EasyModeNormalBoss.png/revision/latest/scale-to-width-down/150?cb=20251217021755" alt="Normal Boss" loading="lazy"><div class="name">Normal Boss</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c8/HazmatAnim1.png/revision/latest/scale-to-width-down/150?cb=20260310204951" alt="Hazmat" loading="lazy"><div class="name">Hazmat</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/ca/ModernTemplar.png/revision/latest/scale-to-width-down/150?cb=20250211090803" alt="Warden" loading="lazy"><div class="name">Warden</div><div class="wave">Wave 39</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/b6/RedChampionTemplar.png/revision/latest/scale-to-width-down/150?cb=20251217013248" alt="Champion Templar" loading="lazy"><div class="name">Champion Templar</div><div class="wave">Wave 40</div></article>
+      </div>
+    </section>
+      <section id="polluted" class="panel">
+      <div class="grid">
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/f1/Radioactive.png/revision/latest/scale-to-width-down/150?cb=20260313153343" alt="Radioactive" loading="lazy"><div class="name">Radioactive</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/90/WastedBoss.png/revision/latest/scale-to-width-down/150?cb=20260313153424" alt="Wasted Boss" loading="lazy"><div class="name">Wasted Boss</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/94/Amalgamation-0.png/revision/latest/scale-to-width-down/150?cb=20251215224101" alt="Amalgamation" loading="lazy"><div class="name">Amalgamation</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e8/Rusher.png/revision/latest/scale-to-width-down/150?cb=20200524181219" alt="Rusher" loading="lazy"><div class="name">Rusher</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/9d/Splitter-0.png/revision/latest/scale-to-width-down/150?cb=20260313153505" alt="Splitter" loading="lazy"><div class="name">Splitter</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/41/Split.png/revision/latest/scale-to-width-down/150?cb=20260313153543" alt="Split" loading="lazy"><div class="name">Split</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/96/NuclearFallenKing.png/revision/latest/scale-to-width-down/150?cb=20260322013015" alt="Nuclear Fallen King" loading="lazy"><div class="name">Nuclear Fallen King</div><div class="wave">N/A</div></article>
+      </div>
+    </section>
+      <section id="golden" class="panel">
+      <div class="grid">
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/60/Abnormal1.png/revision/latest/scale-to-width-down/150?cb=20260313202217" alt="Abnormal" loading="lazy"><div class="name">Abnormal</div><div class="wave">Wave 1</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e5/Quick4.png/revision/latest/scale-to-width-down/150?cb=20260313202428" alt="Quick" loading="lazy"><div class="name">Quick</div><div class="wave">Wave 5</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/35/HeavyFrostUpdate.png/revision/latest/scale-to-width-down/150?cb=20251218213425" alt="Heavy" loading="lazy"><div class="name">Heavy</div><div class="wave">Wave 7</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/ea/AbnormalBossFrostUpdate.png/revision/latest/scale-to-width-down/150?cb=20251218213441" alt="Abnormal Boss" loading="lazy"><div class="name">Abnormal Boss</div><div class="wave">Wave 10</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/Shadow2.png/revision/latest/scale-to-width-down/150?cb=20230708003543" alt="Shadow" loading="lazy"><div class="name">Shadow</div><div class="wave">Wave 13</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/37/Mystery6.png/revision/latest/scale-to-width-down/150?cb=20260313202905" alt="Mystery" loading="lazy"><div class="name">Mystery</div><div class="wave">Wave 16</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/55/Golden.png/revision/latest/scale-to-width-down/150?cb=20260323052441" alt="Golden" loading="lazy"><div class="name">Golden</div><div class="wave">Wave 20</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/04/ChainedBossIcon.png/revision/latest/scale-to-width-down/150?cb=20251216023333" alt="Chained Boss" loading="lazy"><div class="name">Chained Boss</div><div class="wave">Wave 22</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/6e/DarkNecromancer0.png/revision/latest/scale-to-width-down/150?cb=20251216223447" alt="Dark Necromancer" loading="lazy"><div class="name">Dark Necromancer</div><div class="wave">Wave 23</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/68/ShadowBoss-2.png/revision/latest/scale-to-width-down/150?cb=20230708011135" alt="Shadow Boss" loading="lazy"><div class="name">Shadow Boss</div><div class="wave">Wave 24</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/9a/ChargeIcon.png/revision/latest/scale-to-width-down/150?cb=20260410183755" alt="Charge" loading="lazy"><div class="name">Charge</div><div class="wave">Wave 26</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/5d/MysteryBoss2.png/revision/latest/scale-to-width-down/150?cb=20260313233909" alt="Mystery Boss" loading="lazy"><div class="name">Mystery Boss</div><div class="wave">Wave 29</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/62/Tank3.png/revision/latest/scale-to-width-down/150?cb=20251218213455" alt="Tank" loading="lazy"><div class="name">Tank</div><div class="wave">Wave 30</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d8/Boomer0.png/revision/latest/scale-to-width-down/150?cb=20251218213504" alt="Boomer" loading="lazy"><div class="name">Boomer</div><div class="wave">Wave 34</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/34/SummonerBoss.png/revision/latest/scale-to-width-down/150?cb=20251216222620" alt="Summoner Boss" loading="lazy"><div class="name">Summoner Boss</div><div class="wave">Wave 36</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/0b/24Karat-0.png/revision/latest/scale-to-width-down/150?cb=20260323052443" alt="24 Karat" loading="lazy"><div class="name">24 Karat</div><div class="wave">Wave 39</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/90/GoldGuard1.png/revision/latest/scale-to-width-down/150?cb=20260323052447" alt="Gold Guard" loading="lazy"><div class="name">Gold Guard</div><div class="wave">Wave 40</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/f/fc/GoldTitan0.png/revision/latest/scale-to-width-down/150?cb=20260323031558" alt="Gold Titan" loading="lazy"><div class="name">Gold Titan</div><div class="wave">Wave 40</div></article>
+      </div>
+    </section>
+      <section id="hardcore" class="panel">
+      <div class="grid">
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/00/Odd1.png/revision/latest/scale-to-width-down/150?cb=20260608155653" alt="Odd" loading="lazy"><div class="name">Odd</div><div class="wave">Wave 1</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/8a/Swift1.png/revision/latest/scale-to-width-down/150?cb=20260617133323" alt="Swift" loading="lazy"><div class="name">Swift</div><div class="wave">Wave 1</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/59/VoidHefty1.png/revision/latest/scale-to-width-down/150?cb=20260608000251" alt="Hefty" loading="lazy"><div class="name">Hefty</div><div class="wave">Wave 4</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c3/Mandrake.png/revision/latest/scale-to-width-down/150?cb=20260608001932" alt="Mandrake" loading="lazy"><div class="name">Mandrake</div><div class="wave">Wave 8</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/ec/Phantom.png/revision/latest/scale-to-width-down/150?cb=20260608155622" alt="Phantom" loading="lazy"><div class="name">Phantom</div><div class="wave">Wave 10</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d0/VoidBalloonFloat.png/revision/latest/scale-to-width-down/150?cb=20260606185431" alt="Balloon" loading="lazy"><div class="name">Balloon</div><div class="wave">Wave 12</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/1/15/VoidLeadCover1.png/revision/latest/scale-to-width-down/150?cb=20260608000348" alt="Lead" loading="lazy"><div class="name">Lead</div><div class="wave">Wave 14</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/85/EliteLead1.png/revision/latest/scale-to-width-down/150?cb=20260606185533" alt="Elite Lead" loading="lazy"><div class="name">Elite Lead</div><div class="wave">Wave 16</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/a6/VoidMystery1.png/revision/latest/scale-to-width-down/150?cb=20260613171547" alt="Mystery" loading="lazy"><div class="name">Mystery</div><div class="wave">Wave 17</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/84/VoidBlighted.png/revision/latest/scale-to-width-down/150?cb=20260610182738" alt="Blighted" loading="lazy"><div class="name">Blighted</div><div class="wave">Wave 19</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/63/VoidCursedSkeleton.png/revision/latest/scale-to-width-down/150?cb=20260610183144" alt="Cursed Skeleton" loading="lazy"><div class="name">Cursed Skeleton</div><div class="wave">Wave 20</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/dc/Voidling.png/revision/latest/scale-to-width-down/150?cb=20260609025341" alt="Voidling" loading="lazy"><div class="name">Voidling</div><div class="wave">Wave 21</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/ab/VoidReaper.png/revision/latest/scale-to-width-down/150?cb=20260610183519" alt="Void Reaper" loading="lazy"><div class="name">Void Reaper</div><div class="wave">Wave 22</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/dc/ElitePhantom.png/revision/latest/scale-to-width-down/150?cb=20260606194423" alt="Elite Phantom" loading="lazy"><div class="name">Elite Phantom</div><div class="wave">Wave 23</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/77/Mandragora.png/revision/latest/scale-to-width-down/150?cb=20260614045006" alt="Mandragora" loading="lazy"><div class="name">Mandragora</div><div class="wave">Wave 26</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e1/VoidRusher1.png/revision/latest/scale-to-width-down/150?cb=20260609020707" alt="Void Rusher" loading="lazy"><div class="name">Void Rusher</div><div class="wave">Wave 27</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/01/VoidPike.png/revision/latest/scale-to-width-down/150?cb=20260609015730" alt="Void Pike" loading="lazy"><div class="name">Void Pike</div><div class="wave">Wave 28</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e2/VoidTitan.png/revision/latest/scale-to-width-down/150?cb=20260610184830" alt="Void Titan" loading="lazy"><div class="name">Void Titan</div><div class="wave">Wave 30</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d7/VoidFloater1.png/revision/latest/scale-to-width-down/150?cb=20260610184905" alt="Void Floater" loading="lazy"><div class="name">Void Floater</div><div class="wave">Wave 31</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/59/EliteMystery.png/revision/latest/scale-to-width-down/150?cb=20260613172247" alt="Elite Mystery" loading="lazy"><div class="name">Elite Mystery</div><div class="wave">Wave 32</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/05/VoidBrute.png/revision/latest/scale-to-width-down/150?cb=20260613231252" alt="Void Brute" loading="lazy"><div class="name">Void Brute</div><div class="wave">Wave 33</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/cc/UnknownHexscape.png/revision/latest/scale-to-width-down/150?cb=20260318015457" alt="Unknown Small" loading="lazy"><div class="name">Unknown Small</div><div class="wave">Wave 34</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c4/EliteVoidRusher1.png/revision/latest/scale-to-width-down/150?cb=20260606194405" alt="Elite Void Rusher" loading="lazy"><div class="name">Elite Void Rusher</div><div class="wave">Wave 34</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/ec/Nightshade.png/revision/latest/scale-to-width-down/150?cb=20260608001920" alt="Nightshade" loading="lazy"><div class="name">Nightshade</div><div class="wave">Wave 35</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/90/VoidKeeper.png/revision/latest/scale-to-width-down/150?cb=20260608231301" alt="Void Keeper" loading="lazy"><div class="name">Void Keeper</div><div class="wave">Wave 36</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d8/VoidSoul.png/revision/latest/scale-to-width-down/150?cb=20260608163633" alt="Soul" loading="lazy"><div class="name">Soul</div><div class="wave">Wave 37</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/41/VoidSlowKing2.png/revision/latest/scale-to-width-down/150?cb=20260614160021" alt="Slow King" loading="lazy"><div class="name">Slow King</div><div class="wave">Wave 37</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/32/VoidCultist.png/revision/latest/scale-to-width-down/150?cb=20260608224138" alt="Void Cultist" loading="lazy"><div class="name">Void Cultist</div><div class="wave">Wave 38</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/3d/HealingBeacon.png/revision/latest/scale-to-width-down/150?cb=20260616045729" alt="Healing Beacon" loading="lazy"><div class="name">Healing Beacon</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/74/VoidSpeedyKing.png/revision/latest/scale-to-width-down/150?cb=20260614043939" alt="Speedy King" loading="lazy"><div class="name">Speedy King</div><div class="wave">Wave 39</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/bb/Vindicator.png/revision/latest/scale-to-width-down/150?cb=20260606173754" alt="Vindicator" loading="lazy"><div class="name">Vindicator</div><div class="wave">Wave 40</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/5f/HeavyVoidling.png/revision/latest/scale-to-width-down/150?cb=20260607144133" alt="Heavy Voidling" loading="lazy"><div class="name">Heavy Voidling</div><div class="wave">Wave 41</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/1/16/EliteSoul.png/revision/latest/scale-to-width-down/150?cb=20260606194414" alt="Elite Soul" loading="lazy"><div class="name">Elite Soul</div><div class="wave">Wave 41</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/70/UnknownBoss.png/revision/latest/scale-to-width-down/150?cb=20260318014736" alt="Unknown Boss" loading="lazy"><div class="name">Unknown Boss</div><div class="wave">Wave 41</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/7a/VoidKnight.png/revision/latest/scale-to-width-down/150?cb=20260609011711" alt="Void Knight" loading="lazy"><div class="name">Void Knight</div><div class="wave">Wave 42</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e2/VoidTrickster.png/revision/latest/scale-to-width-down/150?cb=20260614044433" alt="Void Trickster" loading="lazy"><div class="name">Void Trickster</div><div class="wave">Wave 42</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/91/VoidPortalIconIG.png/revision/latest/scale-to-width-down/150?cb=20260607160936" alt="Void Portal" loading="lazy"><div class="name">Void Portal</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/0f/VoidSwordmaster.png/revision/latest/scale-to-width-down/150?cb=20260609023525" alt="Void Swordmaster" loading="lazy"><div class="name">Void Swordmaster</div><div class="wave">Wave 43</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/2c/VoidGuardian.png/revision/latest/scale-to-width-down/150?cb=20260608231815" alt="Void Guardian" loading="lazy"><div class="name">Void Guardian</div><div class="wave">Wave 44</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/35/VoidReaver.png/revision/latest/scale-to-width-down/150?cb=20260613204716" alt="Void Reaver" loading="lazy"><div class="name">Void Reaver</div><div class="wave">Wave 45</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/ac/VoidEye.png/revision/latest/scale-to-width-down/150?cb=20260608224554" alt="Void Eye" loading="lazy"><div class="name">Void Eye</div><div class="wave">N/A</div></article>
+      </div>
+    </section>
+      <section id="voidcore" class="panel">
+      <div class="grid">
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/00/Odd1.png/revision/latest/scale-to-width-down/150?cb=20260608155653" alt="Odd" loading="lazy"><div class="name">Odd</div><div class="wave">Wave 1</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/8a/Swift1.png/revision/latest/scale-to-width-down/150?cb=20260617133323" alt="Swift" loading="lazy"><div class="name">Swift</div><div class="wave">Wave 1</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/59/VoidHefty1.png/revision/latest/scale-to-width-down/150?cb=20260608000251" alt="Hefty" loading="lazy"><div class="name">Hefty</div><div class="wave">Wave 4</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/63/VoidCursedSkeleton.png/revision/latest/scale-to-width-down/150?cb=20260610183144" alt="Cursed Skeleton" loading="lazy"><div class="name">Cursed Skeleton</div><div class="wave">Wave 8</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/ec/Phantom.png/revision/latest/scale-to-width-down/150?cb=20260608155622" alt="Phantom" loading="lazy"><div class="name">Phantom</div><div class="wave">Wave 10</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d0/VoidBalloonFloat.png/revision/latest/scale-to-width-down/150?cb=20260606185431" alt="Balloon" loading="lazy"><div class="name">Balloon</div><div class="wave">Wave 11</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/1/15/VoidLeadCover1.png/revision/latest/scale-to-width-down/150?cb=20260608000348" alt="Lead" loading="lazy"><div class="name">Lead</div><div class="wave">Wave 13</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/85/EliteLead1.png/revision/latest/scale-to-width-down/150?cb=20260606185533" alt="Elite Lead" loading="lazy"><div class="name">Elite Lead</div><div class="wave">Wave 15</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/a6/VoidMystery1.png/revision/latest/scale-to-width-down/150?cb=20260613171547" alt="Mystery" loading="lazy"><div class="name">Mystery</div><div class="wave">Wave 16</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/84/VoidBlighted.png/revision/latest/scale-to-width-down/150?cb=20260610182738" alt="Blighted" loading="lazy"><div class="name">Blighted</div><div class="wave">Wave 18</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c3/Mandrake.png/revision/latest/scale-to-width-down/150?cb=20260608001932" alt="Mandrake" loading="lazy"><div class="name">Mandrake</div><div class="wave">Wave 19</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/dc/Voidling.png/revision/latest/scale-to-width-down/150?cb=20260609025341" alt="Voidling" loading="lazy"><div class="name">Voidling</div><div class="wave">Wave 20</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/dc/ElitePhantom.png/revision/latest/scale-to-width-down/150?cb=20260606194423" alt="Elite Phantom" loading="lazy"><div class="name">Elite Phantom</div><div class="wave">Wave 22</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/ab/VoidReaper.png/revision/latest/scale-to-width-down/150?cb=20260610183519" alt="Void Reaper" loading="lazy"><div class="name">Void Reaper</div><div class="wave">Wave 23</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d7/VoidFloater1.png/revision/latest/scale-to-width-down/150?cb=20260610184905" alt="Void Floater" loading="lazy"><div class="name">Void Floater</div><div class="wave">Wave 25</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e1/VoidRusher1.png/revision/latest/scale-to-width-down/150?cb=20260609020707" alt="Void Rusher" loading="lazy"><div class="name">Void Rusher</div><div class="wave">Wave 27</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/01/VoidPike.png/revision/latest/scale-to-width-down/150?cb=20260609015730" alt="Void Pike" loading="lazy"><div class="name">Void Pike</div><div class="wave">Wave 28</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e2/VoidTitan.png/revision/latest/scale-to-width-down/150?cb=20260610184830" alt="Void Titan" loading="lazy"><div class="name">Void Titan</div><div class="wave">Wave 30</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/77/Mandragora.png/revision/latest/scale-to-width-down/150?cb=20260614045006" alt="Mandragora" loading="lazy"><div class="name">Mandragora</div><div class="wave">Wave 31</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/59/EliteMystery.png/revision/latest/scale-to-width-down/150?cb=20260613172247" alt="Elite Mystery" loading="lazy"><div class="name">Elite Mystery</div><div class="wave">Wave 33</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/05/VoidBrute.png/revision/latest/scale-to-width-down/150?cb=20260613231252" alt="Void Brute" loading="lazy"><div class="name">Void Brute</div><div class="wave">Wave 34</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/90/VoidKeeper.png/revision/latest/scale-to-width-down/150?cb=20260608231301" alt="Void Keeper" loading="lazy"><div class="name">Void Keeper</div><div class="wave">Wave 35</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/cc/UnknownHexscape.png/revision/latest/scale-to-width-down/150?cb=20260318015457" alt="Unknown Small" loading="lazy"><div class="name">Unknown Small</div><div class="wave">Wave 36</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c4/EliteVoidRusher1.png/revision/latest/scale-to-width-down/150?cb=20260606194405" alt="Elite Void Rusher" loading="lazy"><div class="name">Elite Void Rusher</div><div class="wave">Wave 37</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/41/VoidSlowKing2.png/revision/latest/scale-to-width-down/150?cb=20260614160021" alt="Slow King" loading="lazy"><div class="name">Slow King</div><div class="wave">Wave 38</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/74/VoidSpeedyKing.png/revision/latest/scale-to-width-down/150?cb=20260614043939" alt="Speedy King" loading="lazy"><div class="name">Speedy King</div><div class="wave">Wave 39</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/ad/Crystalian.png/revision/latest/scale-to-width-down/150?cb=20260606185524" alt="Crystalian" loading="lazy"><div class="name">Crystalian</div><div class="wave">Wave 40</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/d/d8/VoidSoul.png/revision/latest/scale-to-width-down/150?cb=20260608163633" alt="Soul" loading="lazy"><div class="name">Soul</div><div class="wave">Wave 41</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/1/16/EliteSoul.png/revision/latest/scale-to-width-down/150?cb=20260606194414" alt="Elite Soul" loading="lazy"><div class="name">Elite Soul</div><div class="wave">Wave 41</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e2/VoidTrickster.png/revision/latest/scale-to-width-down/150?cb=20260614044433" alt="Void Trickster" loading="lazy"><div class="name">Void Trickster</div><div class="wave">Wave 42</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/9/91/VoidPortalIconIG.png/revision/latest/scale-to-width-down/150?cb=20260607160936" alt="Void Portal" loading="lazy"><div class="name">Void Portal</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/ec/Nightshade.png/revision/latest/scale-to-width-down/150?cb=20260608001920" alt="Nightshade" loading="lazy"><div class="name">Nightshade</div><div class="wave">Wave 42</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/bb/Vindicator.png/revision/latest/scale-to-width-down/150?cb=20260606173754" alt="Vindicator" loading="lazy"><div class="name">Vindicator</div><div class="wave">Wave 43</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/70/UnknownBoss.png/revision/latest/scale-to-width-down/150?cb=20260318014736" alt="Unknown Boss" loading="lazy"><div class="name">Unknown Boss</div><div class="wave">Wave 44</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/32/VoidCultist.png/revision/latest/scale-to-width-down/150?cb=20260608224138" alt="Void Cultist" loading="lazy"><div class="name">Void Cultist</div><div class="wave">Wave 44</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/3d/HealingBeacon.png/revision/latest/scale-to-width-down/150?cb=20260616045729" alt="Healing Beacon" loading="lazy"><div class="name">Healing Beacon</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/6/6b/VoidSoulStealer.png/revision/latest/scale-to-width-down/150?cb=20260606194353" alt="Soul Stealer" loading="lazy"><div class="name">Soul Stealer</div><div class="wave">Wave 45</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/a/ac/VoidEye.png/revision/latest/scale-to-width-down/150?cb=20260608224554" alt="Void Eye" loading="lazy"><div class="name">Void Eye</div><div class="wave">N/A</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/5f/HeavyVoidling.png/revision/latest/scale-to-width-down/150?cb=20260607144133" alt="Heavy Voidling" loading="lazy"><div class="name">Heavy Voidling</div><div class="wave">Wave 46</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/7/7a/VoidKnight.png/revision/latest/scale-to-width-down/150?cb=20260609011711" alt="Void Knight" loading="lazy"><div class="name">Void Knight</div><div class="wave">Wave 47</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/0f/VoidSwordmaster.png/revision/latest/scale-to-width-down/150?cb=20260609023525" alt="Void Swordmaster" loading="lazy"><div class="name">Void Swordmaster</div><div class="wave">Wave 48</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/2/2c/VoidGuardian.png/revision/latest/scale-to-width-down/150?cb=20260608231815" alt="Void Guardian" loading="lazy"><div class="name">Void Guardian</div><div class="wave">Wave 49</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/3/35/VoidReaver.png/revision/latest/scale-to-width-down/150?cb=20260613204716" alt="Void Reaver" loading="lazy"><div class="name">Void Reaver</div><div class="wave">Wave 50</div></article>
+      <article class="card"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/1/19/VoidCasterEnemy.png/revision/latest/scale-to-width-down/150?cb=20260614050317" alt="Void Caster" loading="lazy"><div class="name">Void Caster</div><div class="wave">N/A</div></article>
+      </div>
+    </section>
+  </main>
+<script>
+function showTab(id,button){
+ document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+ document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ button.classList.add('active');
+}
+</script>
+</body>
+</html>
