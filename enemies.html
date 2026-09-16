@@ -19,18 +19,46 @@ main{max-width:1200px;margin:auto;padding:28px;min-height:100vh}
 .tab.active{background:#2563eb}
 .panel{display:none}
 .panel.active{display:block}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px}
-.card{background:#1f2937;border:1px solid #374151;border-radius:14px;padding:16px;text-align:center}
+.grid,.enemy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:18px}
+.card,.enemy-card{background:#1f2937;border:1px solid #374151;border-radius:14px;padding:16px;text-align:center}
+.enemy-card img{width:150px;height:150px;object-fit:contain;display:block;margin:0 auto 12px}
+.enemy-card h3{margin:0;font-size:18px}
 .card img{width:150px;height:150px;object-fit:contain;display:block;margin:0 auto 12px}
 .name{font-size:18px;font-weight:700}
 .wave{margin-top:7px;color:#9ca3af;font-size:14px}
-@media(max-width:600px){main{padding:18px}.grid{grid-template-columns:repeat(2,1fr)}.card img{width:120px;height:120px}}
+@media(max-width:600px){main{padding:18px}.grid,.enemy-grid{grid-template-columns:repeat(2,1fr)}.card img,.enemy-card img{width:120px;height:120px}}
+
+/* Units-style enemy page */
+html,body{min-height:100%;font-family:Arial,Helvetica,sans-serif}
+body{background:linear-gradient(rgba(5,8,14,.68),rgba(5,8,14,.88)),url("https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/SummerCastleIcon.png/revision/latest/smart/width/400/height/225?cb=20250709204530") center/cover fixed;color:#fff}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:28px;min-height:82px;padding:8px 24px;background:rgba(5,7,12,.96);border-bottom:2px solid rgba(255,255,255,.14)}
+header h1{font-size:clamp(30px,4.2vw,50px)}
+header .subtitle{margin:6px 0 0;color:#b9c0cf}
+header:before{content:"TDS WIKI";display:block;position:absolute;left:24px;top:10px;color:#65b8ff;font-size:12px;font-weight:900;letter-spacing:2px}
+header h1{margin-top:10px}
+.wiki-banner{width:min(650px,58vw);max-height:66px;object-fit:contain;order:2}.header-title{order:1}.header-title h1{margin:10px 0 0}.header-title .subtitle{margin:6px 0 0}#enemy-search{order:3;width:min(360px,32vw);padding:12px 15px;border:1px solid rgba(255,255,255,.14);border-radius:12px;outline:0;color:#fff;background:rgba(0,0,0,.5)}
+main{width:min(1500px,94vw);max-width:none;margin:14px auto 40px;padding:0;min-height:0}
+.tabs{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 18px;padding:0;overflow:visible}
+.tab{border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:7px 11px;background:rgba(0,0,0,.35);color:#fff;font-size:13px}
+.tab.active{border-color:#65b8ff;background:rgba(101,184,255,.16)}
+.panel{margin:18px 0 24px;padding:20px;border:1px solid rgba(255,255,255,.14);border-radius:20px;background:rgba(15,18,27,.94)}
+.panel.active{display:block}
+.panel:before{content:attr(id);display:block;margin-bottom:14px;color:#65b8ff;font-size:25px;font-weight:900;text-transform:capitalize}
+.grid,.enemy-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:9px}
+.card,.enemy-card{position:relative;flex:0 0 230px;height:250px;overflow:hidden;display:block;padding:0;border:0;border-radius:14px;background:url("https://raw.githubusercontent.com/zacharyceiley-jpg/TDS-WIKI/main/assets/slot.png") center/100% 100% no-repeat;text-align:center;transition:transform .18s,box-shadow .18s}
+.card:hover,.enemy-card:hover{transform:translateY(-6px) scale(1.025);box-shadow:0 18px 36px rgba(0,0,0,.5)}
+.card img,.enemy-card img{position:absolute;inset:14px 14px 43px;z-index:0;width:calc(100% - 28px);height:calc(100% - 57px);margin:0;object-fit:contain}
+.card:after,.enemy-card:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 48%,rgba(0,0,0,.72))}
+.card .name,.enemy-card h3{position:absolute;right:0;bottom:0;left:0;z-index:1;margin:0;padding:11px 9px;text-align:center;font-size:16px;font-weight:900;text-shadow:0 2px 7px #000}
+.wave{position:absolute;top:12px;left:12px;z-index:2;margin:0;padding:4px 7px;border-radius:7px;background:rgba(0,0,0,.7);color:#c8cfda;font-size:11px}
+@media(max-width:700px){header{gap:10px;padding:8px 12px}header h1{font-size:28px}.panel{padding:14px}.card,.enemy-card{flex-basis:180px;height:195px}.card .name,.enemy-card h3{font-size:14px}.card img,.enemy-card img{inset:10px 10px 35px;width:calc(100% - 20px);height:calc(100% - 45px)}}
 </style>
 </head>
 <body>
 <header>
-<h1>Enemies</h1>
-<p class="subtitle">Tower Defense Simulator enemy list</p>
+<img class="wiki-banner" src="https://i.namu.wiki/i/7xTzCZ5-4YLxCBlGfiGrTr_TKKr1_lGMMnV4E3oGJX87QuWTZ0KK2M0EWE1-_VtY_Z9HkVdHEGXzo15xq-A52w.webp" alt="TDS Wiki">
+<div class="header-title"><h1>Enemies</h1><p class="subtitle">Tower Defense Simulator enemy list</p></div>
+<input id="enemy-search" type="search" placeholder="Search enemies..." aria-label="Search enemies">
 </header>
 <main>
 <div class="tabs">
@@ -1709,12 +1737,13 @@ main{max-width:1200px;margin:auto;padding:28px;min-height:100vh}
   </div>
 </section>
     <section id="legacyhidden" class="panel">
-  <div class="enemy-grid">
+  <div class="grid">
 
-    <div class="enemy-card">
-      <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/0f/GlitchedGiant-0.png/revision/latest/scale-to-width-down/150?cb=20260313025122">
-      <h3>Glitched Giant</h3>
-    </div>
+    <article class="card">
+      <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/0f/GlitchedGiant-0.png/revision/latest/scale-to-width-down/150?cb=20260313025122" alt="Glitched Giant" loading="lazy">
+      <div class="name">Glitched Giant</div>
+      <div class="wave">N/A</div>
+    </article>
 
     <div class="enemy-card">
       <img src="https://static.wikia.nocookie.net/tower-defense-sim/images/e/e7/Bruh-0.png/revision/latest/scale-to-width-down/150?cb=20260313025259">
@@ -1789,11 +1818,18 @@ function showTab(id, button) {
   document.querySelectorAll('.panel').forEach(panel => {
     panel.classList.toggle('active', panel.id === id);
   });
-
   document.querySelectorAll('.tab').forEach(tab => {
     tab.classList.toggle('active', tab === button);
   });
 }
+
+const enemySearch = document.getElementById('enemy-search');
+enemySearch.addEventListener('input', () => {
+  const query = enemySearch.value.toLowerCase().trim();
+  document.querySelectorAll('.panel .card, .panel .enemy-card').forEach(card => {
+    card.style.display = card.textContent.toLowerCase().includes(query) ? '' : 'none';
+  });
+});
 </script>
 </body>
 </html>
