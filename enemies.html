@@ -554,7 +554,40 @@ main{max-width:1200px;margin:auto;padding:28px}
 </section>
   </main>
 <script>
-function showTab(id,button){
+.tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:24px;
+
+  /* scrolling */
+  overflow-x:auto;
+  overflow-y:hidden;
+  white-space:nowrap;
+  flex-wrap:nowrap;
+
+  /* makes the scrollbar look nicer */
+  scrollbar-width:thin;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:8px;
+}
+
+.tabs::-webkit-scrollbar{
+  height:8px;
+}
+
+.tabs::-webkit-scrollbar-track{
+  background:#1f2937;
+  border-radius:10px;
+}
+
+.tabs::-webkit-scrollbar-thumb{
+  background:#4b5563;
+  border-radius:10px;
+}
+
+.tabs .tab{
+  flex:0 0 auto;
+}
  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
  document.getElementById(id).classList.add('active');
