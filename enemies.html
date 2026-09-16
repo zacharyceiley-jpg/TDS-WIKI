@@ -6,13 +6,16 @@
 <title>TDS Wiki — Enemies</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#111827;color:#f9fafb}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#111827;color:#f9fafb;overflow-x:hidden}
 header{padding:28px 32px;background:#1f2937;border-bottom:1px solid #374151}
 h1{margin:0;font-size:34px}
 .subtitle{margin:8px 0 0;color:#9ca3af}
-main{max-width:1200px;margin:auto;padding:28px}
-.tabs{display:flex;gap:10px;margin-bottom:24px}
-.tab{border:0;border-radius:10px;padding:11px 18px;background:#374151;color:#fff;font-weight:700;cursor:pointer}
+main{max-width:1200px;margin:auto;padding:28px;min-height:100vh}
+.tabs{display:flex;gap:10px;margin-bottom:24px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;flex-wrap:nowrap;padding-bottom:8px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{height:8px}
+.tabs::-webkit-scrollbar-track{background:#1f2937;border-radius:10px}
+.tabs::-webkit-scrollbar-thumb{background:#4b5563;border-radius:10px}
+.tab{flex:0 0 auto;border:0;border-radius:10px;padding:11px 18px;background:#374151;color:#fff;font-weight:700;cursor:pointer}
 .tab.active{background:#2563eb}
 .panel{display:none}
 .panel.active{display:block}
@@ -734,44 +737,14 @@ main{max-width:1200px;margin:auto;padding:28px}
 </section>
   </main>
 <script>
-.tabs{
-  display:flex;
-  gap:10px;
-  margin-bottom:24px;
+function showTab(id, button) {
+  document.querySelectorAll('.panel').forEach(panel => {
+    panel.classList.toggle('active', panel.id === id);
+  });
 
-  /* scrolling */
-  overflow-x:auto;
-  overflow-y:hidden;
-  white-space:nowrap;
-  flex-wrap:nowrap;
-
-  /* makes the scrollbar look nicer */
-  scrollbar-width:thin;
-  -webkit-overflow-scrolling:touch;
-  padding-bottom:8px;
-}
-
-.tabs::-webkit-scrollbar{
-  height:8px;
-}
-
-.tabs::-webkit-scrollbar-track{
-  background:#1f2937;
-  border-radius:10px;
-}
-
-.tabs::-webkit-scrollbar-thumb{
-  background:#4b5563;
-  border-radius:10px;
-}
-
-.tabs .tab{
-  flex:0 0 auto;
-}
- document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
- document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- button.classList.add('active');
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.classList.toggle('active', tab === button);
+  });
 }
 </script>
 </body>
