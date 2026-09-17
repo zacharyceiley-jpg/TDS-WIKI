@@ -1,0 +1,1248 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TDS Wiki — Scout</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111 url("https://static.wikia.nocookie.net/tower-defense-sim/images/0/09/SummerCastleView.png/revision/latest/scale-to-width/360?cb=20250710105241") center / cover fixed no-repeat;
+    color: #fff;
+}
+
+.wiki-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 22px;
+    margin-bottom: 25px;
+    background: rgba(28, 28, 28, .94);
+    border: 1px solid #444;
+    border-radius: 15px;
+}
+
+.wiki-banner h2 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+.home-button {
+    display: inline-block;
+    background: #44c767;
+    color: white;
+    text-decoration: none;
+    border-radius: 9px;
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+.home-button:hover {
+    background: #35a955;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 25px;
+}
+
+h1, h2 {
+    margin-top: 0;
+}
+
+.tower-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 25px;
+    background: #1c1c1c;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.tower-header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #bbb;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+.tower-costs {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+.cost-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ddd;
+    font-weight: bold;
+}
+
+.cost-item img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.tower-icon {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.tower-section {
+    background: #1c1c1c;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #252525;
+    border-radius: 14px;
+    padding: 15px;
+    text-align: center;
+    transition: transform .15s, background .15s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    background: #303030;
+}
+
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.wave {
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.equipped-skin {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: #252525;
+    padding: 20px;
+    border-radius: 14px;
+}
+
+.equipped-skin img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+}
+
+.upgrade-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+}
+
+.upgrade-card {
+    background: #252525 url("https://github.com/zacharyceiley-jpg/TDS-WIKI/blob/main/assets/slot.png?raw=true") center / cover no-repeat;
+    padding: 15px;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.upgrade-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+.upgrade-level {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.upgrade-info {
+    color: #aaa;
+    line-height: 1.5;
+    min-height: 65px;
+}
+
+button {
+    border: 0;
+    border-radius: 9px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.upgrade-button {
+    display: none;
+}
+
+.upgrade-button:hover {
+    background: #2674d9;
+}
+
+.upgrade-all-button {
+    background: #44c767;
+    color: white;
+    font-size: 16px;
+}
+
+.upgrade-all-button:hover {
+    background: #35a955;
+}
+
+.skins-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.skin-card img {
+    height: 150px;
+}
+
+.special-card {
+    position: relative;
+}
+
+.special-card.golden {
+    border: 2px solid #d8a900;
+}
+
+.special-card.evolved {
+    border: 2px solid #9b59ff;
+}
+
+.skin-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.skin-selector label {
+    font-weight: bold;
+}
+
+.skin-selector select {
+    min-width: 220px;
+    background: #303030;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 9px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Skins are selected from the control at the top. */
+.skin-gallery-section {
+    display: none;
+}
+
+.legacy-combined-section {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .tower-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .skins-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .wiki-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="wiki-banner">
+<h2>TDS Wiki</h2>
+<a class="home-button" href="https://zacharyceiley-jpg.github.io/TDS-WIKI/">Back to Home</a>
+</header>
+
+<!-- HEADER -->
+
+<section class="tower-header">
+
+<div>
+<h1>Scout</h1>
+
+<p class="description">
+Scout is a cheap and reliable early-game tower. He attacks enemies with his firearm
+and can be upgraded to improve his combat abilities.
+</p>
+
+<div class="tower-costs" aria-label="Scout costs">
+<div class="cost-item">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/8f/CoinV2.png/revision/latest?cb=20260423015829" alt="Coins">
+<span>Coins: Free</span>
+</div>
+<div class="cost-item">
+<img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest/scale-to-width-down/20?cb=20200828231922" alt="Cash">
+<span>Placement: 150</span>
+</div>
+</div>
+</div>
+
+    <img
+class="tower-icon"
+id="towerIcon"
+src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c8/DefaultScoutIconIGAug26.png/revision/latest/scale-to-width-down/200?cb=20260821163559"
+alt="Scout"
+>
+
+</section>
+
+
+<!-- SKIN SELECTOR -->
+
+<section class="tower-section">
+
+<div class="skin-selector">
+<label for="skinSelector">Select Scout Skin:</label>
+<select id="skinSelector" onchange="selectSkin(this.value)">
+<option value="Default">Default</option>
+<option value="Legacy Default">Legacy Default</option>
+<option value="Red">Red</option>
+<option value="Green">Green</option>
+<option value="Blue">Blue</option>
+<option value="Survivor">Survivor</option>
+<option value="Black Ops">Black Ops</option>
+<option value="Party">Party</option>
+<option value="Bunny">Bunny</option>
+<option value="Eclipse">Eclipse</option>
+<option value="Valentines">Valentines</option>
+<option value="Beach">Beach</option>
+<option value="Intern">Intern</option>
+<option value="Prime Raven">Prime Raven</option>
+<option value="Holiday">Holiday</option>
+<option value="Cookie">Cookie</option>
+<option value="Frost Hunter">Frost Hunter</option>
+<option value="Plushie">Plushie</option>
+<option value="Ducky">Ducky</option>
+<option value="Masquerade">Masquerade</option>
+<option value="Skull Trooper">Skull Trooper</option>
+<option value="Valhalla">Valhalla</option>
+<option value="Phantom">Phantom</option>
+<option value="Toilet">Toilet</option>
+<option value="Guest">Guest</option>
+<option value="Fallen">Fallen</option>
+<option value="King of Rock">King of Rock</option>
+<option value="Haz3mn">Haz3mn</option>
+<option value="Shark">Shark</option>
+<option value="Banned">Banned</option>
+<option value="Penguin">Penguin</option>
+</select>
+</div>
+
+</section>
+
+
+<!-- EQUIPPED SKIN -->
+
+<section class="tower-section">
+
+<h2>Equipped Skin</h2>
+
+<div class="equipped-skin">
+
+<img
+id="equippedScoutSkin"
+src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c8/DefaultScoutIconIGAug26.png/revision/latest/scale-to-width-down/200?cb=20260821163559"
+alt="Default Scout"
+>
+
+<div>
+
+<div class="name" id="equippedSkinName">
+Default
+</div>
+
+<div class="wave" id="equippedSkinLevel">
+Level 0
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SCOUT UPGRADER -->
+
+<section class="tower-section">
+
+<h2 id="upgraderTitle">Scout Upgrader — Default</h2>
+
+<div class="upgrade-container" id="scoutUpgrades">
+
+
+<!-- LEVEL 0 -->
+
+<div class="upgrade-card">
+
+<img
+src="https://static.wikia.nocookie.net/tower-defense-sim/images/8/8a/LO_Scout_0.png/revision/latest/scale-to-width-down/200?cb=20260311155957"
+alt="Scout Level 0"
+>
+
+<div class="upgrade-level">
+Level 0
+</div>
+
+<div class="upgrade-info">
+Pale skin, grey torso and sleeves, dark grey pants, cap and shoes.
+<br><br>
+Wields a Beretta 92.
+</div>
+
+</div>
+
+
+<!-- LEVEL 1 -->
+
+<div class="upgrade-card">
+
+<img
+src="https://static.wikia.nocookie.net/tower-defense-sim/images/0/02/LO_Scout_1.png/revision/latest/scale-to-width-down/200?cb=20260311160008"
+alt="Scout Level 1"
+>
+
+<div class="upgrade-level">
+Level 1
+</div>
+
+<div class="upgrade-info">
+Grey hand wraps.
+</div>
+
+</div>
+
+
+<!-- LEVEL 2 -->
+
+<div class="upgrade-card">
+
+<img
+src="https://static.wikia.nocookie.net/tower-defense-sim/images/5/58/LO_Scout_2.png/revision/latest/scale-to-width-down/200?cb=20260311160120"
+alt="Scout Level 2"
+>
+
+<div class="upgrade-level">
+Level 2
+</div>
+
+<div class="upgrade-info">
+Grey translucent shades and dark grey headset.
+</div>
+
+</div>
+
+
+<!-- LEVEL 3 -->
+
+<div class="upgrade-card">
+
+<img
+src="https://static.wikia.nocookie.net/tower-defense-sim/images/b/bd/LO_Scout_3.png/revision/latest/scale-to-width-down/200?cb=20260311160137"
+alt="Scout Level 3"
+>
+
+<div class="upgrade-level">
+Level 3
+</div>
+
+<div class="upgrade-info">
+Dark green vest, elbow-pads, knee-pads and leg holsters.
+<br><br>
+Now wields a Sig Sauer P320.
+</div>
+
+</div>
+
+
+<!-- LEVEL 4 -->
+
+<div class="upgrade-card">
+
+<img
+src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/4c/LO_Scout_4.png/revision/latest/scale-to-width-down/200?cb=20260311160154"
+alt="Scout Level 4"
+>
+
+<div class="upgrade-level">
+Level 4
+</div>
+
+<div class="upgrade-info">
+Light green scarf and black backpack.
+Hand wraps replaced with black gloves.
+<br><br>
+Now wields dual Sig Sauer P320s.
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- GOLDEN SCOUT UPGRADER -->
+
+<section class="tower-section">
+
+<div class="skins-header">
+<h2>Golden Scout Upgrader</h2>
+
+</div>
+
+<div class="upgrade-container" id="goldenUpgrades"></div>
+
+</section>
+
+
+<!-- OPERATOR UPGRADER -->
+
+<section class="tower-section">
+
+<div class="skins-header">
+<h2>Operator Upgrader</h2>
+
+<div class="skin-selector">
+<label for="operatorSkinSelector">Operator Skin:</label>
+<select id="operatorSkinSelector" onchange="selectOperatorSkin(this.value)">
+<option value="Default">Default</option>
+<option value="Pirate">Pirate</option>
+</select>
+</div>
+
+
+</div>
+
+<div class="upgrade-container" id="operatorUpgrades"></div>
+
+</section>
+
+
+<!-- GOLDEN / EVOLVED (combined skin cards removed) -->
+
+<section class="tower-section legacy-combined-section">
+
+<h2>Golden & Evolved Skins</h2>
+
+<div class="grid">
+
+
+<article class="card special-card golden">
+
+<img
+src="YOUR_GOLDEN_SCOUT_IMAGE"
+alt="Golden Scout"
+loading="lazy"
+>
+
+<div class="name">
+Golden Scout
+</div>
+
+<div class="wave" id="goldenLevel">
+Level 0
+</div>
+
+
+
+</article>
+
+
+<article class="card special-card evolved">
+
+<img
+src="YOUR_EVOLVED_SCOUT_IMAGE"
+alt="Evolved Scout"
+loading="lazy"
+>
+
+<div class="name">
+Evolved Scout
+</div>
+
+<div class="wave" id="evolvedLevel">
+Operator 0
+</div>
+
+
+
+</article>
+
+
+</div>
+
+</section>
+
+
+<!-- SKINS -->
+
+<section class="tower-section skin-gallery-section">
+
+<div class="skins-header">
+
+<h2>Scout Skins</h2>
+
+<button
+class="upgrade-all-button"
+onclick="upgradeAllScoutSkins()"
+>
+Upgrade All Skins
+</button>
+
+</div>
+
+
+<div class="grid" id="scoutSkins">
+
+
+<!-- LEGACY DEFAULT -->
+
+<article class="card skin-card">
+
+<img
+src="YOUR_LEGACY_DEFAULT_SCOUT_IMAGE"
+alt="Legacy Default Scout"
+loading="lazy"
+>
+
+<div class="name">
+Legacy Default
+</div>
+
+<div class="wave" data-skin-level="Legacy Default">
+Level 0
+</div>
+
+
+
+</article>
+
+
+<!-- DEFAULT -->
+
+<article class="card skin-card">
+
+<img
+src="https://static.wikia.nocookie.net/tower-defense-sim/images/c/c8/DefaultScoutIconIGAug26.png/revision/latest/scale-to-width-down/128?cb=20260821163559"
+alt="Default Scout"
+loading="lazy"
+>
+
+<div class="name">
+Default
+</div>
+
+<div class="wave" data-skin-level="Default">
+Level 0
+</div>
+
+<button
+class="upgrade-button"
+onclick="upgradeSkin('Default')"
+>
+Upgrade
+</button>
+
+</article>
+
+
+<!-- RED -->
+
+<article class="card skin-card">
+<img src="YOUR_RED_SCOUT_IMAGE" alt="Red Scout" loading="lazy">
+<div class="name">Red</div>
+<div class="wave" data-skin-level="Red">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Red')">Upgrade</button>
+</article>
+
+
+<!-- GREEN -->
+
+<article class="card skin-card">
+<img src="YOUR_GREEN_SCOUT_IMAGE" alt="Green Scout" loading="lazy">
+<div class="name">Green</div>
+<div class="wave" data-skin-level="Green">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Green')">Upgrade</button>
+</article>
+
+
+<!-- BLUE -->
+
+<article class="card skin-card">
+<img src="YOUR_BLUE_SCOUT_IMAGE" alt="Blue Scout" loading="lazy">
+<div class="name">Blue</div>
+<div class="wave" data-skin-level="Blue">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Blue')">Upgrade</button>
+</article>
+
+
+<!-- SURVIVOR -->
+
+<article class="card skin-card">
+<img src="YOUR_SURVIVOR_SCOUT_IMAGE" alt="Survivor Scout" loading="lazy">
+<div class="name">Survivor</div>
+<div class="wave" data-skin-level="Survivor">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Survivor')">Upgrade</button>
+</article>
+
+
+<!-- BLACK OPS -->
+
+<article class="card skin-card">
+<img src="YOUR_BLACK_OPS_SCOUT_IMAGE" alt="Black Ops Scout" loading="lazy">
+<div class="name">Black Ops</div>
+<div class="wave" data-skin-level="Black Ops">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Black Ops')">Upgrade</button>
+</article>
+
+
+<!-- GOLDEN -->
+
+<article class="card skin-card">
+<img src="YOUR_GOLDEN_SCOUT_IMAGE" alt="Golden Scout" loading="lazy">
+<div class="name">Golden</div>
+<div class="wave" data-skin-level="Golden">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Golden')">Upgrade</button>
+</article>
+
+
+<!-- PARTY -->
+
+<article class="card skin-card">
+<img src="YOUR_PARTY_SCOUT_IMAGE" alt="Party Scout" loading="lazy">
+<div class="name">Party</div>
+<div class="wave" data-skin-level="Party">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Party')">Upgrade</button>
+</article>
+
+
+<!-- BUNNY -->
+
+<article class="card skin-card">
+<img src="YOUR_BUNNY_SCOUT_IMAGE" alt="Bunny Scout" loading="lazy">
+<div class="name">Bunny</div>
+<div class="wave" data-skin-level="Bunny">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Bunny')">Upgrade</button>
+</article>
+
+
+<!-- ECLIPSE -->
+
+<article class="card skin-card">
+<img src="YOUR_ECLIPSE_SCOUT_IMAGE" alt="Eclipse Scout" loading="lazy">
+<div class="name">Eclipse</div>
+<div class="wave" data-skin-level="Eclipse">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Eclipse')">Upgrade</button>
+</article>
+
+
+<!-- VALENTINES -->
+
+<article class="card skin-card">
+<img src="YOUR_VALENTINES_SCOUT_IMAGE" alt="Valentines Scout" loading="lazy">
+<div class="name">Valentines</div>
+<div class="wave" data-skin-level="Valentines">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Valentines')">Upgrade</button>
+</article>
+
+
+<!-- BEACH -->
+
+<article class="card skin-card">
+<img src="YOUR_BEACH_SCOUT_IMAGE" alt="Beach Scout" loading="lazy">
+<div class="name">Beach</div>
+<div class="wave" data-skin-level="Beach">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Beach')">Upgrade</button>
+</article>
+
+
+<!-- INTERN -->
+
+<article class="card skin-card">
+<img src="YOUR_INTERN_SCOUT_IMAGE" alt="Intern Scout" loading="lazy">
+<div class="name">Intern</div>
+<div class="wave" data-skin-level="Intern">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Intern')">Upgrade</button>
+</article>
+
+
+<!-- PRIME RAVEN -->
+
+<article class="card skin-card">
+<img src="YOUR_PRIME_RAVEN_SCOUT_IMAGE" alt="Prime Raven Scout" loading="lazy">
+<div class="name">Prime Raven</div>
+<div class="wave" data-skin-level="Prime Raven">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Prime Raven')">Upgrade</button>
+</article>
+
+
+<!-- HOLIDAY -->
+
+<article class="card skin-card">
+<img src="YOUR_HOLIDAY_SCOUT_IMAGE" alt="Holiday Scout" loading="lazy">
+<div class="name">Holiday</div>
+<div class="wave" data-skin-level="Holiday">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Holiday')">Upgrade</button>
+</article>
+
+
+<!-- COOKIE -->
+
+<article class="card skin-card">
+<img src="YOUR_COOKIE_SCOUT_IMAGE" alt="Cookie Scout" loading="lazy">
+<div class="name">Cookie</div>
+<div class="wave" data-skin-level="Cookie">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Cookie')">Upgrade</button>
+</article>
+
+
+<!-- FROST HUNTER -->
+
+<article class="card skin-card">
+<img src="YOUR_FROST_HUNTER_SCOUT_IMAGE" alt="Frost Hunter Scout" loading="lazy">
+<div class="name">Frost Hunter</div>
+<div class="wave" data-skin-level="Frost Hunter">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Frost Hunter')">Upgrade</button>
+</article>
+
+
+<!-- PLUSHIE -->
+
+<article class="card skin-card">
+<img src="YOUR_PLUSHIE_SCOUT_IMAGE" alt="Plushie Scout" loading="lazy">
+<div class="name">Plushie</div>
+<div class="wave" data-skin-level="Plushie">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Plushie')">Upgrade</button>
+</article>
+
+
+<!-- DUCKY -->
+
+<article class="card skin-card">
+<img src="YOUR_DUCKY_SCOUT_IMAGE" alt="Ducky Scout" loading="lazy">
+<div class="name">Ducky</div>
+<div class="wave" data-skin-level="Ducky">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Ducky')">Upgrade</button>
+</article>
+
+
+<!-- MASQUERADE -->
+
+<article class="card skin-card">
+<img src="YOUR_MASQUERADE_SCOUT_IMAGE" alt="Masquerade Scout" loading="lazy">
+<div class="name">Masquerade</div>
+<div class="wave" data-skin-level="Masquerade">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Masquerade')">Upgrade</button>
+</article>
+
+
+<!-- SKULL TROOPER -->
+
+<article class="card skin-card">
+<img src="YOUR_SKULL_TROOPER_SCOUT_IMAGE" alt="Skull Trooper Scout" loading="lazy">
+<div class="name">Skull Trooper</div>
+<div class="wave" data-skin-level="Skull Trooper">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Skull Trooper')">Upgrade</button>
+</article>
+
+
+<!-- VALHALLA -->
+
+<article class="card skin-card">
+<img src="YOUR_VALHALLA_SCOUT_IMAGE" alt="Valhalla Scout" loading="lazy">
+<div class="name">Valhalla</div>
+<div class="wave" data-skin-level="Valhalla">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Valhalla')">Upgrade</button>
+</article>
+
+
+<!-- PHANTOM -->
+
+<article class="card skin-card">
+<img src="YOUR_PHANTOM_SCOUT_IMAGE" alt="Phantom Scout" loading="lazy">
+<div class="name">Phantom</div>
+<div class="wave" data-skin-level="Phantom">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Phantom')">Upgrade</button>
+</article>
+
+
+<!-- TOILET -->
+
+<article class="card skin-card">
+<img src="YOUR_TOILET_SCOUT_IMAGE" alt="Toilet Scout" loading="lazy">
+<div class="name">Toilet</div>
+<div class="wave" data-skin-level="Toilet">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Toilet')">Upgrade</button>
+</article>
+
+
+<!-- GUEST -->
+
+<article class="card skin-card">
+<img src="YOUR_GUEST_SCOUT_IMAGE" alt="Guest Scout" loading="lazy">
+<div class="name">Guest</div>
+<div class="wave" data-skin-level="Guest">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Guest')">Upgrade</button>
+</article>
+
+
+<!-- FALLEN -->
+
+<article class="card skin-card">
+<img src="YOUR_FALLEN_SCOUT_IMAGE" alt="Fallen Scout" loading="lazy">
+<div class="name">Fallen</div>
+<div class="wave" data-skin-level="Fallen">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Fallen')">Upgrade</button>
+</article>
+
+
+<!-- KING OF ROCK -->
+
+<article class="card skin-card">
+<img src="YOUR_KING_OF_ROCK_SCOUT_IMAGE" alt="King of Rock Scout" loading="lazy">
+<div class="name">King of Rock</div>
+<div class="wave" data-skin-level="King of Rock">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('King of Rock')">Upgrade</button>
+</article>
+
+
+<!-- HAZ3MN -->
+
+<article class="card skin-card">
+<img src="YOUR_HAZ3MN_SCOUT_IMAGE" alt="Haz3mn Scout" loading="lazy">
+<div class="name">Haz3mn</div>
+<div class="wave" data-skin-level="Haz3mn">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Haz3mn')">Upgrade</button>
+</article>
+
+
+<!-- SHARK -->
+
+<article class="card skin-card">
+<img src="YOUR_SHARK_SCOUT_IMAGE" alt="Shark Scout" loading="lazy">
+<div class="name">Shark</div>
+<div class="wave" data-skin-level="Shark">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Shark')">Upgrade</button>
+</article>
+
+
+<!-- BANNED -->
+
+<article class="card skin-card">
+<img src="YOUR_BANNED_SCOUT_IMAGE" alt="Banned Scout" loading="lazy">
+<div class="name">Banned</div>
+<div class="wave" data-skin-level="Banned">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Banned')">Upgrade</button>
+</article>
+
+
+<!-- PENGUIN -->
+
+<article class="card skin-card">
+<img src="YOUR_PENGUIN_SCOUT_IMAGE" alt="Penguin Scout" loading="lazy">
+<div class="name">Penguin</div>
+<div class="wave" data-skin-level="Penguin">Level 0</div>
+<button class="upgrade-button" onclick="upgradeSkin('Penguin')">Upgrade</button>
+</article>
+
+
+</div>
+</section>
+
+</div>
+
+
+<script>
+
+const scoutSkinLevels = {};
+const operatorSkinLevels = {
+    Default: 0,
+    Pirate: 0
+};
+
+let operatorSkin = "Default";
+
+const specialUpgradeDescriptions = {
+    golden: [
+        "Golden uniform with improved early-game combat abilities.",
+        "Upgraded golden equipment and stronger hand wraps.",
+        "Golden shades and headset improve the Scout's appearance.",
+        "Adds golden tactical armor, pads and leg holsters.",
+        "Adds a golden scarf, backpack, gloves and dual pistols."
+    ],
+    Default: [
+        "Operator uniform with a standard combat loadout.",
+        "Improved gloves and tactical equipment.",
+        "Adds reinforced shades and a communications headset.",
+        "Adds tactical armor, pads and leg holsters.",
+        "Adds a scarf, backpack and upgraded weapons.",
+        "Fully upgraded Operator equipment."
+    ],
+    Pirate: [
+        "Pirate outfit with a flintlock pistol.",
+        "Adds pirate hand wraps and a decorated coat.",
+        "Adds an eyepatch and pirate accessories.",
+        "Adds reinforced pirate armor and equipment.",
+        "Adds a captain's coat, backpack and improved weapons.",
+        "Fully upgraded Pirate Operator equipment."
+    ]
+};
+
+const skinDescriptions = {
+    "Default": [
+        "Pale skin, grey torso and sleeves, dark grey pants, cap and shoes.",
+        "Grey hand wraps.",
+        "Grey translucent shades and dark grey headset.",
+        "Dark green vest, elbow-pads, knee-pads and leg holsters.",
+        "Light green scarf, black backpack and dual Sig Sauer P320s."
+    ],
+    "Legacy Default": [
+        "The original Scout appearance with a classic uniform and Beretta 92.",
+        "Improved hand wraps.",
+        "Adds translucent shades and a headset.",
+        "Adds a tactical vest and leg holsters.",
+        "Adds a scarf, backpack, gloves and dual pistols."
+    ]
+};
+
+const defaultDescription = [
+    "A unique Scout outfit with a Beretta 92.",
+    "Improved hand wraps and combat gear.",
+    "Adds shades and a headset.",
+    "Adds a tactical vest, pads and leg holsters.",
+    "Adds a scarf, backpack, gloves and dual pistols."
+];
+
+// Add five image URLs for each skin when its level images are available.
+// Skins with placeholder URLs automatically use the Default level images.
+const defaultScoutLevelImages = [
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/8/8a/LO_Scout_0.png/revision/latest/scale-to-width-down/200?cb=20260311155957",
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/0/02/LO_Scout_1.png/revision/latest/scale-to-width-down/200?cb=20260311160008",
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/5/58/LO_Scout_2.png/revision/latest/scale-to-width-down/200?cb=20260311160120",
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/b/bd/LO_Scout_3.png/revision/latest/scale-to-width-down/200?cb=20260311160137",
+    "https://static.wikia.nocookie.net/tower-defense-sim/images/4/4c/LO_Scout_4.png/revision/latest/scale-to-width-down/200?cb=20260311160154"
+];
+
+const scoutSkinNames = [
+    "Default", "Legacy Default", "Red", "Green", "Blue", "Survivor",
+    "Black Ops", "Golden", "Party", "Bunny", "Eclipse", "Valentines",
+    "Beach", "Intern", "Prime Raven", "Holiday", "Cookie", "Frost Hunter",
+    "Plushie", "Ducky", "Masquerade", "Skull Trooper", "Valhalla", "Phantom",
+    "Toilet", "Guest", "Fallen", "King of Rock", "Haz3mn", "Shark", "Banned",
+    "Penguin"
+];
+
+const skinLevelImages = Object.fromEntries(
+    scoutSkinNames.map(skin => [skin, [...defaultScoutLevelImages]])
+);
+
+let goldenLevel = 0;
+let evolvedLevel = 0;
+
+function selectOperatorSkin(skin) {
+    operatorSkin = skin;
+    renderSpecialUpgrades();
+}
+
+function renderSpecialUpgrades() {
+    const goldenContainer = document.getElementById("goldenUpgrades");
+    const operatorContainer = document.getElementById("operatorUpgrades");
+
+    if (goldenContainer) {
+        goldenContainer.innerHTML = specialUpgradeDescriptions.golden.map((description, index) => `
+            <article class="upgrade-card">
+                <img src="YOUR_GOLDEN_SCOUT_IMAGE" alt="Golden Scout Level ${index}" loading="lazy">
+                <div class="upgrade-level">Level ${index}</div>
+                <div class="upgrade-info">${description}</div>
+            </article>
+        `).join("");
+    }
+
+    if (operatorContainer) {
+        const descriptions = specialUpgradeDescriptions[operatorSkin] || specialUpgradeDescriptions.Default;
+        operatorContainer.innerHTML = descriptions.map((description, index) => `
+            <article class="upgrade-card">
+                <img src="YOUR_${operatorSkin.toUpperCase()}_OPERATOR_IMAGE" alt="${operatorSkin} Operator Level ${index}" loading="lazy">
+                <div class="upgrade-level">Operator ${index}</div>
+                <div class="upgrade-info">${description}</div>
+            </article>
+        `).join("");
+    }
+}
+
+
+/* INDIVIDUAL SKIN */
+
+function selectSkin(skin) {
+    const skinCard = [...document.querySelectorAll(".skin-card")].find(card =>
+        card.querySelector(".name")?.textContent.trim() === skin
+    );
+    const image = skinCard?.querySelector("img")?.src;
+    const equippedImage = document.getElementById("equippedScoutSkin");
+
+    if (image && !image.startsWith("YOUR_")) {
+        equippedImage.src = image;
+    }
+
+    equippedImage.alt = skin + " Scout";
+    document.getElementById("equippedSkinName").textContent = skin;
+    document.getElementById("equippedSkinLevel").textContent =
+        "Level " + (scoutSkinLevels[skin] || 0);
+    document.getElementById("upgraderTitle").textContent =
+        "Scout Upgrader — " + skin;
+    document.getElementById("skinSelector").value = skin;
+    updateUpgradeText(skin);
+    updateSkinLevels();
+}
+
+function updateUpgradeText(skin) {
+    const descriptions = skinDescriptions[skin] || defaultDescription;
+    const images = skinLevelImages[skin] || defaultScoutLevelImages;
+    const upgrades = document.querySelectorAll("#scoutUpgrades .upgrade-card");
+
+    upgrades.forEach((card, index) => {
+        const info = card.querySelector(".upgrade-info");
+        const image = card.querySelector("img");
+
+        if (info) {
+            info.innerHTML = descriptions[index] || descriptions[descriptions.length - 1];
+        }
+
+        if (image && images[index]) {
+            image.src = images[index];
+            image.alt = `${skin} Scout Level ${index}`;
+        }
+    });
+}
+
+function upgradeSkin(skin) {
+
+    if (!scoutSkinLevels[skin]) {
+        scoutSkinLevels[skin] = 0;
+    }
+
+    scoutSkinLevels[skin] = Math.min(scoutSkinLevels[skin] + 1, 4);
+
+    updateSkinLevels();
+}
+
+
+/* UPGRADE ALL */
+
+function upgradeAllScoutSkins() {
+
+    document.querySelectorAll("[data-skin-level]").forEach(element => {
+
+        const skin = element.dataset.skinLevel;
+
+        if (!scoutSkinLevels[skin]) {
+            scoutSkinLevels[skin] = 0;
+        }
+
+        scoutSkinLevels[skin] = Math.min(scoutSkinLevels[skin] + 1, 4);
+
+    });
+
+    updateSkinLevels();
+}
+
+
+/* UPDATE SKIN LEVELS */
+
+function updateSkinLevels() {
+
+    document.querySelectorAll("[data-skin-level]").forEach(element => {
+
+        const skin = element.dataset.skinLevel;
+        const level = scoutSkinLevels[skin] || 0;
+
+        element.textContent = "Level " + level;
+
+    });
+
+}
+
+
+/* GOLDEN / EVOLVED */
+
+function updateUpgradeButtons() {
+    // Kept for compatibility with the skin selector.
+}
+
+function upgradeSpecial(type) {
+    if (type === "golden") {
+        goldenLevel = Math.min(goldenLevel + 1, 4);
+        return;
+    }
+
+    if (type === "evolved") {
+        evolvedLevel = Math.min(evolvedLevel + 1, 6);
+        operatorSkinLevels[operatorSkin] = evolvedLevel;
+    }
+}
+
+renderSpecialUpgrades();
+selectSkin("Default");
+
+</script>
+
+</body>
+</html>
+```
