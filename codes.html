@@ -1,0 +1,1177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TDS Wiki — Codes</title>
+
+<link rel="icon" type="image/png"
+href="https://static.wikia.nocookie.net/tower-defense-sim/images/5/56/MoltenBoss.png/revision/latest/scale-to-width-down/250?cb=20260205174302">
+
+<style>
+*{box-sizing:border-box}
+
+:root{
+  --panel:rgba(15,18,27,.90);
+  --panel2:rgba(25,29,40,.94);
+  --text:#fff;
+  --muted:#b9c0cf;
+  --accent:#65b8ff;
+  --border:rgba(255,255,255,.13);
+}
+
+html,body{
+  margin:0;
+  min-height:100%;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+  background:
+    linear-gradient(rgba(5,8,14,.62),rgba(5,8,14,.78)),
+    url("https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/SummerCastleIcon.png/revision/latest/smart/width/400/height/225?cb=20250709204530")
+    center/cover fixed no-repeat;
+}
+
+body{
+  overflow-x:hidden;
+}
+
+/* =========================
+   TOP BANNER
+========================= */
+
+.top-banner{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  width:100%;
+  height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  padding:8px 24px;
+  background:rgba(5,7,12,.94);
+  border-bottom:2px solid rgba(255,255,255,.12);
+  box-shadow:0 8px 30px rgba(0,0,0,.45);
+  backdrop-filter:blur(8px);
+}
+
+.top-banner img{
+  width:min(650px,58vw);
+  max-height:66px;
+  object-fit:contain;
+}
+
+.banner-search{
+  width:min(360px,32vw);
+  flex-shrink:1;
+}
+
+#topSearch{
+  width:100%;
+  padding:12px 15px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  outline:none;
+  color:white;
+  background:rgba(0,0,0,.48);
+  font-size:10.5px;
+}
+
+#topSearch:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(101,184,255,.13);
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.back-home{
+  display:inline-block;
+  margin-bottom:12px;
+  padding:9px 14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  color:#fff;
+  background:rgba(15,18,27,.9);
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  transition:background .15s ease, border-color .15s ease;
+}
+
+.back-home:hover{
+  background:rgba(101,184,255,.16);
+  border-color:var(--accent);
+}
+
+.page{
+  width:min(1500px,calc(94vw - 210px));
+  margin:12px auto 25px;
+}
+
+.hero{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:16px;
+  box-shadow:0 15px 45px rgba(0,0,0,.35);
+  backdrop-filter:blur(8px);
+}
+
+.hero h1{
+  margin:0 0 8px;
+  font-size:clamp(28px,4vw,46px);
+}
+
+.hero p{
+  margin:0 0 9px;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.55;
+}
+
+.updated{
+  color:#8f9bad;
+  font-size:12px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section-title{
+  margin:18px 0 9px;
+  font-size:25px;
+}
+
+.section-description{
+  margin:-3px 0 12px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrap{
+  overflow-x:auto;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:0 12px 30px rgba(0,0,0,.3);
+  backdrop-filter:blur(8px);
+}
+
+.codes-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:800px;
+}
+
+.codes-table th{
+  padding:13px 14px;
+  text-align:left;
+  background:rgba(30,35,48,.98);
+  color:#fff;
+  font-size:13px;
+  border-bottom:1px solid var(--border);
+}
+
+.codes-table td{
+  padding:12px 14px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  color:#dce1ea;
+  font-size:13px;
+  line-height:1.45;
+  vertical-align:middle;
+}
+
+.codes-table tr:last-child td{
+  border-bottom:none;
+}
+
+.codes-table tbody tr{
+  transition:background .15s ease;
+}
+
+.codes-table tbody tr:hover{
+  background:rgba(101,184,255,.07);
+}
+
+.code{
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:7px;
+  background:#10141d;
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;
+  font-family:monospace;
+  font-size:12px;
+  font-weight:700;
+  word-break:break-word;
+}
+
+.status{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.status.active{
+  color:#baf7ce;
+  background:rgba(40,180,90,.14);
+  border:1px solid rgba(70,210,120,.3);
+}
+
+.status.expired{
+  color:#ffb9b9;
+  background:rgba(210,60,60,.13);
+  border:1px solid rgba(230,80,80,.25);
+}
+
+.status.unavailable{
+  color:#c4cbd8;
+  background:rgba(120,130,145,.13);
+  border:1px solid rgba(150,160,175,.2);
+}
+
+.codes-table a{
+  color:#72bdff;
+  text-decoration:none;
+}
+
+.codes-table a:hover{
+  text-decoration:underline;
+}
+
+.reward-icon{
+  width:20px;
+  height:20px;
+  object-fit:contain;
+  vertical-align:middle;
+}
+
+/* =========================
+   NOTES
+========================= */
+
+.notes{
+  margin-top:18px;
+  padding:16px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+}
+
+.notes strong{
+  color:white;
+}
+
+/* =========================
+   SEARCH RESULTS
+========================= */
+
+.no-results{
+  display:none;
+  padding:16px;
+  margin-top:12px;
+  text-align:center;
+  color:var(--muted);
+  background:var(--panel);
+  border-radius:14px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  margin-top:45px;
+  text-align:center;
+  color:#aeb5c2;
+  font-size:13px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1150px){
+  .page{
+    width:min(94vw,1500px);
+  }
+}
+
+@media(max-width:700px){
+  .top-banner{
+    gap:10px;
+    padding:8px 10px;
+  }
+
+  .top-banner img{
+    width:54vw;
+  }
+
+  .banner-search{
+    width:38vw;
+  }
+
+  #topSearch{
+    font-size:12px;
+    padding:10px;
+  }
+
+  .codes-table{
+    min-width:700px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BANNER -->
+<header class="top-banner">
+
+  <img
+    src="https://i.namu.wiki/i/7xTzCZ5-4YLxCBlGfiGrTr_TKKr1_lGMMnV4E3oGJX87QuWTZ0KK2M0EWE1-_VtY_Z9HkVdHEGXzo15xq-A52w.webp"
+    alt="TDS Wiki"
+  >
+
+  <div class="banner-search">
+    <input
+      id="topSearch"
+      type="search"
+      placeholder="Search the wiki..."
+    >
+  </div>
+
+</header>
+
+
+<main class="page">
+
+<a class="back-home" href="index.html">← Back to Home</a>
+
+<!-- HERO -->
+<section class="hero">
+
+  <h1>Codes</h1>
+
+  <p>
+    Codes are little gifts that the developers sometimes give out that can
+    be redeemed for Experience EXP, Coins, Gems, or sometimes towers, skins
+    and emotes. Some codes are given after purchasing a certain item, with
+    each one being unique.
+  </p>
+
+  <p>
+    You can redeem codes by inputting a code into the code box, which is found
+    on the top right of your screen in the form of an icon with the letter
+    "ABX" whenever you are in the lobby.
+  </p>
+
+  <p>
+    For skin codes, you need to have the tower in question to redeem the code.
+    If you do not have the tower, you cannot redeem the code.
+  </p>
+
+  <div class="updated">
+    Last updated: 19 August 2026 • Dates use DD/MM/YYYY format
+  </div>
+
+</section>
+
+
+<!-- TRADITIONAL CODES -->
+<h2 class="section-title">
+  Traditional Codes
+</h2>
+
+<div class="section-description">
+  These codes are manually created by the developers of the game.
+  Most codes can only be redeemed for a limited time, while some may be
+  available for extended periods of time. Some codes can also only be used
+  by a set number of people.
+</div>
+
+
+<div class="table-wrap">
+
+<table class="codes-table">
+
+<thead>
+<tr>
+  <th>Code</th>
+  <th>Rewards</th>
+  <th>Code Created</th>
+  <th>Status</th>
+</tr>
+</thead>
+
+<tbody id="traditionalCodes">
+
+<tr>
+<td><span class="code">1MILCOMMUNITY</span></td>
+<td><strong>Community Skin (Shotgunner)</strong></td>
+<td>12/06/2026</td>
+<td><span class="status active">Active</span></td>
+</tr>
+
+<tr>
+<td><span class="code">2MILLION</span></td>
+<td><strong>Mercenary Skin (Pursuit)</strong></td>
+<td>08/06/2026<br>09/06/2026</td>
+<td><span class="status active">Active</span></td>
+</tr>
+
+<tr>
+<td><span class="code">CHRISTMAS2025</span></td>
+<td>1 Christmas 2025 Crate</td>
+<td>25/12/2025</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">NOTESLA?</span></td>
+<td>1 Premium Crate</td>
+<td>15/09/2025</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">4BVisits</span></td>
+<td>1 Premium Crate</td>
+<td>14/05/2025</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">EnterCodeHere</span></td>
+<td>1 Coin Crate</td>
+<td>01/04/2025<br>19/04/2025</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">Enter Code Here</span></td>
+<td>1 Coin Crate</td>
+<td>01/04/2025</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">1POINT7MIL</span></td>
+<td><strong>Vendor Skin (Farm)</strong></td>
+<td>19/03/2025<br>19/04/2025</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">MERRY2024</span></td>
+<td>Cookie Scout &amp; 1 Holiday Crate</td>
+<td>25/12/2024</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">TDS5YEARS!</span></td>
+<td>1 Party Crate</td>
+<td>05/06/2024</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">IMCONSUMING</span></td>
+<td>1 Mid Grade Crate</td>
+<td>10/05/2024</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">MERRYXMAS2023</span></td>
+<td>1 Deluxe Crate</td>
+<td>24/12/2023</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">QNJOU11</span></td>
+<td>1 Premium Crate</td>
+<td>11/11/2023</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">HAPPYHALLOWEEN</span></td>
+<td>1 Halloween Crate</td>
+<td>31/10/2023</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">NAMETAGSRCOOL</span></td>
+<td>Follower Nametag</td>
+<td>26/05/2023</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">M3RRY2022TDS</span></td>
+<td><strong>Cookie Skin (Scout)</strong></td>
+<td>24/12/2022</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">9509253943</span></td>
+<td><strong>John Skin (Militant)</strong></td>
+<td>09/09/2022</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">JOHNRETURNS</span></td>
+<td><strong>John Skin (Militant)</strong></td>
+<td>09/09/2022</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">beachglad2022</span></td>
+<td><strong>Beach Skin (Gladiator)</strong></td>
+<td>05/08/2022</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">MERRY2021</span></td>
+<td><strong>Present Skin (Farm)</strong></td>
+<td>24/12/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">robloxisback</span></td>
+<td>1 Premium Crate</td>
+<td>01/11/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">1BILLION</span></td>
+<td>1 Deluxe Crate</td>
+<td>10/07/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">celebration21</span></td>
+<td>1 Party Crate</td>
+<td>09/06/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">COMMUNITY20</span></td>
+<td><strong>Community Skin (Minigunner)</strong></td>
+<td>26/05/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">200KMAY</span></td>
+<td>500 Gems</td>
+<td>26/05/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">ROBLOXD1ED</span></td>
+<td>1 Premium Crate</td>
+<td>13/05/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">FIFTYK</span></td>
+<td>200 Coins</td>
+<td>11/05/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">BLOXY21</span></td>
+<td><strong>Bloxy Skin (Commander)</strong></td>
+<td>08/05/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">delayed</span></td>
+<td>1 Premium Crate</td>
+<td>07/05/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">teleportfailed</span></td>
+<td>1 Premium Crate</td>
+<td>08/04/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">itwasmortar</span></td>
+<td>100 Gems</td>
+<td>09/02/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">imababy</span></td>
+<td>100 Gems</td>
+<td>16/01/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">roblox</span></td>
+<td>100 Gems</td>
+<td>16/01/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">newyear2021</span></td>
+<td>1 Premium Crate</td>
+<td>01/01/2021</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">2spooky4u</span></td>
+<td>1 Spooky Crate</td>
+<td>23/11/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">30k</span></td>
+<td>1 Pumpkin Crate</td>
+<td>02/11/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">1pumpkin</span></td>
+<td>1 Pumpkin Crate</td>
+<td>31/10/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">gems</span></td>
+<td>150 Gems</td>
+<td>29/10/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">launch</span></td>
+<td>2 Premium Crates</td>
+<td>29/10/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">DOUBLEBLOXIES</span></td>
+<td><strong>Kasodus Skin (Cowboy)</strong></td>
+<td>01/06/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">ICYFREEZE</span></td>
+<td><strong>IcyTea Skin (Freezer)</strong></td>
+<td>27/05/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">W33KLICODE</span></td>
+<td>65 EXP</td>
+<td>01/05/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">HAPPY3AST3R!</span></td>
+<td><strong>Spring Time Skin (Commander)</strong></td>
+<td>11/04/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">SPR1NGM1L3ST0NE</span></td>
+<td><strong>Spring Time Skin (Slasher)</strong></td>
+<td>06/04/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">T3MPLAR</span></td>
+<td>100 EXP</td>
+<td>04/03/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">5KMILESTONE</span></td>
+<td><strong>Twitter Skin (Minigunner)</strong></td>
+<td>11/02/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">ELECTRO</span></td>
+<td>100 Coins</td>
+<td>11/02/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">02MOMENT</span></td>
+<td>100 EXP</td>
+<td>24/01/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">MOAREXP</span></td>
+<td>50 EXP</td>
+<td>29/01/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">SW33TXP</span></td>
+<td>50 EXP</td>
+<td>16/02/2020</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">GAMERMODE0N</span></td>
+<td>50 EXP</td>
+<td>17/11/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">R3TR0</span></td>
+<td>50 EXP</td>
+<td>09/11/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">TRICKORTREAT</span></td>
+<td><strong>Halloween Skin (Hunter)</strong></td>
+<td>18/10/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">B1RDHUNT3R</span></td>
+<td>Hunter</td>
+<td>13/10/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">THANKYOU</span></td>
+<td>100 EXP</td>
+<td>20/08/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">3S8KZMC</span></td>
+<td>250 Coins &amp; 50 EXP</td>
+<td>15/08/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">120K</span></td>
+<td>100 Coins &amp; 60 EXP</td>
+<td>02/08/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">LONGWAIT</span></td>
+<td>100 Coins, 50 EXP &amp; Russian</td>
+<td>19/07/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">RAZ0RF1SH</span></td>
+<td>100 Coins &amp; 60 EXP</td>
+<td>16/07/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">KITT3N</span></td>
+<td>100 Coins &amp; 60 EXP</td>
+<td>15/06/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">10KPLAYERS</span></td>
+<td>100 Coins &amp; 100 EXP</td>
+<td>10/07/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">HAPPY4TH</span></td>
+<td>84 EXP</td>
+<td>04/07/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">GOR1LLA</span></td>
+<td>250 Coins &amp; 25 EXP</td>
+<td>01/07/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">1MILVISITS</span></td>
+<td>500 Coins</td>
+<td>28/06/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">SF0TH</span></td>
+<td>350 Coins</td>
+<td>24/06/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">SUMMER</span></td>
+<td>250 Coins</td>
+<td>24/06/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">J0HNRBX</span></td>
+<td>John</td>
+<td>16/06/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">FRIDAY</span></td>
+<td>100 Coins &amp; Unknown EXP</td>
+<td>14/06/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">JOHNROBLOX</span></td>
+<td>Paintballer</td>
+<td>13/06/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+<tr>
+<td><span class="code">ALPHA</span></td>
+<td>400 Coins</td>
+<td>13/06/2019</td>
+<td><span class="status expired">Expired</span></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<!-- MERCHANDISE CODES -->
+
+<h2 class="section-title">
+  Merchandise Codes
+</h2>
+
+<div class="section-description">
+
+  <strong>As of 18th of May 2025, these codes are no longer given out.</strong>
+  Instead, the items are now obtained through the in-game Merch Shop.
+
+  <br><br>
+
+  These codes were randomly generated upon the purchase of the product
+  in question. They were unique and could only be redeemed once for one person.
+  These codes did not expire until they were redeemed.
+
+  <br><br>
+
+  If the product associated with that code was refunded, the reward was
+  revoked and removed. For unredeemed codes, if the product was refunded,
+  the code was voided.
+
+</div>
+
+
+<div class="table-wrap">
+
+<table class="codes-table">
+
+<thead>
+<tr>
+  <th>Reward</th>
+  <th>Purchase Required</th>
+  <th>Code Generation</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td><strong>Mecha Bunny Skin (Cowboy)</strong></td>
+<td>Mecha Bunny + Nerd Ducky Mini Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Plushie Skin (Pyromancer)</strong></td>
+<td>Pyromancer Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Patient Zero Skin (Accelerator)</strong></td>
+<td>Patient Zero Mini Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Plushie Skin (Cowboy)</strong></td>
+<td>Cowboy Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Golden Plushie Skin (Minigunner)</strong></td>
+<td>Golden Minigunner Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Plushie Skin (Trapper)</strong></td>
+<td>Trapper Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Plushie Skin (Engineer)</strong></td>
+<td>Engineer Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Umbra Skin (Commander)</strong></td>
+<td>Umbra Mini Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Plushie Skin (Accelerator)</strong></td>
+<td>Accelerator Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Plushie Skin (Minigunner)</strong></td>
+<td>Minigunner Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Plushie Skin (Scout)</strong></td>
+<td>Scout Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Plushie Skin (DJ Booth)</strong></td>
+<td>DJ Booth Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Plushie Skin (Commander)</strong></td>
+<td>Commander Plush (Level 1) or Commander Plush (Level 4)</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>GraveDigger Nametag &amp; Grave Digger Charm</strong></td>
+<td>Grave Digger Mini Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Molten Nametag &amp; Molten Boss Charm</strong></td>
+<td>Molten Boss Mini Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Fallen Nametag &amp; Fallen King Charm</strong></td>
+<td>Fallen King Mini Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>Polluted Nametag &amp; Nuclear Monster Charm</strong></td>
+<td>Nuclear Monster Mini Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td><strong>GunSlinger Nametag &amp; Gunslinger Charm</strong></td>
+<td>Gunslinger Mini Plush</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td>2 Premium Crates</td>
+<td>Max Commander Hoodie</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td>2 Premium Crates</td>
+<td>Tower Defense Gaming Pad</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td>1 Premium Crate &amp; 1 Deluxe Crate</td>
+<td>Tower Defense Backpack</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+<tr>
+<td>1 Premium Crate &amp; 1 Deluxe Crate</td>
+<td>Tower Defense T-Shirt</td>
+<td><span class="status unavailable">Unavailable</span></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+<!-- NOTES -->
+
+<div class="notes">
+
+  <strong>Notes</strong>
+
+  <br><br>
+
+  Codes may have different requirements depending on the reward.
+  Skin codes require the corresponding tower to be owned before the
+  code can be redeemed.
+
+</div>
+
+
+<div class="no-results" id="noResults">
+  No matching code found.
+</div>
+
+
+<footer>
+  TDS Wiki Codes • Community-made fan project
+</footer>
+
+</main>
+
+
+<script>
+
+/* =========================
+   WIKI SEARCH
+========================= */
+
+const search = document.getElementById("topSearch");
+const traditionalRows = [
+  ...document.querySelectorAll("#traditionalCodes tr")
+];
+
+const merchandiseRows = [
+  ...document.querySelectorAll("table:not(#traditionalCodes) tbody tr")
+];
+
+const noResults = document.getElementById("noResults");
+
+search.addEventListener("input", () => {
+
+  const query =
+    search.value.toLowerCase().trim();
+
+  let visible = 0;
+
+  [
+    ...traditionalRows,
+    ...merchandiseRows
+  ].forEach(row => {
+
+    const matches =
+      row.textContent.toLowerCase().includes(query);
+
+    row.style.display =
+      matches ? "" : "none";
+
+    if(matches){
+      visible++;
+    }
+
+  });
+
+  noResults.style.display =
+    visible ? "none" : "block";
+
+});
+
+
+
+
+</script>
+
+</body>
+</html>
+
