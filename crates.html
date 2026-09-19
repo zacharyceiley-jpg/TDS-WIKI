@@ -5,74 +5,517 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TDS Wiki — Crates</title>
 <link rel="icon" type="image/png" href="https://static.wikia.nocookie.net/tower-defense-sim/images/5/56/MoltenBoss.png/revision/latest/scale-to-width-down/250?cb=20260205174302">
+
 <style>
 *{box-sizing:border-box}
-:root{--panel:rgba(15,18,27,.92);--text:#fff;--muted:#b9c0cf;--border:rgba(255,255,255,.13);--accent:#65b8ff}
-html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:linear-gradient(rgba(5,8,14,.64),rgba(5,8,14,.82)),url("https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/SummerCastleIcon.png/revision/latest/smart/width/400/height/225?cb=20250709204530") center/cover fixed no-repeat}
+
+:root{
+  --panel:rgba(15,18,27,.92);
+  --text:#fff;
+  --muted:#b9c0cf;
+  --border:rgba(255,255,255,.13);
+  --accent:#65b8ff
+}
+
+html,body{
+  margin:0;
+  min-height:100%;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+  background:
+    linear-gradient(rgba(5,8,14,.64),rgba(5,8,14,.82)),
+    url("https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/SummerCastleIcon.png/revision/latest/smart/width/400/height/225?cb=20250709204530")
+    center/cover fixed no-repeat
+}
+
 body{overflow-x:hidden}
-.top-banner{position:sticky;top:0;z-index:50;height:82px;display:flex;align-items:center;justify-content:center;gap:28px;padding:8px 24px;background:rgba(5,7,12,.95);border-bottom:2px solid rgba(255,255,255,.12);box-shadow:0 8px 30px rgba(0,0,0,.45);backdrop-filter:blur(8px)}
-.top-banner img{width:min(650px,58vw);max-height:66px;object-fit:contain}
-.banner-search{width:min(360px,32vw);flex-shrink:1}
-#search{width:100%;padding:12px 15px;border:1px solid var(--border);border-radius:12px;outline:none;color:#fff;background:rgba(0,0,0,.5);font-size:14px}
-#search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(101,184,255,.14)}
-.page{width:min(1500px,94vw);margin:14px auto 40px}
-.hero{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:18px 20px;box-shadow:0 15px 45px rgba(0,0,0,.34)}
-.hero-top{display:flex;align-items:flex-end;justify-content:space-between;gap:18px}
-.hero h1{margin:0;font-size:clamp(30px,4.2vw,50px)}
-.hero p{margin:6px 0 0;color:var(--muted)}
-.back{color:#fff;text-decoration:none;border:1px solid var(--border);background:rgba(0,0,0,.35);border-radius:10px;padding:9px 12px;font-size:13px}
-.filters{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 18px}
-.filter{border:1px solid var(--border);color:#fff;background:rgba(0,0,0,.35);border-radius:999px;padding:7px 11px;cursor:pointer;font-size:12px}
-.filter.active{border-color:var(--accent);background:rgba(101,184,255,.14)}
-.crate-section{margin:18px 0 24px}
-.section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;margin-bottom:9px;padding:0 3px}
-.section-kicker{display:inline-block;color:var(--section-accent);font-size:25px;font-weight:900}
-.section-heading p{margin:2px 0 0;color:var(--muted);font-size:12px}
-.count{color:#c7cedb;font-size:11px;white-space:nowrap}
-.crate-grid{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:center;gap:10px}
-.crate-card{flex:0 0 230px;width:230px;background:transparent;border:0;border-radius:0;overflow:hidden;box-shadow:none;transition:transform .18s ease,filter .18s ease}
-.crate-card:hover{transform:translateY(-5px);filter:brightness(1.15)}
-.crate-image{position:relative;width:230px;height:250px;overflow:hidden;background:rgba(15,18,27,.72) url("https://raw.githubusercontent.com/zacharyceiley-jpg/TDS-WIKI/main/assets/slot.png") center/100% 100% no-repeat}
-.crate-image>img{display:block;width:100%;height:100%;padding:18px;object-fit:contain;background:transparent}
-.crate-image:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.9));pointer-events:none}
-.crate-name{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:11px 9px;text-align:center;font-size:15px;font-weight:900;text-shadow:0 2px 7px #000}
-.crate-hover{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:5px;padding:14px;background:rgba(0,0,0,.93);opacity:0;transition:opacity .18s ease}
-.crate-hover strong{font-size:16px}.crate-hover span{color:#c8cfda;font-size:11px}.crate-card:hover .crate-hover{opacity:1}
-.crate-details{background:rgba(10,13,20,.96);border-top:1px solid var(--border)}
-.crate-details summary{cursor:pointer;padding:9px 12px;font-size:12px;font-weight:800;list-style:none;text-align:center;color:#dbe3f0}.crate-details summary::-webkit-details-marker{display:none}.crate-details summary:before{content:"＋ ";color:#65b8ff}.crate-details[open] summary:before{content:"− "}
-.crate-contents{padding:10px 10px 12px;border-top:1px solid rgba(255,255,255,.08)}
-.contents-head{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px;font-size:11px}.contents-head a{color:#65b8ff;text-decoration:none}
-.contents-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
-.content-item{position:relative;display:flex;align-items:center;gap:6px;min-width:0;min-height:58px;padding:7px;border-radius:8px;background:rgba(15,18,27,.72) url("https://raw.githubusercontent.com/zacharyceiley-jpg/TDS-WIKI/main/assets/slot.png") center/100% 100% no-repeat;border:0;overflow:hidden;transition:transform .18s ease,filter .18s ease}.content-item:hover{transform:translateY(-2px);filter:brightness(1.15)}
-.content-item img{width:34px;height:34px;border-radius:6px;object-fit:cover;background:#111;flex:none}.content-item strong{display:block;font-size:9px;line-height:1.05;text-shadow:0 1px 3px #000}.content-item span{display:block;color:#d0d7e3;font-size:8px;margin-top:2px;text-shadow:0 1px 3px #000}
-.contents-note{color:#aeb7c7;font-size:10px;line-height:1.35}.contents-note a{display:block;margin-top:8px;color:#65b8ff;text-decoration:none}
-.empty{display:none;padding:26px;background:var(--panel);border-radius:16px;text-align:center;color:var(--muted)}
-footer{color:#aeb5c2;text-align:center;font-size:12px;margin-top:30px}
-@media(max-width:700px){.top-banner{gap:10px;padding:8px 10px}.top-banner img{width:54vw}.banner-search{width:38vw}#search{font-size:12px;padding:10px}.hero-top{align-items:flex-start;flex-direction:column}.crate-card,.crate-image{width:180px}.crate-card{flex-basis:180px}.crate-image{height:195px}.crate-image>img{padding:14px}}
+
+.top-banner{
+  position:sticky;
+  top:0;
+  z-index:50;
+  height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  padding:8px 24px;
+  background:rgba(5,7,12,.95);
+  border-bottom:2px solid rgba(255,255,255,.12);
+  box-shadow:0 8px 30px rgba(0,0,0,.45);
+  backdrop-filter:blur(8px)
+}
+
+.top-banner img{
+  width:min(650px,58vw);
+  max-height:66px;
+  object-fit:contain
+}
+
+.banner-search{
+  width:min(360px,32vw);
+  flex-shrink:1
+}
+
+#search{
+  width:100%;
+  padding:12px 15px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  outline:none;
+  color:#fff;
+  background:rgba(0,0,0,.5);
+  font-size:14px
+}
+
+#search:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(101,184,255,.14)
+}
+
+.page{
+  width:min(1500px,94vw);
+  margin:14px auto 40px
+}
+
+.hero{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px 20px;
+  box-shadow:0 15px 45px rgba(0,0,0,.34)
+}
+
+.hero-top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px
+}
+
+.hero h1{
+  margin:0;
+  font-size:clamp(30px,4.2vw,50px)
+}
+
+.hero p{
+  margin:6px 0 0;
+  color:var(--muted)
+}
+
+.back{
+  color:#fff;
+  text-decoration:none;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,.35);
+  border-radius:10px;
+  padding:9px 12px;
+  font-size:13px
+}
+
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:12px 0 18px
+}
+
+.filter{
+  border:1px solid var(--border);
+  color:#fff;
+  background:rgba(0,0,0,.35);
+  border-radius:999px;
+  padding:7px 11px;
+  cursor:pointer;
+  font-size:12px
+}
+
+.filter.active{
+  border-color:var(--accent);
+  background:rgba(101,184,255,.14)
+}
+
+.crate-section{
+  margin:18px 0 24px
+}
+
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:14px;
+  margin-bottom:9px;
+  padding:0 3px
+}
+
+.section-kicker{
+  display:inline-block;
+  color:var(--section-accent);
+  font-size:25px;
+  font-weight:900
+}
+
+.section-heading p{
+  margin:2px 0 0;
+  color:var(--muted);
+  font-size:12px
+}
+
+.count{
+  color:#c7cedb;
+  font-size:11px;
+  white-space:nowrap
+}
+
+.crate-grid{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-start;
+  justify-content:center;
+  gap:10px
+}
+
+.crate-card{
+  flex:0 0 230px;
+  width:230px;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  overflow:hidden;
+  box-shadow:none;
+  transition:transform .18s ease,filter .18s ease
+}
+
+.crate-card:hover{
+  transform:translateY(-5px);
+  filter:brightness(1.15)
+}
+
+.crate-image{
+  position:relative;
+  width:230px;
+  height:250px;
+  overflow:hidden;
+  background:
+    rgba(15,18,27,.72)
+    url("https://raw.githubusercontent.com/zacharyceiley-jpg/TDS-WIKI/main/assets/slot.png")
+    center/100% 100% no-repeat
+}
+
+.crate-image>img{
+  display:block;
+  width:100%;
+  height:100%;
+  padding:18px;
+  object-fit:contain;
+  background:transparent
+}
+
+.crate-image:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent 40%,rgba(0,0,0,.9));
+  pointer-events:none
+}
+
+.crate-name{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:2;
+  padding:11px 9px;
+  text-align:center;
+  font-size:15px;
+  font-weight:900;
+  text-shadow:0 2px 7px #000
+}
+
+.crate-hover{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  gap:5px;
+  padding:14px;
+  background:rgba(0,0,0,.93);
+  opacity:0;
+  transition:opacity .18s ease
+}
+
+.crate-hover strong{font-size:16px}
+.crate-hover span{color:#c8cfda;font-size:11px}
+.crate-card:hover .crate-hover{opacity:1}
+
+.crate-details{
+  background:rgba(10,13,20,.96);
+  border-top:1px solid var(--border)
+}
+
+.crate-details summary{
+  cursor:pointer;
+  padding:9px 12px;
+  font-size:12px;
+  font-weight:800;
+  list-style:none;
+  text-align:center;
+  color:#dbe3f0
+}
+
+.crate-details summary::-webkit-details-marker{
+  display:none
+}
+
+.crate-details summary:before{
+  content:"＋ ";
+  color:#65b8ff
+}
+
+.crate-details[open] summary:before{
+  content:"− "
+}
+
+.crate-contents{
+  padding:10px 10px 12px;
+  border-top:1px solid rgba(255,255,255,.08)
+}
+
+.contents-head{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  align-items:center;
+  margin-bottom:8px;
+  font-size:11px
+}
+
+.contents-head a{
+  color:#65b8ff;
+  text-decoration:none
+}
+
+.contents-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:6px
+}
+
+/* CONTENT ITEMS ARE NOW LINKS */
+
+.content-item{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  min-width:0;
+  min-height:58px;
+  padding:7px;
+  border-radius:8px;
+  background:
+    rgba(15,18,27,.72)
+    url("https://raw.githubusercontent.com/zacharyceiley-jpg/TDS-WIKI/main/assets/slot.png")
+    center/100% 100% no-repeat;
+  border:0;
+  overflow:hidden;
+  transition:transform .18s ease,filter .18s ease;
+
+  color:#fff;
+  text-decoration:none;
+  cursor:pointer
+}
+
+.content-item:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.2);
+  text-decoration:none
+}
+
+.content-item img{
+  width:34px;
+  height:34px;
+  border-radius:6px;
+  object-fit:cover;
+  background:#111;
+  flex:none
+}
+
+.content-item strong{
+  display:block;
+  font-size:9px;
+  line-height:1.05;
+  text-shadow:0 1px 3px #000
+}
+
+.content-item span{
+  display:block;
+  color:#d0d7e3;
+  font-size:8px;
+  margin-top:2px;
+  text-shadow:0 1px 3px #000
+}
+
+.contents-note{
+  color:#aeb7c7;
+  font-size:10px;
+  line-height:1.35
+}
+
+.contents-note a{
+  display:block;
+  margin-top:8px;
+  color:#65b8ff;
+  text-decoration:none
+}
+
+.empty{
+  display:none;
+  padding:26px;
+  background:var(--panel);
+  border-radius:16px;
+  text-align:center;
+  color:var(--muted)
+}
+
+footer{
+  color:#aeb5c2;
+  text-align:center;
+  font-size:12px;
+  margin-top:30px
+}
+
+@media(max-width:700px){
+
+  .top-banner{
+    gap:10px;
+    padding:8px 10px
+  }
+
+  .top-banner img{
+    width:54vw
+  }
+
+  .banner-search{
+    width:38vw
+  }
+
+  #search{
+    font-size:12px;
+    padding:10px
+  }
+
+  .hero-top{
+    align-items:flex-start;
+    flex-direction:column
+  }
+
+  .crate-card,
+  .crate-image{
+    width:180px
+  }
+
+  .crate-card{
+    flex-basis:180px
+  }
+
+  .crate-image{
+    height:195px
+  }
+
+  .crate-image>img{
+    padding:14px
+  }
+}
 </style>
 </head>
+
 <body>
-  <script src="/wiki-links.js"></script>
+
+<script src="/wiki-links.js"></script>
+
 <header class="top-banner">
-  <img src="https://i.namu.wiki/i/7xTzCZ5-4YLxCBlGfiGrTr_TKKr1_lGMMnV4E3oGJX87QuWTZ0KK2M0EWE1-_VtY_Z9HkVdHEGXzo15xq-A52w.webp" alt="TDS Wiki">
-  <div class="banner-search"><input id="search" type="search" placeholder="Search crates..."></div>
+
+  <img
+    src="https://i.namu.wiki/i/7xTzCZ5-4YLxCBlGfiGrTr_TKKr1_lGMMnV4E3oGJX87QuWTZ0KK2M0EWE1-_VtY_Z9HkVdHEGXzo15xq-A52w.webp"
+    alt="TDS Wiki"
+  >
+
+  <div class="banner-search">
+    <input
+      id="search"
+      type="search"
+      placeholder="Search crates..."
+    >
+  </div>
+
 </header>
+
 <main class="page">
-<section class="hero"><div class="hero-top"><div><h1>Crates</h1><p>Browse TDS crates by type and expand a crate to inspect its contents.</p></div><a class="back" href="index.html">← Back to home</a></div></section>
+
+<section class="hero">
+
+  <div class="hero-top">
+
+    <div>
+      <h1>Crates</h1>
+      <p>
+        Browse TDS crates by type and expand a crate to inspect its contents.
+      </p>
+    </div>
+
+    <a class="back" href="index.html">
+      ← Back to home
+    </a>
+
+  </div>
+
+</section>
+
+
 <div class="filters" id="filters">
-<button class="filter active" data-filter="all">All</button><button class="filter" data-filter="Basic">Basic</button><button class="filter" data-filter="Robux">Robux</button><button class="filter" data-filter="Unobtainable">Unobtainable</button><button class="filter" data-filter="Consumables">Consumables</button>
+
+  <button class="filter active" data-filter="all">
+    All
+  </button>
+
+  <button class="filter" data-filter="Basic">
+    Basic
+  </button>
+
+  <button class="filter" data-filter="Robux">
+    Robux
+  </button>
+
+  <button class="filter" data-filter="Unobtainable">
+    Unobtainable
+  </button>
+
+  <button class="filter" data-filter="Consumables">
+    Consumables
+  </button>
+
 </div>
+
+
 <div id="crateSections">
+
 <script>
+
 /* =========================================================
    TDS WIKI — CRATES
    ========================================================= */
 
-/* -------------------------
+
+/* =========================================================
    CRATE LISTS
-   ------------------------- */
+   ========================================================= */
 
 const crateData = {
+
   Basic: [
     "Basic Crate",
     "Golden Crate",
@@ -124,26 +567,30 @@ const crateData = {
     "Medium Grade Crate",
     "High Grade Crate"
   ]
+
 };
 
 
-/* -------------------------
+/* =========================================================
    CATEGORY COLORS
-   ------------------------- */
+   ========================================================= */
 
 const categoryColors = {
+
   Basic: "#65b8ff",
   Robux: "#b892ff",
   Unobtainable: "#9da6b5",
   Consumables: "#63dfaa"
+
 };
 
 
-/* -------------------------
+/* =========================================================
    CATEGORY DESCRIPTIONS
-   ------------------------- */
+   ========================================================= */
 
 const categoryDescriptions = {
+
   Basic:
     "Crates available through the normal crate system and regular progression.",
 
@@ -155,25 +602,15 @@ const categoryDescriptions = {
 
   Consumables:
     "Crates used to obtain consumable items."
+
 };
 
 
 /* =========================================================
    CRATE IMAGES
-   =========================================================
-
-   PUT YOUR IMAGE URL BETWEEN THE QUOTES.
-
-   Example:
-
-   "Basic Crate":
-     "https://example.com/basic-crate.png",
-
    ========================================================= */
 
 const crateImages = {
-
-  /* ---------- BASIC ---------- */
 
   "Basic Crate":
     "https://tds.wiki/images/thumb/6/60/BasicSkincrateIcon.png/350px-BasicSkincrateIcon.png.webp?cb=20260422232755",
@@ -206,8 +643,6 @@ const crateImages = {
     "https://tds.wiki/images/thumb/7/7d/ScubaOpsCrateIcon.png/350px-ScubaOpsCrateIcon.png.webp?cb=20260703160358",
 
 
-  /* ---------- ROBUX ---------- */
-
   "Premium Crate":
     "https://tds.wiki/images/thumb/3/37/PremiumSkincrateIcon.png/350px-PremiumSkincrateIcon.png.webp?cb=20260422220508",
 
@@ -220,8 +655,6 @@ const crateImages = {
   "Showtime Crate":
     "https://tds.wiki/images/thumb/7/75/ShowtimeSkincrateIcon.png/350px-ShowtimeSkincrateIcon.png.webp?cb=20260422204250",
 
-
-  /* ---------- UNOBTAINABLE ---------- */
 
   "Frost Crate":
     "https://tds.wiki/images/thumb/d/de/FrostCrateIcon.png/350px-FrostCrateIcon.png.webp?cb=20260425162433",
@@ -290,8 +723,6 @@ const crateImages = {
     "https://tds.wiki/images/thumb/0/08/Platinum_Crate.png/350px-Platinum_Crate.png.webp?cb=20191014124544",
 
 
-  /* ---------- CONSUMABLES ---------- */
-
   "Holiday Crate":
     "https://tds.wiki/images/thumb/a/a1/HolidayCrateIcon.png/350px-HolidayCrateIcon.png.webp?cb=20260425180532",
 
@@ -303,6 +734,7 @@ const crateImages = {
 
   "High Grade Crate":
     "https://tds.wiki/images/thumb/4/4f/HighGradeCrateIcon.png/350px-HighGradeCrateIcon.png.webp?cb=20260425164142"
+
 };
 
 
@@ -312,169 +744,168 @@ const crateImages = {
 
    Format:
 
-   ["Display Name", "Tower Name"]
-
-   Add more entries to any crate whenever you want.
+   ["Display Name", "Tower Name", "PAGE URL"]
 
    ========================================================= */
 
 const crateContents = {
 
   "Basic Crate": [
-    ["Red Scout", "Scout"],
-    ["Green Scout", "Scout"],
-    ["Blue Scout", "Scout"],
-    ["Survivor Scout", "Scout"],
 
-    ["Red Soldier", "Soldier"],
-    ["Blue Soldier", "Soldier"],
+    ["Red Scout", "Scout", "/main/towerdata/scout.html"],
+    ["Green Scout", "Scout", "/main/towerdata/scout.html"],
+    ["Blue Scout", "Scout", "/main/towerdata/scout.html"],
+    ["Survivor Scout", "Scout", "/main/towerdata/scout.html"],
 
-    ["Blue Minigunner", "Minigunner"],
-    ["Green Minigunner", "Minigunner"],
+    ["Red Soldier", "Soldier", "/main/towerdata/soldier.html"],
+    ["Blue Soldier", "Soldier", "/main/towerdata/soldier.html"],
 
-    ["Red Demoman", "Demoman"],
-    ["Green Demoman", "Demoman"],
+    ["Blue Minigunner", "Minigunner", "/main/towerdata/minigunner.html"],
+    ["Green Minigunner", "Minigunner", "/main/towerdata/minigunner.html"],
 
-    ["Blue Sniper", "Sniper"],
-    ["Red Sniper", "Sniper"],
+    ["Red Demoman", "Demoman", "/main/towerdata/demoman.html"],
+    ["Green Demoman", "Demoman", "/main/towerdata/demoman.html"],
 
-    ["Blue Pyromancer", "Pyromancer"],
-    ["Red Paintballer", "Paintballer"],
+    ["Blue Sniper", "Sniper", "/main/towerdata/sniper.html"],
+    ["Red Sniper", "Sniper", "/main/towerdata/sniper.html"],
 
-    ["Blue Crook Boss", "Crook Boss"],
-    ["Red Crook Boss", "Crook Boss"],
+    ["Blue Pyromancer", "Pyromancer", "/main/towerdata/pyromancer.html"],
+    ["Red Paintballer", "Paintballer", "/main/towerdata/paintballer.html"],
 
-    ["Blue Ranger", "Ranger"],
-    ["Green Ranger", "Ranger"],
+    ["Blue Crook Boss", "Crook Boss", "/main/towerdata/crookboss.html"],
+    ["Red Crook Boss", "Crook Boss", "/main/towerdata/crookboss.html"],
 
-    ["Purple Hunter", "Hunter"],
+    ["Blue Ranger", "Ranger", "/main/towerdata/ranger.html"],
+    ["Green Ranger", "Ranger", "/main/towerdata/ranger.html"],
 
-    ["Navy Commander", "Commander"],
-    ["Red Commander", "Commander"],
-    ["Green Commander", "Commander"]
+    ["Purple Hunter", "Hunter", "/main/towerdata/hunter.html"],
+
+    ["Navy Commander", "Commander", "/main/towerdata/commander.html"],
+    ["Red Commander", "Commander", "/main/towerdata/commander.html"],
+    ["Green Commander", "Commander", "/main/towerdata/commander.html"]
+
   ],
+
 
   "Golden Crate": [
-    ["Golden Scout", "Scout"],
-    ["Golden Soldier", "Soldier"],
-    ["Golden Crook Boss", "Crook Boss"],
-    ["Golden Pyromancer", "Pyromancer"],
-    ["Golden Minigunner", "Minigunner"],
-    ["Golden Cowboy", "Cowboy"],
-    ["Golden Pyromancer", "Pyromancer"]
+
+    ["Golden Scout", "Scout", "/main/towerdata/scout.html"],
+    ["Golden Soldier", "Soldier", "/main/towerdata/soldier.html"],
+    ["Golden Crook Boss", "Crook Boss", "/main/towerdata/crookboss.html"],
+    ["Golden Pyromancer", "Pyromancer", "/main/towerdata/pyromancer.html"],
+    ["Golden Minigunner", "Minigunner", "/main/towerdata/minigunner.html"],
+    ["Golden Cowboy", "Cowboy", "/main/towerdata/cowboy.html"]
+
   ],
+
 
   "Cold Front Crate": [
-    ["Silent", "Sniper"],
-    ["Brisk", "Commander"],
-    ["Brave Soul", "Sledger"],
-    ["Ice Witch", "Accelerator"],
-    ["Stranded", "Medic"]
+
+    ["Silent", "Sniper", "/main/towerdata/sniper.html"],
+    ["Brisk", "Commander", "/main/towerdata/commander.html"],
+    ["Brave Soul", "Sledger", "/main/towerdata/sledger.html"],
+    ["Ice Witch", "Accelerator", "/main/towerdata/accelerator.html"],
+    ["Stranded", "Medic", "/main/towerdata/medic.html"]
+
   ],
+
 
   "Premium Crate": [
-    ["Victorian", "Commander"],
-    ["General", "Commander"],
-    ["Acidic", "Pyromancer"],
-    ["Red", "Scout"],
-    ["Navy", "Ace Pilot"]
+
+    ["Victorian", "Commander", "/main/towerdata/commander.html"],
+    ["General", "Commander", "/main/towerdata/commander.html"],
+    ["Acidic", "Pyromancer", "/main/towerdata/pyromancer.html"],
+    ["Red", "Scout", "/main/towerdata/scout.html"],
+    ["Navy", "Ace Pilot", "/main/towerdata/acepilot.html"]
+
   ],
+
 
   "Deluxe Crate": [
-    ["Maid", "Commander"],
-    ["Neko", "Commander"],
-    ["Mage", "Accelerator"],
-    ["Tycoon", "Farm"]
+
+    ["Maid", "Commander", "/main/towerdata/commander.html"],
+    ["Neko", "Commander", "/main/towerdata/commander.html"],
+    ["Mage", "Accelerator", "/main/towerdata/accelerator.html"],
+    ["Tycoon", "Farm", "/main/towerdata/farm.html"]
+
   ],
+
 
   "Phantom Crate": [
-    ["Phantom", "Accelerator"],
-    ["Ghost", "Scout"]
+
+    ["Phantom", "Accelerator", "/main/towerdata/accelerator.html"],
+    ["Ghost", "Scout", "/main/towerdata/scout.html"]
+
   ],
+
 
   "Vigilante Crate": [
-    ["Vigilante", "Commander"],
-    ["Vigilante", "Accelerator"]
+
+    ["Vigilante", "Commander", "/main/towerdata/commander.html"],
+    ["Vigilante", "Accelerator", "/main/towerdata/accelerator.html"]
+
   ],
+
 
   "Pirate Crate": [
-    ["Pirate", "Demoman"],
-    ["Pirate", "Commander"]
+
+    ["Pirate", "Demoman", "/main/towerdata/demoman.html"],
+    ["Pirate", "Commander", "/main/towerdata/commander.html"]
+
   ],
+
 
   "Beach Crate": [
-    ["Aqua", "Commander"],
-    ["Seal", "Commander"]
+
+    ["Aqua", "Commander", "/main/towerdata/commander.html"],
+    ["Seal", "Commander", "/main/towerdata/commander.html"]
+
   ],
+
 
   "Patriotic Crate": [
-    ["Patriotic", "Commander"]
+
+    ["Patriotic", "Commander", "/main/towerdata/commander.html"]
+
   ],
 
+
   "Toy Crate": [],
-
   "Void Crate": [],
-
   "Scuba Ops Crate": [],
-
   "Showtime Crate": [],
-
   "Frost Crate": [],
-
   "Pumpkin Crate": [],
-
   "Banned Crate": [],
-
   "Ducky Crate": [],
-
   "Lovely Crate": [],
-
   "Lunar Crate": [],
-
   "Ugly Crate": [],
-
   "Coin Crate": [],
-
   "Halloween 2019 Crate": [],
-
   "X-Mas 2019 Crate": [],
-
   "Party Crate": [],
-
   "Valentines Crate": [],
-
   "Bunny Crate": [],
-
   "Spooky Crate": [],
-
   "Halloween Crate": [],
-
   "Jolly Crate": [],
-
   "Lovestruck Crate": [],
-
   "Christmas 2025 Crate": [],
-
   "Valentines 2026 Crate": [],
-
   "Shamrock Crate": [],
-
   "Name Tag Crate": [],
-
   "Platinum Crate": [],
-
   "Holiday Crate": [],
-
   "Low Grade Crate": [],
-
   "Medium Grade Crate": [],
-
   "High Grade Crate": []
+
 };
 
 
 /* =========================================================
-   TOWER / CONTENT IMAGES
+   CONTENT IMAGES
    ========================================================= */
 
 const contentImages = {
@@ -529,6 +960,7 @@ const contentImages = {
 
   Cowboy:
     "https://static.wikia.nocookie.net/tower-defense-sim/images/8/82/WDDefaultCowboyIcon.png/revision/latest?cb=20260311032013"
+
 };
 
 
@@ -536,233 +968,256 @@ const contentImages = {
    HELPER FUNCTIONS
    ========================================================= */
 
-function getCrateImage(crateName) {
+function getCrateImage(crateName){
 
-  // First use the URL you manually entered.
-  if (crateImages[crateName] && crateImages[crateName].trim() !== "") {
+  if(
+    crateImages[crateName] &&
+    crateImages[crateName].trim() !== ""
+  ){
     return crateImages[crateName];
   }
 
-  // If you have not entered an image yet, use a TDS Wiki
-  // Special:FilePath fallback.
   const wikiName = crateName
-    .replaceAll(" ", "_")
-    .replaceAll("'", "");
+    .replaceAll(" ","_")
+    .replaceAll("'","");
 
   return `https://tds.wiki/wiki/Special:FilePath/${wikiName}.png`;
 }
 
 
-function getContentImage(towerName) {
+function getContentImage(towerName){
 
-  const key = towerName
-    .replaceAll(" ", "");
+  const key = towerName.replaceAll(" ","");
 
   return contentImages[key] || contentImages.Scout;
 }
 
 
-function getWikiUrl(crateName) {
+function getWikiUrl(crateName){
 
   return `https://tds.wiki/w/${encodeURIComponent(
-    crateName.replaceAll(" ", "_")
+    crateName.replaceAll(" ","_")
   )}`;
+
 }
 
 
 /* =========================================================
-   RENDER THE CRATES
+   RENDER CRATES
    ========================================================= */
 
-function renderCrates() {
+function renderCrates(){
 
-  const root = document.getElementById("crateSections");
+  const root =
+    document.getElementById("crateSections");
 
   root.innerHTML = "";
 
-  Object.entries(crateData).forEach(([category, crates]) => {
 
-    const section = document.createElement("section");
+  Object.entries(crateData).forEach(
+    ([category,crates]) => {
 
-    section.className = "crate-section";
-    section.dataset.category = category;
+      const section =
+        document.createElement("section");
 
-    section.innerHTML = `
-      <div class="section-heading">
+      section.className =
+        "crate-section";
 
-        <div>
+      section.dataset.category =
+        category;
 
-          <div
-            class="section-kicker"
-            style="--section-accent:${categoryColors[category]}"
-          >
-            ${category}
+
+      section.innerHTML = `
+
+        <div class="section-heading">
+
+          <div>
+
+            <div
+              class="section-kicker"
+              style="--section-accent:${categoryColors[category]}"
+            >
+              ${category}
+            </div>
+
+            <p>
+              ${categoryDescriptions[category]}
+            </p>
+
           </div>
 
-          <p>
-            ${categoryDescriptions[category]}
-          </p>
+          <span class="count">
+            ${crates.length} crates
+          </span>
 
         </div>
 
-        <span class="count">
-          ${crates.length} crates
-        </span>
+        <div class="crate-grid"></div>
 
-      </div>
-
-      <div class="crate-grid"></div>
-    `;
-
-    const grid = section.querySelector(".crate-grid");
+      `;
 
 
-    crates.forEach(crateName => {
-
-      const card = document.createElement("article");
-
-      card.className = "crate-card";
-
-      card.dataset.name = crateName.toLowerCase();
+      const grid =
+        section.querySelector(".crate-grid");
 
 
-      /* ---------- CONTENTS ---------- */
+      crates.forEach(crateName => {
 
-      const contents = crateContents[crateName] || [];
+        const card =
+          document.createElement("article");
+
+        card.className =
+          "crate-card";
+
+        card.dataset.name =
+          crateName.toLowerCase();
 
 
-      let contentsHTML = "";
+        const contents =
+          crateContents[crateName] || [];
 
 
-      if (contents.length > 0) {
+        let contentsHTML = "";
 
-        contentsHTML = `
-          <div class="contents-grid">
 
-            ${contents.map(([displayName, towerName]) => `
+        if(contents.length > 0){
 
-              <div class="content-item">
+          contentsHTML = `
 
-                <img
-                  src="${getContentImage(towerName)}"
-                  alt="${towerName}"
+            <div class="contents-grid">
+
+              ${contents.map(
+                ([displayName,towerName,href]) => `
+
+                <a
+                  class="content-item"
+                  href="${href}"
                 >
 
-                <div>
+                  <img
+                    src="${getContentImage(towerName)}"
+                    alt="${towerName}"
+                  >
 
-                  <strong>
-                    ${displayName}
-                  </strong>
+                  <div>
 
-                  <span>
-                    ${towerName}
-                  </span>
+                    <strong>
+                      ${displayName}
+                    </strong>
 
-                </div>
+                    <span>
+                      ${towerName}
+                    </span>
 
-              </div>
+                  </div>
 
-            `).join("")}
+                </a>
 
-          </div>
-        `;
+              `
+              ).join("")}
 
-      } else {
+            </div>
 
-        contentsHTML = `
-          <div class="contents-note">
+          `;
 
-            Contents have not been added yet.
+        }else{
 
-            <a
-              href="${getWikiUrl(crateName)}"
-              target="_blank"
-              rel="noopener"
-            >
-              Open crate article →
-            </a>
+          contentsHTML = `
 
-          </div>
-        `;
-      }
+            <div class="contents-note">
 
-
-      /* ---------- CARD ---------- */
-
-      card.innerHTML = `
-
-        <div class="crate-image">
-
-          <img
-            src="${getCrateImage(crateName)}"
-            alt="${crateName}"
-            onerror="
-              this.onerror=null;
-              this.style.objectFit='contain';
-              this.src='https://static.wikia.nocookie.net/tower-defense-sim/images/6/68/ViolentNightClean.png/revision/latest/scale-to-width-down/340?cb=20221227092433';
-            "
-          >
-
-          <div class="crate-name">
-            ${crateName}
-          </div>
-
-          <div class="crate-hover">
-
-            <strong>
-              ${crateName}
-            </strong>
-
-            <span>
-              Expand below to view contents
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <details class="crate-details">
-
-          <summary>
-            Expand
-          </summary>
-
-          <div class="crate-contents">
-
-            <div class="contents-head">
-
-              <strong>
-                Contents
-              </strong>
+              Contents have not been added yet.
 
               <a
                 href="${getWikiUrl(crateName)}"
                 target="_blank"
                 rel="noopener"
               >
-                TDS Wiki ↗
+                Open crate article →
               </a>
 
             </div>
 
-            ${contentsHTML}
+          `;
+
+        }
+
+
+        card.innerHTML = `
+
+          <div class="crate-image">
+
+            <img
+              src="${getCrateImage(crateName)}"
+              alt="${crateName}"
+              onerror="
+                this.onerror=null;
+                this.style.objectFit='contain';
+                this.src='https://static.wikia.nocookie.net/tower-defense-sim/images/6/68/ViolentNightClean.png/revision/latest/scale-to-width-down/340?cb=20221227092433';
+              "
+            >
+
+            <div class="crate-name">
+              ${crateName}
+            </div>
+
+            <div class="crate-hover">
+
+              <strong>
+                ${crateName}
+              </strong>
+
+              <span>
+                Expand below to view contents
+              </span>
+
+            </div>
 
           </div>
 
-        </details>
 
-      `;
+          <details class="crate-details">
+
+            <summary>
+              Expand
+            </summary>
+
+            <div class="crate-contents">
+
+              <div class="contents-head">
+
+                <strong>
+                  Contents
+                </strong>
+
+                <a
+                  href="${getWikiUrl(crateName)}"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  TDS Wiki ↗
+                </a>
+
+              </div>
+
+              ${contentsHTML}
+
+            </div>
+
+          </details>
+
+        `;
 
 
-      grid.appendChild(card);
+        grid.appendChild(card);
 
-    });
+      });
 
 
-    root.appendChild(section);
+      root.appendChild(section);
 
-  });
+    }
+  );
 
 }
 
@@ -771,7 +1226,8 @@ function renderCrates() {
    SEARCH + FILTERS
    ========================================================= */
 
-const search = document.getElementById("search");
+const search =
+  document.getElementById("search");
 
 const filters = [
   ...document.querySelectorAll(".filter")
@@ -780,7 +1236,7 @@ const filters = [
 let activeFilter = "all";
 
 
-function renderResults() {
+function renderResults(){
 
   const query =
     search.value
@@ -795,7 +1251,9 @@ function renderResults() {
     .querySelectorAll(".crate-section")
     .forEach(section => {
 
-      const category = section.dataset.category;
+      const category =
+        section.dataset.category;
+
 
       const correctCategory =
         activeFilter === "all" ||
@@ -815,12 +1273,16 @@ function renderResults() {
 
 
           card.style.display =
-            matches ? "block" : "none";
+            matches
+              ? "block"
+              : "none";
 
 
-          if (matches) {
+          if(matches){
+
             totalVisible++;
             sectionVisible++;
+
           }
 
         });
@@ -838,23 +1300,23 @@ function renderResults() {
     document.getElementById("empty");
 
 
-  if (!empty) {
+  if(!empty){
 
     empty =
       document.createElement("div");
 
-    empty.id = "empty";
-    empty.className = "empty";
+    empty.id =
+      "empty";
+
+    empty.className =
+      "empty";
 
     empty.textContent =
       "No crates match your search.";
 
     document
       .querySelector("main")
-      .insertBefore(
-        empty,
-        document.querySelector("footer")
-      );
+      .appendChild(empty);
 
   }
 
@@ -873,25 +1335,28 @@ function renderResults() {
 
 filters.forEach(button => {
 
-  button.addEventListener("click", () => {
+  button.addEventListener(
+    "click",
+    () => {
 
-    activeFilter =
-      button.dataset.filter;
-
-
-    filters.forEach(other => {
-
-      other.classList.toggle(
-        "active",
-        other === button
-      );
-
-    });
+      activeFilter =
+        button.dataset.filter;
 
 
-    renderResults();
+      filters.forEach(other => {
 
-  });
+        other.classList.toggle(
+          "active",
+          other === button
+        );
+
+      });
+
+
+      renderResults();
+
+    }
+  );
 
 });
 
@@ -907,16 +1372,33 @@ search.addEventListener(
 
 
 /* =========================================================
-   START PAGE
+   START
    ========================================================= */
 
 renderCrates();
-
 renderResults();
 
 </script>
+
 </div>
-<footer>TDS Wiki • Crate listings based on the current TDS Wiki crate categories. <a href="https://tds.wiki/w/Crates" target="_blank" rel="noopener" style="color:#65b8ff">Source</a></footer>
+
+
+<footer>
+
+  TDS Wiki • Crate listings based on the current TDS Wiki crate categories.
+
+  <a
+    href="https://tds.wiki/w/Crates"
+    target="_blank"
+    rel="noopener"
+    style="color:#65b8ff"
+  >
+    Source
+  </a>
+
+</footer>
+
 </main>
+
 </body>
 </html>
