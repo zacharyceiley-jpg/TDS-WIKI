@@ -1,1 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TDS Wiki — Scout</title>
+<link rel="icon" type="image/png" href="https://tds.wiki/images/thumb/4/4e/DefaultScout3.png/100px-DefaultScout3.png.webp">
+<style>
+:root {
+  --bg:#0b0d12; --panel:rgba(15,18,27,.90); --panel2:rgba(25,29,40,.94);
+  --line:rgba(255,255,255,.13);
+  --text:#f2f4f7; --muted:#b9c0cf; --accent:#f2c94c; --green:#57d17a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100%;
+  overflow-x:hidden;
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    linear-gradient(rgba(5,8,14,.62),rgba(5,8,14,.78)),
+    url("https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/SummerCastleIcon.png/revision/latest/smart/width/400/height/225?cb=20250709204530")
+    center/cover fixed no-repeat
+}
+a{color:inherit}
+.top-banner{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  width:100%;
+  height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  padding:8px 24px;
+  background:rgba(5,7,12,.94);
+  border-bottom:2px solid rgba(255,255,255,.12);
+  box-shadow:0 8px 30px rgba(0,0,0,.45);
+  backdrop-filter:blur(8px);
+}
+.top-banner img{
+  width:min(650px,58vw);
+  max-height:66px;
+  object-fit:contain;
+}
+.banner-search{
+  width:min(360px,32vw);
+  flex-shrink:1;
+}
+.search{
+  width:100%;
+  margin-left:0;
+  padding:12px 15px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  outline:none;
+  color:white;
+  background:rgba(0,0,0,.48);
+  font-size:10.5px;
+}
+.search:focus{
+  border-color:#65b8ff;
+  box-shadow:0 0 0 3px rgba(101,184,255,.13);
+}
+.back-home{
+  display:inline-block;
+  margin-bottom:12px;
+  padding:9px 14px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  color:#fff;
+  background:rgba(15,18,27,.9);
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  transition:background .15s ease,border-color .15s ease;
+}
+.back-home:hover{
+  background:rgba(101,184,255,.16);
+  border-color:#65b8ff;
+}
+.hero-card,.panel{
+  background:var(--panel);
+  border-color:var(--line);
+  box-shadow:0 15px 45px rgba(0,0,0,.35);
+  backdrop-filter:blur(8px);
+}
+.page-tabs{
+  top:82px;
+}
+@media(max-width:1150px){
+  .container{width:min(94vw,1500px)}
+}
+@media(max-width:700px){
+  .top-banner{gap:10px;padding:8px 10px}
+  .top-banner img{width:54vw}
+  .banner-search{width:38vw}
+  .search{font-size:12px;padding:10px}
+}
+.header{position:sticky;top:0;z-index:20;background:rgba(10,12,17,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1250px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:14px}
+.logo{font-size:21px;font-weight:800;letter-spacing:.4px}
+.logo span{color:var(--accent)}
+.search{margin-left:auto;background:#191e27;border:1px solid var(--line);border-radius:10px;color:white;padding:10px 13px;width:250px;outline:none}
+.container{width:min(1500px,calc(94vw - 210px));max-width:1500px;margin:12px auto 25px;padding:0 0 25px}
+.hero{display:grid;grid-template-columns:300px 1fr;gap:25px;align-items:stretch}
+.hero-card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.hero-card{padding:18px;display:flex;align-items:center;justify-content:center;min-height:330px}
+.hero-card img{max-width:100%;max-height:300px;object-fit:contain}
+.level-viewer{width:100%;text-align:center}
+.level-viewer img{display:block;width:100%;height:240px;margin:0 auto 12px;object-fit:contain}
+.level-controls{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.level-controls button,.level-controls select{border:1px solid var(--line);border-radius:8px;padding:8px 11px;color:#fff;background:#202631;cursor:pointer}
+.level-controls button:hover{background:#303844}
+.level-controls .upgrade-viewer{color:#111;background:var(--accent);border-color:var(--accent);font-weight:700}
+.level-caption{color:var(--muted);font-size:13px;margin-top:9px}
+.skin-level-tables{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.skin-level-card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px}
+.skin-level-card h3{margin-top:0}
+.skin-level-card table{min-width:0}
+.skin-level-card input{width:100%;min-width:110px;padding:7px 8px;border:1px solid var(--line);border-radius:7px;background:#11151c;color:#fff}
+.skin-level-card .preview-cell{width:70px;text-align:center}
+@media(max-width:700px){.skin-level-tables{grid-template-columns:1fr}}
+.hero-info{padding:25px}
+.kicker{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:1.5px}
+h1{font-size:46px;margin:7px 0 10px}
+h2{font-size:28px;margin:0 0 17px}
+h3{margin:4px 0 9px;font-size:20px}
+.subtitle{color:var(--muted);line-height:1.6;max-width:800px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.badge{padding:7px 10px;border-radius:999px;background:#202631;border:1px solid var(--line);font-size:13px}
+.badge.free{color:var(--green)}
+.quote{margin-top:20px;padding:15px 17px;border-left:4px solid var(--accent);background:var(--panel2);border-radius:8px;color:#d8dde6;font-style:italic}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.stat{padding:15px;background:var(--panel2);border:1px solid var(--line);border-radius:12px}
+.stat .label{font-size:12px;color:var(--muted);text-transform:uppercase}
+.stat .value{font-size:20px;font-weight:700;margin-top:6px}
+section{margin-top:32px}
+.panel{padding:22px}
+.description{line-height:1.75;color:#d5dae2}
+.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:#1a2029;color:#cbd2dc;border-radius:9px;padding:9px 14px;cursor:pointer}
+.tab.active{background:var(--accent);color:#111;border-color:var(--accent);font-weight:700}
+.upgrades{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.upgrade-card{display:grid;grid-template-columns:145px 1fr;background:var(--panel2);border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.upgrade-image{display:flex;align-items:center;justify-content:center;background:#11151c;padding:10px}
+.upgrade-image img{width:125px;height:125px;object-fit:contain}
+.upgrade-content{padding:15px}
+.eyebrow{font-size:12px;color:var(--accent);font-weight:700;text-transform:uppercase}
+.cost{font-weight:700;margin:10px 0}
+.upgrade-content p{color:#d5dae2;line-height:1.5;margin:8px 0}
+.upgrade-content small{color:var(--muted)}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:850px}
+th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+tr:hover{background:#181e27}
+.mini{width:52px;height:52px;object-fit:contain}
+.skin-img{width:72px;height:72px;object-fit:contain;background:#10141a;border-radius:9px}
+.rarity{font-size:12px;font-weight:700;padding:5px 8px;border-radius:999px;background:#252b35}
+.rarity.common{color:#ddd} .rarity.uncommon{color:#75e391} .rarity.rare{color:#66aaff}
+.rarity.event{color:#ffcf66} .rarity.exclusive{color:#c98cff} .rarity.legendary{color:#ff9c4a} .rarity.golden{color:#ffd84d}
+.skin-upgrade{border:1px solid var(--line);background:#202631;color:#ddd;border-radius:7px;padding:7px 10px;cursor:pointer}
+.skin-upgrade.done{background:var(--green);color:#08100b;border-color:var(--green);font-weight:700}
+.filterbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.filterbar button{border:1px solid var(--line);background:#191f28;color:#cdd4df;padding:8px 12px;border-radius:8px;cursor:pointer}
+.filterbar button.active{background:#303844;color:white}
+.notice{background:#171d26;border:1px dashed #394250;border-radius:10px;padding:12px;color:var(--muted);margin-bottom:15px}
+.footer{margin-top:40px;color:var(--muted);font-size:13px;text-align:center}
+/* The Levels and PvP data are displayed through the Statistics tabs. */
+.subsection#levels-stats,
+.subsection#pvp-stats{display:none}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.upgrades{grid-template-columns:1fr}h1{font-size:36px}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.container{padding-bottom:50px}}
+
+.evolution-hero{display:grid;grid-template-columns:250px 1fr;gap:22px;margin-bottom:18px}
+.evolution-image{background:#10141a;border:1px solid var(--line);border-radius:13px;display:flex;align-items:center;justify-content:center;min-height:260px}
+.evolution-image img{max-width:90%;max-height:250px;object-fit:contain}
+.evolution-info h3{font-size:28px;margin:5px 0 8px}
+.subheading{margin:28px 0 14px;font-size:21px}
+@media(max-width:700px){.evolution-hero{grid-template-columns:1fr}}
+
+.page-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0 0;padding:12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;position:sticky;top:64px;z-index:10}
+.page-tabs button{border:1px solid var(--line);background:#1a2029;color:#cbd2dc;border-radius:9px;padding:9px 14px;cursor:pointer;font-weight:600}
+.page-tabs button:hover{background:#252c37}
+@media(max-width:520px){.page-tabs{top:56px}}
+</style>
+
+<style>
+.tds-currency-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: -3px;
+  margin-right: 4px;
+}
+.tds-currency-icon.small {
+  width: 16px;
+  height: 16px;
+}
+</style>
+
+<style>
+.cash img, .exp img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: -4px;
+  margin-right: 4px;
+}
+</style>
+</head>
+<body>
+<header class="top-banner">
+  <img
+    src="https://i.namu.wiki/i/7xTzCZ5-4YLxCBlGfiGrTr_TKKr1_lGMMnV4E3oGJX87QuWTZ0KK2M0EWE1-_VtY_Z9HkVdHEGXzo15xq-A52w.webp"
+    alt="TDS Wiki"
+  >
+  <div class="banner-search">
+    <input
+      id="search"
+      class="search"
+      type="search"
+      placeholder="Search the wiki..."
+      oninput="pageSearch()"
+    >
+  </div>
+</header>
+
+<main class="container" id="page">
+  <a class="back-home" href="index.html">← Back to Home</a>
+
+  <div class="hero">
+    <div class="hero-card">
+      <div class="level-viewer">
+        <img id="scoutLevelImage" src="" alt="Default Scout level 0">
+        <div class="level-controls">
+          <button type="button" onclick="changeScoutLevel(-1)" aria-label="Previous level">←</button>
+          <select id="scoutSkinSelect" onchange="changeScoutSkin(this.value)" aria-label="Scout skin">
+            <option value="default">Default Scout</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="survivor">Survivor</option>
+            <option value="black-ops">Black Ops</option>
+            <option value="golden">Golden</option>
+            <option value="party">Party</option>
+            <option value="bunny">Bunny</option>
+            <option value="eclipse">Eclipse</option>
+            <option value="valentines">Valentines</option>
+            <option value="beach">Beach</option>
+            <option value="intern">Intern</option>
+            <option value="prime-raven">Prime Raven</option>
+            <option value="holiday">Holiday</option>
+            <option value="cookie">Cookie</option>
+            <option value="frost-hunter">Frost Hunter</option>
+            <option value="plushie">Plushie</option>
+            <option value="ducky">Ducky</option>
+            <option value="skull-trooper">Skull Trooper</option>
+            <option value="masquerade">Masquerade</option>
+            <option value="phantom">Phantom</option>
+            <option value="valhalla">Valhalla</option>
+            <option value="toilet">Toilet</option>
+            <option value="guest">Guest</option>
+            <option value="fallen">Fallen</option>
+            <option value="king-of-rock">King of Rock</option>
+            <option value="haz3mn">Haz3mn</option>
+            <option value="shark">Shark</option>
+            <option value="banned">Banned</option>
+            <option value="penguin">Penguin</option>
+          </select>
+          <button type="button" onclick="changeScoutLevel(1)" aria-label="Next level">→</button>
+          <button type="button" class="upgrade-viewer" onclick="upgradeScoutLevel()">Upgrade</button>
+        </div>
+        <div id="scoutLevelCaption" class="level-caption">Default Scout • Level 0</div>
+      </div>
+    </div>
+    <div class="hero-card hero-info">
+      <div>
+        <div class="kicker">Tower</div>
+        <h1>Scout</h1>
+        <p class="subtitle">The starter tower of the game.</p>
+        <div class="badges">
+          <span class="badge free">Unlock: Free</span>
+          <span class="badge">Role: Offense</span>
+          <span class="badge">Placement: Ground</span>
+          <span class="badge">Damage Method: Single</span>
+        </div>
+        <div class="quote">“The starter tower of the game.” — Store Description</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-tabs" id="pageTabs">
+    <button onclick="goToSection('page')">Overview</button>
+    <button onclick="goToSection('upgrades')">Upgrades</button>
+    <button onclick="goToSection('statistics')">Statistics</button>
+    <button onclick="goToSection('skins')">Skins</button>
+    <button onclick="goToSection('levels-stats')">Levels</button>
+    <button onclick="goToSection('pvp-stats')">PvP</button>
+    <button onclick="goToSection('evolution')">Evolution</button>
+  </div>
+
+  <section>
+    <div class="grid">
+      <div class="stat"><div class="label">Base Cost</div><div class="value"><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$125</div></div>
+      <div class="stat"><div class="label">Base Damage</div><div class="value">1</div></div>
+      <div class="stat"><div class="label">Base Firerate</div><div class="value">1</div></div>
+      <div class="stat"><div class="label">Base Range</div><div class="value">12</div></div>
+      <div class="stat"><div class="label">Hidden Detection</div><div class="value">Level 2+</div></div>
+      <div class="stat"><div class="label">Lead Detection</div><div class="value">N/A</div></div>
+      <div class="stat"><div class="label">Flying Detection</div><div class="value">N/A</div></div>
+      <div class="stat"><div class="label">Immunities</div><div class="value">None</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="panel">
+      <h2>Description</h2>
+      <div class="description">
+        <p>The <strong>Scout</strong> is one of two starter towers obtained upon joining the game for the first time, with the other being the Sniper.</p>
+        <p>The <strong>Scout</strong> is very cheap in comparison to other towers, meaning it can be placed right from the start of the game. However, the <strong>Scout</strong> has low DPS, even at higher levels, meaning it is not effective later on during the game. In PVP mode, it has far higher DPS than in regular modes, though it is still lower than most other options.</p>
+        <p>The <strong>Scout</strong> is considered an early-game tower due to its low cost and low overall damage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="upgrades">
+    <div class="panel">
+      <h2>Upgrades</h2>
+      <div class="tabs">
+        <button class="tab active" onclick="showUpgradeMode('regular',this)">Regular</button>
+        <button class="tab" onclick="showUpgradeMode('pvp',this)">PVP</button>
+        <button class="tab" onclick="showUpgradeMode('golden',this)">Golden Scout</button>
+      
+</div>
+      <div id="regular" class="upgrade-mode">
+        <div class="upgrades">
+          
+    <article class="upgrade-card">
+      <div class="upgrade-image"><img src="1.33" alt="Level 1 Scout"></div>
+      <div class="upgrade-content">
+        <div class="eyebrow">Level 1</div>
+        <h3>Faster Reloading</h3>
+        <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$50</div>
+        <p>Firerate: 1 → 0.75</p>
+        <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$58</small>
+      </div>
+    </article>
+    <article class="upgrade-card">
+      <div class="upgrade-image"><img src="4" alt="Level 2 Scout"></div>
+      <div class="upgrade-content">
+        <div class="eyebrow">Level 2</div>
+        <h3>Precise Aiming</h3>
+        <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$375</div>
+        <p>Damage: +2 • Range: +2 • Hidden Detection</p>
+        <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$183</small>
+      </div>
+    </article>
+    <article class="upgrade-card">
+      <div class="upgrade-image"><img src="12.31" alt="Level 3 Scout"></div>
+      <div class="upgrade-content">
+        <div class="eyebrow">Level 3</div>
+        <h3>Stronger Equipment</h3>
+        <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,350</div>
+        <p>Damage: +5 • Firerate: 0.75 → 0.65 • Range: +2</p>
+        <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$633</small>
+      </div>
+    </article>
+    <article class="upgrade-card">
+      <div class="upgrade-image"><img src="24.62" alt="Level 4 Scout"></div>
+      <div class="upgrade-content">
+        <div class="eyebrow">Level 4</div>
+        <h3>Akimbo Handguns</h3>
+        <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,200</div>
+        <p>Firerate: 0.65 → 0.325</p>
+        <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,366</small>
+      </div>
+    </article>
+        </div>
+      </div>
+      <div id="pvp" class="upgrade-mode" style="display:none">
+        <div class="notice">The supplied source lists a PVP upgrade tab but does not provide separate PVP upgrade values. The regular upgrade data is therefore shown above as the source-supported upgrade information.</div>
+      </div>
+      <div id="golden" class="upgrade-mode" style="display:none">
+        <div class="upgrades">
+          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 0"></div><div class="upgrade-content"><div class="eyebrow">Level 0</div><h3>Golden Scout</h3><div class="cost">💵 Free (Scout)</div><p>Damage: 2 • Firerate: 0.75 • Range: 14<br>Hidden Detection: Level 2+ • Lead Detection: Level 3+</p></div></article>
+          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 1"></div><div class="upgrade-content"><div class="eyebrow">Level 1</div><h3>Higher Caliber</h3><div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$150</div><p>Firerate: 0.75 → 0.5<br>+1 Range</p><small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$133</small></div></article>
+          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 2"></div><div class="upgrade-content"><div class="eyebrow">Level 2</div><h3>Precise Aiming</h3><div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$600</div><p>+3 Damage<br>+Hidden Detection</p><small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$333</small></div></article>
+          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 3"></div><div class="upgrade-content"><div class="eyebrow">Level 3</div><h3>Golden Deagle</h3><div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,800</div><p>+25 Damage<br>Firerate: 0.5 → 1.2<br>+3 Range<br>+Lead Detection</p><small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$933</small></div></article>
+          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 4"></div><div class="upgrade-content"><div class="eyebrow">Level 4</div><h3>Twin Sovereigns</h3><div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$4,000</div><p>Firerate: 1.2 → 0.6<br>+6 Damage</p><small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,266</small></div></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="statistics">
+    <div class="panel">
+      <h2>Statistics</h2>
+      <div class="tabs">
+        <button class="tab active" onclick="showStatsMode('scoutStats',this)">Regular</button>
+        <button class="tab" onclick="showStatsMode('pvpStats',this)">PVP</button>
+        <button class="tab" onclick="showStatsMode('levelsStats',this)">Levels</button>
+        <button class="tab" onclick="showStatsMode('goldenStats',this)">Golden Scout</button>
+      </div>
+      <div id="scoutStats" class="stats-mode">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Level</th><th>Cost</th><th>Total Cost</th><th>Damage</th><th>Firerate</th><th>Range</th><th>DPS</th><th>Image</th></tr></thead>
+          <tbody>
+      <tr>
+        <td><strong>0</strong></td>
+        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$125</td>
+        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$0</td>
+        <td>1</td>
+        <td>12</td>
+        <td>12</td>
+        <td>1</td>
+        <td><img class="mini" src="https://tds.wiki/images/thumb/4/4e/DefaultScout3.png/300px-DefaultScout3.png.webp" alt="Scout level 0"></td>
+      </tr>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$50</td>
+        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$175</td>
+        <td>1</td>
+        <td>0.75</td>
+        <td>12</td>
+        <td>1.33</td>
+        <td><img class="mini" src="https://tds.wiki/images/thumb/c/c4/Scout1.png/200px-Scout1.png.webp" alt="Scout level 1"></td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$375</td>
+        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$550</td>
+        <td>3</td>
+        <td>0.75</td>
+        <td>14</td>
+        <td>4</td>
+        <td><img class="mini" src="https://tds.wiki/images/thumb/5/53/Scout2.png/200px-Scout2.png.webp" alt="Scout level 2"></td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,350</td>
+        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,900</td>
+        <td>8</td>
+        <td>0.65</td>
+        <td>16</td>
+        <td>12.31</td>
+        <td><img class="mini" src="https://tds.wiki/images/thumb/a/a7/Scout4.png/200px-Scout4.png.webp" alt="Scout level 3"></td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,200</td>
+        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$4,100</td>
+        <td>8</td>
+        <td>0.325</td>
+        <td>16</td>
+        <td>24.62</td>
+        <td><img class="mini" src="https://tds.wiki/images/thumb/0/0d/Scout5.png/200px-Scout5.png.webp" alt="Scout level 4"></td>
+      </tr></tbody>
+        </table>
+      </div>
+      </div>
+      <div id="pvpStats" class="stats-mode" style="display:none">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Level</th><th>Cost</th><th>Total Cost</th><th>Damage</th><th>Firerate</th><th>Range</th><th>DPS</th><th>Cost Efficiency</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>$300</td><td>$300</td><td>3</td><td>0.9</td><td>14</td><td>3.33</td><td>$90.09</td></tr>
+              <tr><td>1</td><td>$100</td><td>$400</td><td>4</td><td>0.9</td><td>15</td><td>4.44</td><td>$90.09</td></tr>
+              <tr><td>2</td><td>$650</td><td>$1,050</td><td>8</td><td>0.75</td><td>16</td><td>10.67</td><td>$98.41</td></tr>
+              <tr><td>3</td><td>$1,800</td><td>$2,850</td><td>10</td><td>0.5</td><td>17</td><td>20</td><td>$142.50</td></tr>
+              <tr><td>4</td><td>$3,250</td><td>$6,100</td><td>13</td><td>0.3</td><td>17</td><td>43.33</td><td>$140.78</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="levelsStats" class="stats-mode" style="display:none">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Level</th><th>EXP</th><th>Total EXP</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>0 EXP</td><td>0 EXP</td></tr>
+              <tr><td>1</td><td>50 EXP</td><td>50 EXP</td></tr>
+              <tr><td>2</td><td>54 EXP</td><td>104 EXP</td></tr>
+              <tr><td>3</td><td>59 EXP</td><td>163 EXP</td></tr>
+              <tr><td>4</td><td>64 EXP</td><td>227 EXP</td></tr>
+              <tr><td>5</td><td>70 EXP</td><td>297 EXP</td></tr>
+              <tr><td>6</td><td>76 EXP</td><td>373 EXP</td></tr>
+              <tr><td>7</td><td>83 EXP</td><td>456 EXP</td></tr>
+              <tr><td>8</td><td>91 EXP</td><td>547 EXP</td></tr>
+              <tr><td>9</td><td>99 EXP</td><td>646 EXP</td></tr>
+              <tr><td>10</td><td>108 EXP</td><td>754 EXP</td></tr>
+              <tr><td>11</td><td>118 EXP</td><td>872 EXP</td></tr>
+              <tr><td>12</td><td>129 EXP</td><td>1,001 EXP</td></tr>
+              <tr><td>13</td><td>140 EXP</td><td>1,141 EXP</td></tr>
+              <tr><td>14</td><td>153 EXP</td><td>1,294 EXP</td></tr>
+              <tr><td>15</td><td>167 EXP</td><td>1,461 EXP</td></tr>
+              <tr><td>16</td><td>182 EXP</td><td>1,643 EXP</td></tr>
+              <tr><td>17</td><td>198 EXP</td><td>1,841 EXP</td></tr>
+              <tr><td>18</td><td>216 EXP</td><td>2,057 EXP</td></tr>
+              <tr><td>19</td><td>235 EXP</td><td>2,292 EXP</td></tr>
+              <tr><td>20</td><td>257 EXP</td><td>2,549 EXP</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="goldenStats" class="stats-mode" style="display:none">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Level</th><th>Cost</th><th>Total Cost</th><th>Damage</th><th>Firerate</th><th>Range</th><th>DPS</th><th>Cost Efficiency</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$250</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$250</td><td>2</td><td>0.75</td><td>14</td><td>2.67</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$93.63</td></tr>
+              <tr><td>1</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$150</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$400</td><td>2</td><td>0.5</td><td>15</td><td>4</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$100</td></tr>
+              <tr><td>2</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$600</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,000</td><td>5</td><td>0.5</td><td>15</td><td>10</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$100</td></tr>
+              <tr><td>3</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,800</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,800</td><td>30</td><td>1.2</td><td>18</td><td>25</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$112</td></tr>
+              <tr><td>4</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$4,000</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$6,800</td><td>36</td><td>0.6</td><td>18</td><td>60</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$113.33</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skins">
+    <div class="panel">
+      <h2>Skins</h2>
+      <div class="notice">Each skin has one upgrade button. The buttons are independent so you can mark individual skins as upgraded.</div>
+      <div class="filterbar">
+        <button class="active" onclick="filterSkins('all',this)">All</button>
+        <button onclick="filterSkins('common',this)">Common</button>
+        <button onclick="filterSkins('uncommon',this)">Uncommon</button>
+        <button onclick="filterSkins('rare',this)">Rare</button>
+        <button onclick="filterSkins('event',this)">Event</button>
+        <button onclick="filterSkins('exclusive',this)">Exclusive</button>
+        <button onclick="filterSkins('legendary',this)">Legendary</button>
+        <button onclick="filterSkins('golden',this)">Golden</button>
+      </div>
+      <div class="table-wrap">
+        <table id="skinsTable">
+          <thead><tr><th>Image</th><th>Skin</th><th>Rarity</th><th>Daily Store Cost</th><th>Obtained From</th><th>Upgrade</th></tr></thead>
+          <tbody>
+      <tr data-rarity="common">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/a/a0/DHRedScout0.png/175px-DHRedScout0.png.webp" alt="Red Scout"></td>
+        <td><strong>Red</strong></td>
+        <td><span class="rarity common">Common</span></td>
+        <td>500 Coins</td>
+        <td>Basic Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="common">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/6/6e/DHGreenScout0.png/175px-DHGreenScout0.png.webp" alt="Green Scout"></td>
+        <td><strong>Green</strong></td>
+        <td><span class="rarity common">Common</span></td>
+        <td>500 Coins</td>
+        <td>Basic Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="common">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/e/e6/DHBlueScout0.png/175px-DHBlueScout0.png.webp" alt="Blue Scout"></td>
+        <td><strong>Blue</strong></td>
+        <td><span class="rarity common">Common</span></td>
+        <td>500 Coins</td>
+        <td>Basic Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="rare">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/a/a5/DHSurvivorScout0.png/175px-DHSurvivorScout0.png.webp" alt="Survivor Scout"></td>
+        <td><strong>Survivor</strong></td>
+        <td><span class="rarity rare">Rare</span></td>
+        <td>1,000 Coins</td>
+        <td>Basic Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="common">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/5/59/DHBlackOpsScout0.png/175px-DHBlackOpsScout0.png.webp" alt="Black Ops Scout"></td>
+        <td><strong>Black Ops</strong></td>
+        <td><span class="rarity common">Common</span></td>
+        <td>85 Robux</td>
+        <td>Premium Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="golden">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/175px-GoldenScout3.png.webp" alt="Golden Scout"></td>
+        <td><strong>Golden</strong></td>
+        <td><span class="rarity golden">Golden</span></td>
+        <td>55,000 Coins</td>
+        <td>Golden Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="exclusive">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/8/88/DHPartyScout0.png/175px-DHPartyScout0.png.webp" alt="Party Scout"></td>
+        <td><strong>Party</strong></td>
+        <td><span class="rarity exclusive">Exclusive</span></td>
+        <td>N/A</td>
+        <td>Party Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="event">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/4/41/DHBunnyScout0.png/175px-DHBunnyScout0.png.webp" alt="Bunny Scout"></td>
+        <td><strong>Bunny</strong></td>
+        <td><span class="rarity event">Event</span></td>
+        <td>N/A</td>
+        <td>Bunny Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="event">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/d/d4/DHEclipseScout0.png/175px-DHEclipseScout0.png.webp" alt="Eclipse Scout"></td>
+        <td><strong>Eclipse</strong></td>
+        <td><span class="rarity event">Event</span></td>
+        <td>N/A</td>
+        <td>Solar Eclipse Season</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="common">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/a/a1/DHValentinesScout0.png/175px-DHValentinesScout0.png.webp" alt="Valentines Scout"></td>
+        <td><strong>Valentines</strong></td>
+        <td><span class="rarity common">Common</span></td>
+        <td>4,000 Coins</td>
+        <td>Valentines 2026 <a href="crates.html">Crate</a> / <a href="crates.html">Lovestruck Crate</a> / <a href="crates.html">Lovely Crate</a> / Season of Love</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="event">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/a/ab/BeachScout0.png/175px-BeachScout0.png.webp" alt="Beach Scout"></td>
+        <td><strong>Beach</strong></td>
+        <td><span class="rarity event">Event</span></td>
+        <td>N/A</td>
+        <td>End of Summer Season</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="rare">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/a/a4/InternScout0.png/175px-InternScout0.png.webp" alt="Intern Scout"></td>
+        <td><strong>Intern</strong></td>
+        <td><span class="rarity rare">Rare</span></td>
+        <td>120 Robux</td>
+        <td>Premium <a href="crates.html">Crate</a> / Philips x TDS Season</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="legendary">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/c/c7/PR_Scout_LVL0.png/175px-PR_Scout_LVL0.png.webp" alt="Prime Raven Scout"></td>
+        <td><strong>Prime Raven</strong></td>
+        <td><span class="rarity legendary">Legendary</span></td>
+        <td>N/A</td>
+        <td>Raven Hunter Hood from Amazon Prime Gaming</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="event">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/d/d8/HolidayScout0.png/175px-HolidayScout0.png.webp" alt="Holiday Scout"></td>
+        <td><strong>Holiday</strong></td>
+        <td><span class="rarity event">Event</span></td>
+        <td>5,000 Coins</td>
+        <td>Jolly <a href="crates.html">Crate</a> / Violent Night Season</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="exclusive">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/e/ea/CookieScout0.png/175px-CookieScout0.png.webp" alt="Cookie Scout"></td>
+        <td><strong>Cookie</strong></td>
+        <td><span class="rarity exclusive">Exclusive</span></td>
+        <td>N/A</td>
+        <td>Code: M3RRY2022TDS</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="common">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/4/43/NewFrostHunterScout0.png/175px-NewFrostHunterScout0.png.webp" alt="Frost Hunter Scout"></td>
+        <td><strong>Frost Hunter</strong></td>
+        <td><span class="rarity common">Common</span></td>
+        <td>3,000 Coins</td>
+        <td>Cold Front Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="exclusive">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/0/03/PlushScout_0.png/175px-PlushScout_0.png.webp" alt="Plushie Scout"></td>
+        <td><strong>Plushie</strong></td>
+        <td><span class="rarity exclusive">Exclusive</span></td>
+        <td>N/A</td>
+        <td>Merch Shop</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="common">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/7/7d/DuckyScout0.png/175px-DuckyScout0.png.webp" alt="Ducky Scout"></td>
+        <td><strong>Ducky</strong></td>
+        <td><span class="rarity common">Common</span></td>
+        <td>3,000 Coins</td>
+        <td>Ducky Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="exclusive">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/a/a8/SkullScout0_%281%29.png/175px-SkullScout0_%281%29.png.webp" alt="Skull Trooper Scout"></td>
+        <td><strong>Skull Trooper</strong></td>
+        <td><span class="rarity exclusive">Exclusive</span></td>
+        <td>5,000 Coins</td>
+        <td>Halloween Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="event">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/3/35/MasquerateScout0.png/175px-MasquerateScout0.png.webp" alt="Masquerade Scout"></td>
+        <td><strong>Masquerade</strong></td>
+        <td><span class="rarity event">Event</span></td>
+        <td>N/A</td>
+        <td>Lunar Overture Season</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="uncommon">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/8/8f/PhantomScout0.png/175px-PhantomScout0.png.webp" alt="Phantom Scout"></td>
+        <td><strong>Phantom</strong></td>
+        <td><span class="rarity uncommon">Uncommon</span></td>
+        <td>249 Robux</td>
+        <td>Phantom Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="event">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/2/23/VScout0.png/175px-VScout0.png.webp" alt="Valhalla Scout"></td>
+        <td><strong>Valhalla</strong></td>
+        <td><span class="rarity event">Event</span></td>
+        <td>N/A</td>
+        <td>Krampus' Revenge Season</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="legendary">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/4/41/ToiletScoutL0.png/175px-ToiletScoutL0.png.webp" alt="Toilet Scout"></td>
+        <td><strong>Toilet</strong></td>
+        <td><span class="rarity legendary">Legendary</span></td>
+        <td>190 Robux</td>
+        <td>Premium <a href="crates.html">Crate</a> (Formerly) / Headache Headquarters Triumph (Formerly)</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="exclusive">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/9/98/GuestScout0.png/175px-GuestScout0.png.webp" alt="Guest Scout"></td>
+        <td><strong>Guest</strong></td>
+        <td><span class="rarity exclusive">Exclusive</span></td>
+        <td>N/A</td>
+        <td>Classic Castle Triumph (Formerly)</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="rare">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/6/60/FallenScoutLv0.png/175px-FallenScoutLv0.png.webp" alt="Fallen Scout"></td>
+        <td><strong>Fallen</strong></td>
+        <td><span class="rarity rare">Rare</span></td>
+        <td>N/A</td>
+        <td>The Underworld Dreg Mission Quest</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="common">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/d/df/KingofRockScout0.png/175px-KingofRockScout0.png.webp" alt="King of Rock Scout"></td>
+        <td><strong>King of Rock</strong></td>
+        <td><span class="rarity common">Common</span></td>
+        <td>N/A</td>
+        <td>Hexscape Event Regular Battle Pass</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="event">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/b/be/Haz3mnScout0.png/175px-Haz3mnScout0.png.webp" alt="Haz3mn Scout"></td>
+        <td><strong>Haz3mn</strong></td>
+        <td><span class="rarity event">Event</span></td>
+        <td>N/A</td>
+        <td>Pls Donate Triumph — Easy</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="uncommon">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/4/43/SharkScout0.png/175px-SharkScout0.png.webp" alt="Shark Scout"></td>
+        <td><strong>Shark</strong></td>
+        <td><span class="rarity uncommon">Uncommon</span></td>
+        <td>N/A</td>
+        <td>Surf & Turf Regular Battle Pass</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="exclusive">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/5/53/BannedScoutLevel0.png/175px-BannedScoutLevel0.png.webp" alt="Banned Scout"></td>
+        <td><strong>Banned</strong></td>
+        <td><span class="rarity exclusive">Exclusive</span></td>
+        <td>N/A</td>
+        <td>Banned Crate</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr>
+      <tr data-rarity="uncommon">
+        <td><img class="skin-img" src="https://tds.wiki/images/thumb/3/30/PinguScout0.png/175px-PinguScout0.png.webp" alt="Penguin Scout"></td>
+        <td><strong>Penguin</strong></td>
+        <td><span class="rarity uncommon">Uncommon</span></td>
+        <td>N/A</td>
+        <td>The Final Act Regular Battle Pass</td>
+        <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+      </tr></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  
+<section class="subsection" hidden>
+  <h3>Golden Scout Statistics</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Level</th><th>Cost</th><th>Total Cost</th><th>Damage</th>
+          <th>Firerate</th><th>Range</th><th>DPS</th><th>Cost Efficiency</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$250</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$250</td><td>2</td><td>0.75</td><td>14</td><td>2.67</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$93.63</td></tr>
+        <tr><td>1</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$150</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$400</td><td>2</td><td>0.5</td><td>15</td><td>4</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$100</td></tr>
+        <tr><td>2</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$600</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,000</td><td>5</td><td>0.5</td><td>15</td><td>10</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$100</td></tr>
+        <tr><td>3</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,800</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,800</td><td>30</td><td>1.2</td><td>18</td><td>25</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$112</td></tr>
+        <tr><td>4</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$4,000</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$6,800</td><td>36</td><td>0.6</td><td>18</td><td>60</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$113.33</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section id="evolution">
+    <div class="panel">
+      <h2>Evolution — Operator</h2>
+
+      <div class="evolution-hero">
+        <div class="evolution-image">
+          <img src="https://tds.wiki/images/thumb/a/a7/DefaultOperator0.png/300px-DefaultOperator0.png.webp" alt="Operator">
+        </div>
+        <div class="evolution-info">
+          <div class="eyebrow">Evolved Tower</div>
+          <h3>Operator</h3>
+          <p class="description">
+            The <strong>Operator</strong>, internally referred to as <strong>EvolvedOperator</strong>,
+            is the evolved version of the Scout. It is unlocked by reaching Level 20 on the Scout,
+            or by skipping the experience requirement for 499 Robux.
+          </p>
+          <div class="grid evolution-stats">
+            <div class="stat"><div class="label">Unlock</div><div class="value">Level 20 Scout</div></div>
+            <div class="stat"><div class="label">Evolution Cost</div><div class="value">15,000 Coins</div></div>
+            <div class="stat"><div class="label">Gem Cost</div><div class="value">4,500 Gems</div></div>
+            <div class="stat"><div class="label">Placement Limit</div><div class="value">16</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote">“Eyes up, it's all yours. An early-game specialist that boosts other Operators in range and can see into others' sightlines when upgraded.”</div>
+
+      <h3 class="subheading">Operator Upgrades</h3>
+      <div class="upgrades">
+        <article class="upgrade-card">
+          <div class="upgrade-image"><img src="https://tds.wiki/images/thumb/e/e0/Operator1.png/200px-Operator1.png.webp" alt="Operator Level 1"></div>
+          <div class="upgrade-content">
+            <div class="eyebrow">Level 1 • Evolution Level 0</div>
+            <h3>Tactical Gear</h3>
+            <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$325</div>
+            <p>+1 Damage<br>+Hidden Detection</p>
+            <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$208</small>
+          </div>
+        </article>
+
+        <article class="upgrade-card">
+          <div class="upgrade-image"><img src="https://tds.wiki/images/thumb/5/5f/Operator2.png/200px-Operator2.png.webp" alt="Operator Level 2"></div>
+          <div class="upgrade-content">
+            <div class="eyebrow">Level 2 • Evolution Level 0</div>
+            <h3>Convergent Forces</h3>
+            <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$700</div>
+            <p>+1 Damage<br>+1.5 Range<br>Burst Cooldown: 1.4 → 1<br>+Flying Detection<br>Unlocks Coordination</p>
+            <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$441</small>
+          </div>
+        </article>
+
+        <article class="upgrade-card">
+          <div class="upgrade-image"><img src="https://tds.wiki/images/thumb/d/dc/Operator3.png/200px-Operator3.png.webp" alt="Operator Level 3"></div>
+          <div class="upgrade-content">
+            <div class="eyebrow">Level 3 • Evolution Level 0</div>
+            <h3>Cyber-Enforcer</h3>
+            <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,250</div>
+            <p>+1 Damage<br>Firerate: 0.12 → 0.1<br>Burst Count: 6 → 9</p>
+            <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$858</small>
+          </div>
+        </article>
+
+        <article class="upgrade-card">
+          <div class="upgrade-image"><img src="https://tds.wiki/images/thumb/4/49/Operator4.png/200px-Operator4.png.webp" alt="Operator Level 4"></div>
+          <div class="upgrade-content">
+            <div class="eyebrow">Level 4 • Evolution Level 0</div>
+            <h3>Threat Detection Sentinel</h3>
+            <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,950</div>
+            <p>+2 Damage<br>+1.5 Coordination Radius</p>
+            <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,508</small>
+          </div>
+        </article>
+
+        <article class="upgrade-card">
+          <div class="upgrade-image"><img src="https://tds.wiki/images/thumb/c/c6/Operator5.png/200px-Operator5.png.webp" alt="Operator Level 5"></div>
+          <div class="upgrade-content">
+            <div class="eyebrow">Level 5 • Evolution Level 10</div>
+            <h3>Synchronized Vision</h3>
+            <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$3,500</div>
+            <p>Firerate: 0.1 → 0.16<br>+0.5 Range<br>Burst Cooldown: 1 → 0<br>Unlocks Shared Optics</p>
+            <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,675</small>
+          </div>
+        </article>
+
+        <article class="upgrade-card">
+          <div class="upgrade-image"><img src="https://tds.wiki/images/thumb/9/9d/Operator6.png/200px-Operator6.png.webp" alt="Operator Level 6"></div>
+          <div class="upgrade-content">
+            <div class="eyebrow">Level 6 • Evolution Level 20</div>
+            <h3>1000-THR E.M.</h3>
+            <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$7,000</div>
+            <p>+4 Damage<br>+1 Range</p>
+            <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$5,008</small>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="subheading">Operator Skins</h3>
+      <div class="table-wrap">
+        <table id="operatorSkinsTable">
+          <thead>
+            <tr>
+              <th>Skin</th><th>Image</th><th>Rarity</th><th>Cost</th><th>Obtainable From</th><th>Upgrade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-rarity="uncommon">
+              <td><strong>Pirate Operator</strong></td>
+              <td><img class="skin-img" src="https://tds.wiki/images/thumb/1/19/PirateOperator0.png/175px-PirateOperator0.png.webp" alt="Pirate Operator"></td>
+              <td>Uncommon</td>
+              <td>4,000 Coins</td>
+              <td>Pirate Crate</td>
+              <td><button class="skin-upgrade" onclick="upgradeSkin(this)">Upgrade</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subheading">Operator Statistics</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Level</th><th>Cost</th><th>Total Cost</th><th>Damage</th>
+              <th>Burst Count</th><th>Firerate</th><th>Burst Cooldown</th>
+              <th>Range</th><th>Coordination Boost</th><th>Coordination Radius</th>
+              <th>DPS</th><th>Cost Efficiency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$300</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$300</td><td>1</td><td>6</td><td>0.12</td><td>1.4</td><td>14</td><td>N/A</td><td>N/A</td><td>2.83</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$106.01</td></tr>
+            <tr><td>1</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$325</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$625</td><td>2</td><td>6</td><td>0.12</td><td>1.4</td><td>14</td><td>N/A</td><td>N/A</td><td>5.66</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$110.42</td></tr>
+            <tr><td>2</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$700</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,325</td><td>3</td><td>6</td><td>0.12</td><td>1</td><td>15.5</td><td>10%</td><td>4</td><td>10.47</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$126.55</td></tr>
+            <tr><td>3</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,250</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,575</td><td>4</td><td>9</td><td>0.1</td><td>1</td><td>15.5</td><td>10%</td><td>4</td><td>18.95</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$135.88</td></tr>
+            <tr><td>4</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,950</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$4,525</td><td>6</td><td>9</td><td>0.1</td><td>1</td><td>15.5</td><td>10%</td><td>5.5</td><td>28.42</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$159.22</td></tr>
+            <tr><td>5</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$3,500</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$8,025</td><td>6</td><td>N/A</td><td>0.16</td><td>0</td><td>16</td><td>10%</td><td>5.5</td><td>37.5</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$214</td></tr>
+            <tr><td>6</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$7,000</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$15,025</td><td>10</td><td>N/A</td><td>0.16</td><td>0</td><td>17</td><td>10%</td><td>5.5</td><td>62.5</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$240.4</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="notice" style="margin-top:18px">
+        <strong>Evolution mechanics:</strong> At Level 2, Operator gains Coordination damage buffs from Operators
+        with Coordination unlocked in its radius. At Level 5, Shared Optics allows it to attack enemies within
+        the range of another Operator with Shared Optics.
+      </div>
+    </div>
+  </section>
+<div class="footer">Scout article converted from the supplied source. Source values and skin information are preserved.</div>
+</main>
+
+<script>
+function showUpgradeMode(mode, btn) {
+  document.querySelectorAll('.upgrade-mode').forEach(x => x.style.display='none');
+  document.getElementById(mode).style.display='block';
+  btn.parentElement.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+}
+function showStatsMode(mode, btn) {
+  document.querySelectorAll('.stats-mode').forEach(x => x.style.display='none');
+  document.getElementById(mode).style.display='block';
+  btn.parentElement.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+}
+function filterSkins(filter, btn) {
+  document.querySelectorAll('#skinsTable tbody tr').forEach(row => {
+    row.style.display = filter === 'all' || row.dataset.rarity === filter ? '' : 'none';
+  });
+  btn.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+}
+function upgradeSkin(btn) {
+  btn.classList.toggle('done');
+  btn.textContent = btn.classList.contains('done') ? 'Upgraded' : 'Upgrade';
+}
+function pageSearch() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  document.querySelectorAll('#skinsTable tbody tr').forEach(row => {
+    row.style.display = !q || row.innerText.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+</script>
+
+<section class="subsection" id="levels-stats">
+  <h3>Levels</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Level</th><th>EXP</th><th>Total EXP</th></tr></thead>
+      <tbody><tr><td>0</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">0 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">0 EXP</span></td></tr><tr><td>1</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">50 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">50 EXP</span></td></tr><tr><td>2</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">54 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">104 EXP</span></td></tr><tr><td>3</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">59 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">163 EXP</span></td></tr><tr><td>4</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">64 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">227 EXP</span></td></tr><tr><td>5</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">70 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">297 EXP</span></td></tr><tr><td>6</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">76 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">373 EXP</span></td></tr><tr><td>7</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">83 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">456 EXP</span></td></tr><tr><td>8</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">91 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">547 EXP</span></td></tr><tr><td>9</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">99 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">646 EXP</span></td></tr><tr><td>10</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">108 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">754 EXP</span></td></tr><tr><td>11</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">118 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">872 EXP</span></td></tr><tr><td>12</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">129 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">1,001 EXP</span></td></tr><tr><td>13</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">140 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">1,141 EXP</span></td></tr><tr><td>14</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">153 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">1,294 EXP</span></td></tr><tr><td>15</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">167 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">1,461 EXP</span></td></tr><tr><td>16</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">182 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">1,643 EXP</span></td></tr><tr><td>17</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">198 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">1,841 EXP</span></td></tr><tr><td>18</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">216 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">2,057 EXP</span></td></tr><tr><td>19</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">235 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">2,292 EXP</span></td></tr><tr><td>20</td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">257 EXP</span></td><td><span class="exp"><img src="https://tds.wiki/images/thumb/9/9c/Exp.png/15px-Exp.png.webp?cb=20211205145037" alt="Experience">2,549 EXP</span></td></tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="subsection pvp-stats" id="pvp-stats">
+  <h3>PvP Statistics</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Level</th><th>Cost</th><th>Total Cost</th><th>Damage</th>
+          <th>Firerate</th><th>Range</th><th>DPS</th><th>Cost Efficiency</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$300</span></td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$300</span></td><td>3</td><td>0.9</td><td>14</td><td>3.33</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$90.09</span></td></tr>
+        <tr><td>1</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$100</span></td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$400</span></td><td>4</td><td>0.9</td><td>15</td><td>4.44</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$90.09</span></td></tr>
+        <tr><td>2</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$650</span></td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,050</span></td><td>8</td><td>0.75</td><td>16</td><td>10.67</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$98.41</span></td></tr>
+        <tr><td>3</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,800</span></td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,850</span></td><td>10</td><td>0.5</td><td>17</td><td>20</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$142.5</span></td></tr>
+        <tr><td>4</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$3,250</span></td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$6,100</span></td><td>13</td><td>0.3</td><td>17</td><td>43.33</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$140.78</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<script>
+
+function goToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+function goToStatsMode(mode) {
+  const stats = document.getElementById('statistics');
+  if (stats) stats.scrollIntoView({behavior:'smooth', block:'start'});
+  const button = document.querySelector(`[onclick*="showStatsMode('${mode}'"]`);
+  if (button) showStatsMode(mode, button);
+}
+
+function showTab(tabId, button) {
+  document.querySelectorAll('.tab-content, .tab-pane, section[id]').forEach(el => {
+    if (el.classList.contains('tab-content') || el.classList.contains('tab-pane') ||
+        ['levels-stats','pvp-stats'].includes(el.id)) {
+      el.style.display = (el.id === tabId) ? 'block' : 'none';
+    }
+  });
+  document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
+  if (button) button.classList.add('active');
+}
+
+const scoutSkinLevels = {
+  default: [
+    'https://tds.wiki/images/thumb/4/4e/DefaultScout3.png/300px-DefaultScout3.png.webp',
+    'https://tds.wiki/images/thumb/c/c4/Scout1.png/200px-Scout1.png.webp',
+    'https://tds.wiki/images/thumb/5/53/Scout2.png/200px-Scout2.png.webp',
+    'https://tds.wiki/images/thumb/a/a7/Scout4.png/200px-Scout4.png.webp',
+    'https://tds.wiki/images/thumb/0/0d/Scout5.png/200px-Scout5.png.webp'
+  ]
+};
+let selectedScoutSkin = 'default';
+let selectedScoutLevel = 0;
+
+function skinOptions() {
+  return [...document.querySelectorAll('#scoutSkinSelect option')];
+}
+function skinName(skin) {
+  const option = document.querySelector(`#scoutSkinSelect option[value="${skin}"]`);
+  return option ? option.textContent : skin;
+}
+function getScoutImages(skin) {
+  return scoutSkinLevels[skin] || ['', '', '', '', ''];
+}
+function updateScoutLevelViewer() {
+  const image = document.getElementById('scoutLevelImage');
+  const images = getScoutImages(selectedScoutSkin);
+  const source = images[selectedScoutLevel];
+  image.src = source;
+  image.alt = `${skinName(selectedScoutSkin)} level ${selectedScoutLevel}`;
+  image.style.visibility = source ? 'visible' : 'hidden';
+  document.getElementById('scoutLevelCaption').textContent = `${skinName(selectedScoutSkin)} • Level ${selectedScoutLevel}`;
+}
+function changeScoutLevel(amount) {
+  selectedScoutLevel = Math.max(0, Math.min(4, selectedScoutLevel + amount));
+  updateScoutLevelViewer();
+}
+function changeScoutSkin(skin) {
+  selectedScoutSkin = skin;
+  selectedScoutLevel = 0;
+  updateScoutLevelViewer();
+}
+function upgradeScoutLevel() {
+  if (selectedScoutLevel < 4) {
+    selectedScoutLevel += 1;
+    updateScoutLevelViewer();
+  }
+}
+updateScoutLevelViewer();
+</script>
+
+</body>
+</html>
 
