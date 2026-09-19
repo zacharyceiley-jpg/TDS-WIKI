@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TDS Wiki — Scout</title>
+<title>TDS Wiki</title>
 <link rel="icon" type="image/png" href="https://tds.wiki/images/thumb/4/4e/DefaultScout3.png/100px-DefaultScout3.png.webp">
 <style>
 :root {
@@ -19,10 +19,14 @@ body{
   overflow-x:hidden;
   color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
-  background:
+  background-color:#0b0d12;
+  background-image:
     linear-gradient(rgba(5,8,14,.62),rgba(5,8,14,.78)),
-    url("https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/SummerCastleIcon.png/revision/latest/smart/width/400/height/225?cb=20250709204530")
-    center/cover fixed no-repeat
+    url("https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/SummerCastleIcon.png/revision/latest/smart/width/400/height/225?cb=20250709204530");
+  background-position:center;
+  background-size:cover;
+  background-attachment:fixed;
+  background-repeat:no-repeat
 }
 a{color:inherit}
 .top-banner{
@@ -41,9 +45,19 @@ a{color:inherit}
   box-shadow:0 8px 30px rgba(0,0,0,.45);
   backdrop-filter:blur(8px);
 }
-.top-banner img{
-  width:min(650px,58vw);
-  max-height:66px;
+.wiki-title{
+  color:#fff;
+  font-size:clamp(24px,4vw,42px);
+  font-weight:900;
+  letter-spacing:1px;
+  text-shadow:0 2px 10px rgba(0,0,0,.65);
+  white-space:nowrap;
+}
+.wiki-title span{color:var(--accent)}
+.wiki-title img{
+  display:block;
+  width:min(260px,28vw);
+  max-height:58px;
   object-fit:contain;
 }
 .banner-search{
@@ -215,10 +229,7 @@ tr:hover{background:#181e27}
 </head>
 <body>
 <header class="top-banner">
-  <img
-    src="https://i.namu.wiki/i/7xTzCZ5-4YLxCBlGfiGrTr_TKKr1_lGMMnV4E3oGJX87QuWTZ0KK2M0EWE1-_VtY_Z9HkVdHEGXzo15xq-A52w.webp"
-    alt="TDS Wiki"
-  >
+  <div class="wiki-title" aria-label="TDS Wiki"><img src="https://i.namu.wiki/i/7xTzCZ5-4YLxCBlGfiGrTr_TKKr1_lGMMnV4E3oGJX87QuWTZ0KK2M0EWE1-_VtY_Z9HkVdHEGXzo15xq-A52w.webp" alt="TDS Wiki"></div>
   <div class="banner-search">
     <input
       id="search"
@@ -306,7 +317,7 @@ tr:hover{background:#181e27}
 
   <section>
     <div class="grid">
-      <div class="stat"><div class="label">Base Cost</div><div class="value"><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$125</div></div>
+      <div class="stat"><div class="label">Base Cost</div><div class="value"><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$125</div></div>
       <div class="stat"><div class="label">Base Damage</div><div class="value">1</div></div>
       <div class="stat"><div class="label">Base Firerate</div><div class="value">1</div></div>
       <div class="stat"><div class="label">Base Range</div><div class="value">12</div></div>
@@ -341,43 +352,43 @@ tr:hover{background:#181e27}
         <div class="upgrades">
           
     <article class="upgrade-card">
-      <div class="upgrade-image"><img src="1.33" alt="Level 1 Scout"></div>
+      <div class="upgrade-image"><img src="https://tds.wiki/images/thumb/c/c4/Scout1.png/200px-Scout1.png.webp" alt="Level 1 Scout"></div>
       <div class="upgrade-content">
         <div class="eyebrow">Level 1</div>
         <h3>Faster Reloading</h3>
-        <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$50</div>
+        <div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$50</div>
         <p>Firerate: 1 → 0.75</p>
-        <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$58</small>
+        <small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$58</small>
       </div>
     </article>
     <article class="upgrade-card">
-      <div class="upgrade-image"><img src="4" alt="Level 2 Scout"></div>
+      <div class="upgrade-image"><img src="https://tds.wiki/images/thumb/5/53/Scout2.png/200px-Scout2.png.webp" alt="Level 2 Scout"></div>
       <div class="upgrade-content">
         <div class="eyebrow">Level 2</div>
         <h3>Precise Aiming</h3>
-        <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$375</div>
+        <div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$375</div>
         <p>Damage: +2 • Range: +2 • Hidden Detection</p>
-        <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$183</small>
+        <small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$183</small>
       </div>
     </article>
     <article class="upgrade-card">
-      <div class="upgrade-image"><img src="12.31" alt="Level 3 Scout"></div>
+      <div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a7/Scout4.png/200px-Scout4.png.webp" alt="Level 3 Scout"></div>
       <div class="upgrade-content">
         <div class="eyebrow">Level 3</div>
         <h3>Stronger Equipment</h3>
-        <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,350</div>
+        <div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,350</div>
         <p>Damage: +5 • Firerate: 0.75 → 0.65 • Range: +2</p>
-        <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$633</small>
+        <small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$633</small>
       </div>
     </article>
     <article class="upgrade-card">
-      <div class="upgrade-image"><img src="24.62" alt="Level 4 Scout"></div>
+      <div class="upgrade-image"><img src="https://tds.wiki/images/thumb/0/0d/Scout5.png/200px-Scout5.png.webp" alt="Level 4 Scout"></div>
       <div class="upgrade-content">
         <div class="eyebrow">Level 4</div>
         <h3>Akimbo Handguns</h3>
-        <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,200</div>
+        <div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$2,200</div>
         <p>Firerate: 0.65 → 0.325</p>
-        <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,366</small>
+        <small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,366</small>
       </div>
     </article>
         </div>
@@ -388,10 +399,10 @@ tr:hover{background:#181e27}
       <div id="golden" class="upgrade-mode" style="display:none">
         <div class="upgrades">
           <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 0"></div><div class="upgrade-content"><div class="eyebrow">Level 0</div><h3>Golden Scout</h3><div class="cost">💵 Free (Scout)</div><p>Damage: 2 • Firerate: 0.75 • Range: 14<br>Hidden Detection: Level 2+ • Lead Detection: Level 3+</p></div></article>
-          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 1"></div><div class="upgrade-content"><div class="eyebrow">Level 1</div><h3>Higher Caliber</h3><div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$150</div><p>Firerate: 0.75 → 0.5<br>+1 Range</p><small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$133</small></div></article>
-          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 2"></div><div class="upgrade-content"><div class="eyebrow">Level 2</div><h3>Precise Aiming</h3><div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$600</div><p>+3 Damage<br>+Hidden Detection</p><small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$333</small></div></article>
-          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 3"></div><div class="upgrade-content"><div class="eyebrow">Level 3</div><h3>Golden Deagle</h3><div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,800</div><p>+25 Damage<br>Firerate: 0.5 → 1.2<br>+3 Range<br>+Lead Detection</p><small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$933</small></div></article>
-          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 4"></div><div class="upgrade-content"><div class="eyebrow">Level 4</div><h3>Twin Sovereigns</h3><div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$4,000</div><p>Firerate: 1.2 → 0.6<br>+6 Damage</p><small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,266</small></div></article>
+          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 1"></div><div class="upgrade-content"><div class="eyebrow">Level 1</div><h3>Higher Caliber</h3><div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$150</div><p>Firerate: 0.75 → 0.5<br>+1 Range</p><small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$133</small></div></article>
+          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 2"></div><div class="upgrade-content"><div class="eyebrow">Level 2</div><h3>Precise Aiming</h3><div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$600</div><p>+3 Damage<br>+Hidden Detection</p><small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$333</small></div></article>
+          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 3"></div><div class="upgrade-content"><div class="eyebrow">Level 3</div><h3>Golden Deagle</h3><div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,800</div><p>+25 Damage<br>Firerate: 0.5 → 1.2<br>+3 Range<br>+Lead Detection</p><small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$933</small></div></article>
+          <article class="upgrade-card"><div class="upgrade-image"><img src="https://tds.wiki/images/thumb/a/a0/GoldenScout3.png/200px-GoldenScout3.png.webp" alt="Golden Scout Level 4"></div><div class="upgrade-content"><div class="eyebrow">Level 4</div><h3>Twin Sovereigns</h3><div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$4,000</div><p>Firerate: 1.2 → 0.6<br>+6 Damage</p><small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$2,266</small></div></article>
         </div>
       </div>
     </div>
@@ -413,8 +424,8 @@ tr:hover{background:#181e27}
           <tbody>
       <tr>
         <td><strong>0</strong></td>
-        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$125</td>
-        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$0</td>
+        <td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$125</td>
+        <td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$0</td>
         <td>1</td>
         <td>12</td>
         <td>12</td>
@@ -423,8 +434,8 @@ tr:hover{background:#181e27}
       </tr>
       <tr>
         <td><strong>1</strong></td>
-        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$50</td>
-        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$175</td>
+        <td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$50</td>
+        <td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$175</td>
         <td>1</td>
         <td>0.75</td>
         <td>12</td>
@@ -433,8 +444,8 @@ tr:hover{background:#181e27}
       </tr>
       <tr>
         <td><strong>2</strong></td>
-        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$375</td>
-        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$550</td>
+        <td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$375</td>
+        <td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$550</td>
         <td>3</td>
         <td>0.75</td>
         <td>14</td>
@@ -443,8 +454,8 @@ tr:hover{background:#181e27}
       </tr>
       <tr>
         <td><strong>3</strong></td>
-        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,350</td>
-        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,900</td>
+        <td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,350</td>
+        <td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,900</td>
         <td>8</td>
         <td>0.65</td>
         <td>16</td>
@@ -453,8 +464,8 @@ tr:hover{background:#181e27}
       </tr>
       <tr>
         <td><strong>4</strong></td>
-        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,200</td>
-        <td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$4,100</td>
+        <td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$2,200</td>
+        <td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$4,100</td>
         <td>8</td>
         <td>0.325</td>
         <td>16</td>
@@ -513,11 +524,11 @@ tr:hover{background:#181e27}
           <table>
             <thead><tr><th>Level</th><th>Cost</th><th>Total Cost</th><th>Damage</th><th>Firerate</th><th>Range</th><th>DPS</th><th>Cost Efficiency</th></tr></thead>
             <tbody>
-              <tr><td>0</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$250</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$250</td><td>2</td><td>0.75</td><td>14</td><td>2.67</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$93.63</td></tr>
-              <tr><td>1</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$150</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$400</td><td>2</td><td>0.5</td><td>15</td><td>4</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$100</td></tr>
-              <tr><td>2</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$600</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,000</td><td>5</td><td>0.5</td><td>15</td><td>10</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$100</td></tr>
-              <tr><td>3</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,800</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,800</td><td>30</td><td>1.2</td><td>18</td><td>25</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$112</td></tr>
-              <tr><td>4</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$4,000</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$6,800</td><td>36</td><td>0.6</td><td>18</td><td>60</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$113.33</td></tr>
+              <tr><td>0</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$250</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$250</td><td>2</td><td>0.75</td><td>14</td><td>2.67</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$93.63</td></tr>
+              <tr><td>1</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$150</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$400</td><td>2</td><td>0.5</td><td>15</td><td>4</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$100</td></tr>
+              <tr><td>2</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$600</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,000</td><td>5</td><td>0.5</td><td>15</td><td>10</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$100</td></tr>
+              <tr><td>3</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,800</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$2,800</td><td>30</td><td>1.2</td><td>18</td><td>25</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$112</td></tr>
+              <tr><td>4</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$4,000</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$6,800</td><td>36</td><td>0.6</td><td>18</td><td>60</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$113.33</td></tr>
             </tbody>
           </table>
         </div>
@@ -800,11 +811,11 @@ tr:hover{background:#181e27}
         </tr>
       </thead>
       <tbody>
-        <tr><td>0</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$250</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$250</td><td>2</td><td>0.75</td><td>14</td><td>2.67</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$93.63</td></tr>
-        <tr><td>1</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$150</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$400</td><td>2</td><td>0.5</td><td>15</td><td>4</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$100</td></tr>
-        <tr><td>2</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$600</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,000</td><td>5</td><td>0.5</td><td>15</td><td>10</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$100</td></tr>
-        <tr><td>3</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,800</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,800</td><td>30</td><td>1.2</td><td>18</td><td>25</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$112</td></tr>
-        <tr><td>4</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$4,000</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$6,800</td><td>36</td><td>0.6</td><td>18</td><td>60</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$113.33</td></tr>
+        <tr><td>0</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$250</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$250</td><td>2</td><td>0.75</td><td>14</td><td>2.67</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$93.63</td></tr>
+        <tr><td>1</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$150</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$400</td><td>2</td><td>0.5</td><td>15</td><td>4</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$100</td></tr>
+        <tr><td>2</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$600</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,000</td><td>5</td><td>0.5</td><td>15</td><td>10</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$100</td></tr>
+        <tr><td>3</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,800</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$2,800</td><td>30</td><td>1.2</td><td>18</td><td>25</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$112</td></tr>
+        <tr><td>4</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$4,000</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$6,800</td><td>36</td><td>0.6</td><td>18</td><td>60</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$113.33</td></tr>
       </tbody>
     </table>
   </div>
@@ -843,9 +854,9 @@ tr:hover{background:#181e27}
           <div class="upgrade-content">
             <div class="eyebrow">Level 1 • Evolution Level 0</div>
             <h3>Tactical Gear</h3>
-            <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$325</div>
+            <div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$325</div>
             <p>+1 Damage<br>+Hidden Detection</p>
-            <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$208</small>
+            <small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$208</small>
           </div>
         </article>
 
@@ -854,9 +865,9 @@ tr:hover{background:#181e27}
           <div class="upgrade-content">
             <div class="eyebrow">Level 2 • Evolution Level 0</div>
             <h3>Convergent Forces</h3>
-            <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$700</div>
+            <div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$700</div>
             <p>+1 Damage<br>+1.5 Range<br>Burst Cooldown: 1.4 → 1<br>+Flying Detection<br>Unlocks Coordination</p>
-            <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$441</small>
+            <small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$441</small>
           </div>
         </article>
 
@@ -865,9 +876,9 @@ tr:hover{background:#181e27}
           <div class="upgrade-content">
             <div class="eyebrow">Level 3 • Evolution Level 0</div>
             <h3>Cyber-Enforcer</h3>
-            <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,250</div>
+            <div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,250</div>
             <p>+1 Damage<br>Firerate: 0.12 → 0.1<br>Burst Count: 6 → 9</p>
-            <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$858</small>
+            <small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$858</small>
           </div>
         </article>
 
@@ -876,9 +887,9 @@ tr:hover{background:#181e27}
           <div class="upgrade-content">
             <div class="eyebrow">Level 4 • Evolution Level 0</div>
             <h3>Threat Detection Sentinel</h3>
-            <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,950</div>
+            <div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,950</div>
             <p>+2 Damage<br>+1.5 Coordination Radius</p>
-            <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,508</small>
+            <small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,508</small>
           </div>
         </article>
 
@@ -887,9 +898,9 @@ tr:hover{background:#181e27}
           <div class="upgrade-content">
             <div class="eyebrow">Level 5 • Evolution Level 10</div>
             <h3>Synchronized Vision</h3>
-            <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$3,500</div>
+            <div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$3,500</div>
             <p>Firerate: 0.1 → 0.16<br>+0.5 Range<br>Burst Cooldown: 1 → 0<br>Unlocks Shared Optics</p>
-            <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,675</small>
+            <small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$2,675</small>
           </div>
         </article>
 
@@ -898,9 +909,9 @@ tr:hover{background:#181e27}
           <div class="upgrade-content">
             <div class="eyebrow">Level 6 • Evolution Level 20</div>
             <h3>1000-THR E.M.</h3>
-            <div class="cost">💵 <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$7,000</div>
+            <div class="cost">💵 <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$7,000</div>
             <p>+4 Damage<br>+1 Range</p>
-            <small>Sell Price: <img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$5,008</small>
+            <small>Sell Price: <img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$5,008</small>
           </div>
         </article>
       </div>
@@ -938,13 +949,13 @@ tr:hover{background:#181e27}
             </tr>
           </thead>
           <tbody>
-            <tr><td>0</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$300</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$300</td><td>1</td><td>6</td><td>0.12</td><td>1.4</td><td>14</td><td>N/A</td><td>N/A</td><td>2.83</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$106.01</td></tr>
-            <tr><td>1</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$325</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$625</td><td>2</td><td>6</td><td>0.12</td><td>1.4</td><td>14</td><td>N/A</td><td>N/A</td><td>5.66</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$110.42</td></tr>
-            <tr><td>2</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$700</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,325</td><td>3</td><td>6</td><td>0.12</td><td>1</td><td>15.5</td><td>10%</td><td>4</td><td>10.47</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$126.55</td></tr>
-            <tr><td>3</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,250</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,575</td><td>4</td><td>9</td><td>0.1</td><td>1</td><td>15.5</td><td>10%</td><td>4</td><td>18.95</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$135.88</td></tr>
-            <tr><td>4</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,950</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$4,525</td><td>6</td><td>9</td><td>0.1</td><td>1</td><td>15.5</td><td>10%</td><td>5.5</td><td>28.42</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$159.22</td></tr>
-            <tr><td>5</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$3,500</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$8,025</td><td>6</td><td>N/A</td><td>0.16</td><td>0</td><td>16</td><td>10%</td><td>5.5</td><td>37.5</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$214</td></tr>
-            <tr><td>6</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$7,000</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$15,025</td><td>10</td><td>N/A</td><td>0.16</td><td>0</td><td>17</td><td>10%</td><td>5.5</td><td>62.5</td><td><img class="tds-currency-icon" src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$240.4</td></tr>
+            <tr><td>0</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$300</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$300</td><td>1</td><td>6</td><td>0.12</td><td>1.4</td><td>14</td><td>N/A</td><td>N/A</td><td>2.83</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$106.01</td></tr>
+            <tr><td>1</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$325</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$625</td><td>2</td><td>6</td><td>0.12</td><td>1.4</td><td>14</td><td>N/A</td><td>N/A</td><td>5.66</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$110.42</td></tr>
+            <tr><td>2</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$700</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,325</td><td>3</td><td>6</td><td>0.12</td><td>1</td><td>15.5</td><td>10%</td><td>4</td><td>10.47</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$126.55</td></tr>
+            <tr><td>3</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,250</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$2,575</td><td>4</td><td>9</td><td>0.1</td><td>1</td><td>15.5</td><td>10%</td><td>4</td><td>18.95</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$135.88</td></tr>
+            <tr><td>4</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,950</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$4,525</td><td>6</td><td>9</td><td>0.1</td><td>1</td><td>15.5</td><td>10%</td><td>5.5</td><td>28.42</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$159.22</td></tr>
+            <tr><td>5</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$3,500</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$8,025</td><td>6</td><td>N/A</td><td>0.16</td><td>0</td><td>16</td><td>10%</td><td>5.5</td><td>37.5</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$214</td></tr>
+            <tr><td>6</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$7,000</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$15,025</td><td>10</td><td>N/A</td><td>0.16</td><td>0</td><td>17</td><td>10%</td><td>5.5</td><td>62.5</td><td><img class="tds-currency-icon" src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$240.4</td></tr>
           </tbody>
         </table>
       </div>
@@ -1011,11 +1022,11 @@ function pageSearch() {
         </tr>
       </thead>
       <tbody>
-        <tr><td>0</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$300</span></td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$300</span></td><td>3</td><td>0.9</td><td>14</td><td>3.33</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$90.09</span></td></tr>
-        <tr><td>1</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$100</span></td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$400</span></td><td>4</td><td>0.9</td><td>15</td><td>4.44</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$90.09</span></td></tr>
-        <tr><td>2</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$650</span></td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,050</span></td><td>8</td><td>0.75</td><td>16</td><td>10.67</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$98.41</span></td></tr>
-        <tr><td>3</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$1,800</span></td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$2,850</span></td><td>10</td><td>0.5</td><td>17</td><td>20</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$142.5</span></td></tr>
-        <tr><td>4</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$3,250</span></td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$6,100</span></td><td>13</td><td>0.3</td><td>17</td><td>43.33</td><td><span class="cash"><img src="https://static.wikia.nocookie.net/tower-defense-sim/images/4/46/Cash_Icon.png/revision/latest?cb=20200828231922" alt="Cash">$140.78</span></td></tr>
+        <tr><td>0</td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$300</span></td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$300</span></td><td>3</td><td>0.9</td><td>14</td><td>3.33</td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$90.09</span></td></tr>
+        <tr><td>1</td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$100</span></td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$400</span></td><td>4</td><td>0.9</td><td>15</td><td>4.44</td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$90.09</span></td></tr>
+        <tr><td>2</td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$650</span></td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,050</span></td><td>8</td><td>0.75</td><td>16</td><td>10.67</td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$98.41</span></td></tr>
+        <tr><td>3</td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$1,800</span></td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$2,850</span></td><td>10</td><td>0.5</td><td>17</td><td>20</td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$142.5</span></td></tr>
+        <tr><td>4</td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$3,250</span></td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$6,100</span></td><td>13</td><td>0.3</td><td>17</td><td>43.33</td><td><span class="cash"><img src="https://tds.wiki/images/thumb/4/46/Cash_Icon.png/100px-Cash_Icon.png.webp" alt="Cash">$140.78</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1069,7 +1080,8 @@ const scoutSkinLevels = {
     'https://tds.wiki/images/thumb/1/1e/DHRedScout2.png/400px-DHRedScout2.png.webp?cb=20260311160305',
     'https://tds.wiki/images/thumb/b/ba/DHRedScout3.png/400px-DHRedScout3.png.webp?cb=20260311160314',
     'https://tds.wiki/images/thumb/3/3a/DHRedScout4.png/400px-DHRedScout4.png.webp?cb=20260311160328'
-  ],
+  ]
+};
 
 scoutSkinLevels.green = [
   'https://tds.wiki/images/thumb/6/6e/DHGreenScout0.png/200px-DHGreenScout0.png.webp',
@@ -1095,7 +1107,7 @@ scoutSkinLevels.survivor = [
   'https://tds.wiki/images/thumb/b/ba/DHSurvivorScout4.png/200px-DHSurvivorScout4.png.webp'
 ];
 
-scoutSkinLevels.blackops = [
+  scoutSkinLevels['black-ops'] = [
   'https://tds.wiki/images/thumb/5/59/DHBlackOpsScout0.png/200px-DHBlackOpsScout0.png.webp',
   'https://tds.wiki/images/thumb/1/18/DHBlackOpsScout1.png/200px-DHBlackOpsScout1.png.webp',
   'https://tds.wiki/images/thumb/9/9a/DHBlackOpsScout2.png/200px-DHBlackOpsScout2.png.webp',
@@ -1152,7 +1164,7 @@ scoutSkinLevels.intern = [
   'https://tds.wiki/images/thumb/f/f1/InternScout4.png/200px-InternScout4.png.webp'
 ];
 
-scoutSkinLevels.primeraven = [
+scoutSkinLevels['prime-raven'] = [
   'https://tds.wiki/images/thumb/c/c7/PR_Scout_LVL0.png/200px-PR_Scout_LVL0.png.webp',
   'https://tds.wiki/images/thumb/a/ab/PR_Scout_LVL1.png/200px-PR_Scout_LVL1.png.webp',
   'https://tds.wiki/images/thumb/2/27/PR_Scout_LVL2.png/200px-PR_Scout_LVL2.png.webp',
@@ -1176,7 +1188,7 @@ scoutSkinLevels.cookie = [
   'https://tds.wiki/images/thumb/b/bb/CookieScout4.png/200px-CookieScout4.png.webp'
 ];
 
-scoutSkinLevels.frosthunter = [
+scoutSkinLevels['frost-hunter'] = [
   'https://tds.wiki/images/thumb/4/43/NewFrostHunterScout0.png/200px-NewFrostHunterScout0.png.webp',
   'https://tds.wiki/images/thumb/0/0e/NewFrostHunterScout1.png/200px-NewFrostHunterScout1.png.webp',
   'https://tds.wiki/images/thumb/1/18/NewFrostHunterScout2.png/200px-NewFrostHunterScout2.png.webp',
@@ -1208,7 +1220,7 @@ scoutSkinLevels.masquerade = [
   'https://tds.wiki/images/thumb/1/13/MasquerateScout4.png/200px-MasquerateScout4.png.webp'
 ];
 
-scoutSkinLevels.skulltrooper = [
+scoutSkinLevels['skull-trooper'] = [
   'https://tds.wiki/images/thumb/a/a8/SkullScout0_%281%29.png/200px-SkullScout0_%281%29.png.webp',
   'https://tds.wiki/images/thumb/e/e3/SkullScout1.png/200px-SkullScout1.png.webp',
   'https://tds.wiki/images/thumb/0/03/SkullScout2.png/200px-SkullScout2.png.webp',
@@ -1256,7 +1268,7 @@ scoutSkinLevels.fallen = [
   'https://tds.wiki/images/thumb/8/8c/FallenScoutLv4.png/200px-FallenScoutLv4.png.webp'
 ];
 
-scoutSkinLevels.kingofrock = [
+scoutSkinLevels['king-of-rock'] = [
   'https://tds.wiki/images/thumb/d/df/KingofRockScout0.png/200px-KingofRockScout0.png.webp',
   'https://tds.wiki/images/thumb/5/57/KingofRockScout1.png/200px-KingofRockScout1.png.webp',
   'https://tds.wiki/images/thumb/0/0e/KingofRockScout2.png/200px-KingofRockScout2.png.webp',
@@ -1334,9 +1346,33 @@ function upgradeScoutLevel() {
     updateScoutLevelViewer();
   }
 }
+function recoverImage(img) {
+  if (img.dataset.retried || !img.src || img.src === window.location.href) return;
+  img.dataset.retried = 'true';
+
+  try {
+    const url = new URL(img.src);
+    const marker = '/images/thumb/';
+    const markerIndex = url.pathname.indexOf(marker);
+    if (markerIndex !== -1) {
+      const thumbnailPath = url.pathname.slice(markerIndex + marker.length);
+      const parts = thumbnailPath.split('/');
+      if (parts.length >= 4) {
+        const originalPath = parts.slice(0, 3).join('/');
+        img.src = `${url.origin}/images/${originalPath}`;
+      }
+    }
+  } catch (error) {
+    img.style.visibility = 'hidden';
+  }
+}
+
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('error', () => recoverImage(img));
+});
+
 updateScoutLevelViewer();
 </script>
 
 </body>
 </html>
-
