@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executioner — TDS Wiki</title>
+<link rel="icon" type="image/webp" href="https://tds.wiki/images/thumb/0/00/DefaultExecutioner0.png/100px-DefaultExecutioner0.png.webp">
+<style>
+:root{--panel:rgba(15,18,27,.92);--panel2:rgba(25,29,40,.96);--line:rgba(255,255,255,.13);--text:#f2f4f7;--muted:#b9c0cf;--accent:#e9b45d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--text);font-family:Arial,Helvetica,sans-serif;background:linear-gradient(rgba(5,8,14,.66),rgba(5,8,14,.86)),url("https://static.wikia.nocookie.net/tower-defense-sim/images/9/95/SummerCastleIcon.png/revision/latest/smart/width/400/height/225?cb=20250709204530") center/cover fixed}
+a{color:inherit}.top-banner{position:sticky;top:0;z-index:20;min-height:76px;display:flex;align-items:center;justify-content:center;gap:20px;padding:10px 20px;background:rgba(5,7,12,.96);border-bottom:1px solid var(--line)}
+.logo{font-size:clamp(22px,3vw,34px);font-weight:900}.logo span{color:var(--accent)}
+.search{width:min(320px,38vw);padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:#11151c;color:#fff}
+.page{width:min(1200px,94vw);margin:22px auto 40px}.back{display:inline-block;margin-bottom:14px;padding:9px 13px;background:var(--panel);border:1px solid var(--line);border-radius:9px;text-decoration:none;font-size:13px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 12px 35px #0005;margin-bottom:18px}
+.hero{display:grid;grid-template-columns:minmax(210px,300px) 1fr;gap:24px;align-items:center}
+.hero-art{min-height:280px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.2);border-radius:12px}
+.hero-art img{width:100%;height:270px;object-fit:contain}
+.kicker{color:var(--muted);font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
+h1{font-size:clamp(34px,5vw,52px);margin:7px 0 12px}h2{margin:0 0 15px;font-size:25px}h3{margin:0 0 8px}
+p{line-height:1.7;color:#d5dae2}.badges{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.badge{border:1px solid var(--line);background:#202631;border-radius:999px;padding:7px 10px;font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.stat{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:14px}.stat span{display:block;color:var(--muted);font-size:11px;text-transform:uppercase}.stat strong{display:block;font-size:22px;margin-top:7px}
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:650px}th,td{padding:12px 10px;text-align:left;border-bottom:1px solid var(--line)}th{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}tbody tr:hover{background:#ffffff08}
+.upgrades{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.upgrade{display:grid;grid-template-columns:65px 1fr;gap:12px;padding:14px;background:var(--panel2);border:1px solid var(--line);border-radius:12px}.level{width:56px;height:56px;display:grid;place-items:center;border-radius:10px;background:#11151c;color:var(--accent);font-size:22px;font-weight:900}.cost{color:var(--accent);font-weight:700;font-size:13px}.upgrade p{font-size:13px;margin:7px 0 0}
+.note{border-left:3px solid var(--accent);padding:12px 15px;background:var(--panel2);border-radius:7px;color:#d5dae2;line-height:1.6}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:10px}
+@media(max-width:700px){.hero{grid-template-columns:1fr}.hero-art{min-height:200px}.hero-art img{height:220px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.upgrades{grid-template-columns:1fr}.top-banner{gap:10px;justify-content:space-between}}
+</style>
+</head>
+<body>
+<header class="top-banner"><div class="logo">TDS <span>WIKI</span></div><input class="search" id="search" type="search" placeholder="Search this page..." aria-label="Search this page"></header>
+<main class="page">
+<a class="back" href="../towers.html">← Back to Towers</a>
+<section class="panel hero">
+<div class="hero-art"><img src="https://tds.wiki/images/thumb/0/00/DefaultExecutioner0.png/600px-DefaultExecutioner0.png.webp" alt="Executioner tower"></div>
+<div><div class="kicker">Exclusive · Offense</div><h1>Executioner</h1>
+<p>Executioner is a ground tower that throws a spinning axe, ricocheting between enemies. Each bounce adds damage, making it most effective when several enemies are close enough for the axe to hit.</p>
+<div class="badges"><span class="badge">Ground placement</span><span class="badge">Placement limit: 9</span><span class="badge">Ricochet damage</span><span class="badge">Hidden detection at Level 3</span></div>
+</div>
+</section>
+<section class="panel"><h2>Base Statistics</h2><div class="stats">
+<div class="stat"><span>Placement cost</span><strong>$1,800</strong></div><div class="stat"><span>Base damage</span><strong>7</strong></div><div class="stat"><span>Firerate</span><strong>1</strong></div><div class="stat"><span>Range</span><strong>15</strong></div>
+<div class="stat"><span>Sell value</span><strong>$600</strong></div><div class="stat"><span>Damage per bounce</span><strong>+6</strong></div><div class="stat"><span>Base bounces</span><strong>5</strong></div><div class="stat"><span>Max targets</span><strong>3</strong></div>
+</div></section>
+<section class="panel"><h2>Upgrades</h2><div class="upgrades">
+<article class="upgrade"><div class="level">1</div><div><h3>Quick Chopping</h3><div class="cost">Cost: $450 · Total: $2,250</div><p>Range increases from 15 to 17. Firerate improves from 1 to 0.75.</p></div></article>
+<article class="upgrade"><div class="level">2</div><div><h3>Double-Headed Axe</h3><div class="cost">Cost: $1,777 · Total: $4,027</div><p>Damage increases to 14, with +1 max target and +1 bounce.</p></div></article>
+<article class="upgrade"><div class="level">3</div><div><h3>Cloaked Revenant</h3><div class="cost">Cost: $3,750 · Total: $7,777</div><p>Damage increases to 20. Gains hidden detection, +1 bounce, and +6 added damage.</p></div></article>
+<article class="upgrade"><div class="level">4</div><div><h3>Ghoul Shreddin'</h3><div class="cost">Cost: $6,750 · Total: $14,527</div><p>Damage increases to 40, with +2 max targets, +2 bounces, and +1 added damage.</p></div></article>
+<article class="upgrade"><div class="level">5</div><div><h3>The Judge &amp; The Jury</h3><div class="cost">Cost: $13,500 · Total: $28,027</div><p>Damage increases to 50, range to 19, and firerate to 0.5. Gains +1 max target, +3 bounces, and +2 added damage.</p></div></article>
+</div></section>
+<section class="panel"><h2>Level Statistics</h2><div class="table-wrap"><table><thead><tr><th>Level</th><th>Upgrade</th><th>Upgrade cost</th><th>Total cost</th><th>Damage</th><th>Firerate</th><th>Range</th><th>Bounces</th><th>Max targets</th></tr></thead><tbody>
+<tr><td>0</td><td>Base</td><td>$1,800</td><td>$1,800</td><td>7</td><td>1</td><td>15</td><td>5</td><td>3</td></tr>
+<tr><td>1</td><td>Quick Chopping</td><td>$450</td><td>$2,250</td><td>7</td><td>0.75</td><td>17</td><td>5</td><td>3</td></tr>
+<tr><td>2</td><td>Double-Headed Axe</td><td>$1,777</td><td>$4,027</td><td>14</td><td>0.75</td><td>17</td><td>6</td><td>4</td></tr>
+<tr><td>3</td><td>Cloaked Revenant</td><td>$3,750</td><td>$7,777</td><td>20</td><td>0.75</td><td>17</td><td>7</td><td>4</td></tr>
+<tr><td>4</td><td>Ghoul Shreddin'</td><td>$6,750</td><td>$14,527</td><td>40</td><td>0.75</td><td>17</td><td>9</td><td>6</td></tr>
+<tr><td>5</td><td>The Judge &amp; The Jury</td><td>$13,500</td><td>$28,027</td><td>50</td><td>0.5</td><td>19</td><td>12</td><td>7</td></tr>
+</tbody></table></div></section>
+<section class="panel"><h2>Strategy</h2><p>Executioner is strongest when its axe can bounce between groups of enemies. Its damage bonus increases with each bounce, so it can deal much less damage when only one enemy is in range. Place it where enemies bunch up, and upgrade to Level 3 if hidden detection is needed.</p><div class="note">This page reflects the current listed statistics for the September 2026 update. Game balance can change, so stats may need refreshing after future updates.</div></section>
+<footer>TDS Wiki · Executioner</footer>
+</main>
+<script>
+const search=document.getElementById('search');
+search.addEventListener('input',()=>{const q=search.value.trim().toLowerCase();document.querySelectorAll('main section').forEach(s=>{s.style.display=!q||s.innerText.toLowerCase().includes(q)?'':'none';});});
+</script>
+</body>
+</html>
